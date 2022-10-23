@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@model james.Models.ViewModel.UserEventModel
+<div class="row mt-5">
+    <div class="col-md-12">
+        <h2>Event</h2>
+    </div>
+    <div class="col-md-12">
+        <img class="mb-7" src="/img/upload/@Model.data.photo" />
+        <button class="btn mb-6 btn-primary">Buy Ticket</button>
+        <h3 class="text-primary mb-5">
+            @Model.data.startDate.Value.ToString("dd MMM yyyy")  - @Model.data.endDate.Value.ToString("dd MMM yyyy")
+        </h3>
+        <h2>@Model.data.title</h2>
+        <p>@Model.data.location</p>
+        <p class="mt-5 color-black">
+            @Html.Raw(Model.data.description)
+        </p>
+    </div>
+</div>

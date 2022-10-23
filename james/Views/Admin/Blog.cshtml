@@ -1,0 +1,152 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model james.Models.DB.Blog
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Admin/assets/css/james-nav-sty2.css" rel="stylesheet" />
+<div class="profile-page  mt-5">
+
+    <div class="row m-0 form-style--3 ">
+
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>Blog</h2>
+                </div>
+
+            </div>
+
+            <form action="/Admin/Blog" onsubmit="return OnSubmitData()" method="post" class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-8">
+                    <div style="position: relative; top: -50px;" class="d-flex justify-content-around align-items-center">
+                        <button style="background:none;border:none" type="submit" class="text-black fa-weight btdraft">Save draft</button>
+                        <input type="hidden" name="isPublish"/>
+                        @if (Model.id >0)
+                        {
+                        <a href="/Admin/BlogPreview?id=@Model.id" class="btn btn-primary btn-2">Preview</a>
+
+                        }
+                        
+
+
+                        <button type="submit" class="btn btn-primary btpublish">Publish</button>
+                    </div>
+
+                </div>
+
+                <input type="hidden" name="id" value="@Model.id" />
+
+
+
+                <div class="col-lg-12 mb-5 pr-5">
+                    <div class="input-box">
+                        <input class="form-control no-icon" name="title" required value="@Model.title" placeholder="Add Title *" />
+                    </div>
+                </div>
+
+                @*<div class="col-lg-6 mb-5 pr-5">
+                        <div class="input-box">
+                            Publish <input type="checkbox" name="isPublish" @(Model.isPublish ? "checked" : "") value="true" />
+                        </div>
+                    </div>*@
+                <div class="col-lg-12 mb-5 pr-5">
+                    <div class="input-box">
+                        <textarea class="form-control no-icon" rows="20" name="description" placeholder="Write a blog">@Html.Raw(Model.description)</textarea>
+                    </div>
+                </div>
+                <div class="col-lg-12 mb-5 pr-5">
+
+                    <input type="hidden" value="@Model.banner" name="banner" />
+                    <input type="file" name="photofup" data-default-file="@(!string.IsNullOrEmpty(Model.banner)? "/img/upload/"+Model.banner:"")" class="dropify" data-height="180" />
+
+                </div>
+
+            </form>
+        </div>
+
+        <div class="col-md-3 side-nav-right-sty">
+            <div class="wgit">
+
+                <h3 class="mb-0">Notification</h3>
+                <p>Send push notifications to all users</p>
+                <textarea style="" class="form-control mb-3" rows="6" placeholder="Write a message"></textarea>
+                <button class="btn w-100 btn-primary">Send Message</button>
+            </div>
+            <div class="wgit">
+                <h3>VIP Subscription</h3>
+                <div class="form-group relative">
+                    <img class="form-icon-l" src="~/Admin/icons/cart.png" />
+                    <input class="form-control int-sty" placeholder="Add Subscription ID" />
+                    <img class="form-icon-r" src="~/Admin/icons/add.png" />
+                </div>
+
+                <div class="vip-list">
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- File uploads js -->
+<script src="~/Admin/assets/plugins/fileupload/js/dropify.js"></script>
+<script src="~/Admin/assets/js/filupload.js"></script>
+<script>
+    $(function () {
+        $('[name="photofup"]').on('change', function () {
+            for (var i = 0; i < $(this).get(0).files.length; i++) {
+                var file = $(this).get(0).files[i];
+                $('#global-loader').fadeIn()
+                UploadFile(file, function (result, element) {
+
+
+                    $('#global-loader').fadeOut()
+                    if (result) {
+                        $('[name=banner]').val(result);
+                    }
+                    else {
+                        alert("Not Valid Photo");
+                        $('.dropify-clear').click()
+                    }
+
+
+                }, null);
+            }
+        });
+    });
+    function OnSubmitData() {
+        if ($(event.submitter).hasClass('btpublish')) {
+            $('[name=isPublish]').val(true);
+        }
+        else {
+            $('[name=isPublish]').val(false);
+        }
+        return true;
+    }
+</script>

@@ -1,0 +1,129 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<style>
+    #Emoji .col-md-6{
+        text-align:center;
+    }
+    .emoji-sec .nav {
+        margin: auto;
+        justify-content: space-around;
+        flex-direction: row;
+        border: none;
+        font-size: 24px;
+    }
+        .emoji-sec .nav li a {
+            color: black;
+        }
+
+    .emoji-sec li.active a {
+        color: #59d6d6;
+    }
+    .emoji-sec li.active a:after {
+        content: " ";
+        height: 8px;
+        width: 100px;
+        display: block;
+        background: #59d6d6;
+        margin-left: -17px;
+        border-radius: 5px;
+    }
+    #Emoji .col-md-6 {
+        text-align: center;
+        padding: 0px 80px;
+        margin: 30px 0px;
+    }
+</style>
+<div class="row mt-5">
+    <div class="col-md-8">
+        <form class="form-inline search-sty">
+            <div class="search-element">
+                <img class="cus" src="~/Admin/Upload/icone/search.png" />
+                <input style=" width: 100%;" type="search" class="form-control header-search" placeholder="Find partner" aria-label="Search" tabindex="1">
+                <button class="btn btn-primary" type="submit">
+
+                    <img src="~/Admin/Upload/icone/filter.png" />
+                </button>
+            </div>
+        </form>
+
+
+        <div class="col-md-12  emoji-sec">
+             
+
+
+
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#Emoji" aria-controls="Emoji" role="tab" data-toggle="tab">Emoji</a></li>
+                <li role="presentation"><a href="#Greetings" aria-controls="Greetings" role="tab" data-toggle="tab">Greetings</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="Emoji">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="~/Admin/Upload/icone/emj-love2.png" />
+                        </div>
+                        <div class="col-md-6">
+                            <img src="~/Admin/Upload/icone/emj-love.png" />
+                        </div>
+                        <div class="col-md-6">
+                            <img src="~/Admin/Upload/icone/emj-happy.png" />
+                        </div>
+                        <div class="col-md-6">
+                            <img src="~/Admin/Upload/icone/emj-sad.png" />
+                        </div>
+                        <div class="col-md-6">
+                            <img src="~/Admin/Upload/icone/emj-laugh.png" />
+                        </div>
+                        <div class="col-md-6">
+                            <img src="~/Admin/Upload/icone/emj-wow.png" />
+                        </div>
+                        <div class="col-md-6">
+                            <img src="~/Admin/Upload/icone/emj-clap.png" />
+                        </div>
+                        <div class="col-md-6">
+                            <img src="~/Admin/Upload/icone/emj-like.png" />
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="Greetings">2...</div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="side-right bg-thm-gy">
+            <div class="wgit">
+
+                <h3>Find My Match</h3>
+                <p>
+                    You have rated all
+                    members, soon we will
+                    show you the newest
+                    members here.
+                </p>
+            </div>
+            <div class="wgit">
+                <h3>SUBSCRIBE</h3>
+                <p>
+                    Get full access to all
+                    features
+                </p>
+                <button class="btn btn-primary">Get Membership</button>
+            </div>
+
+            <div class="wgit">
+                <h3>Invite a Friend</h3>
+                <input class="form-control mb-3" type="text" placeholder="First Name" />
+                <input class="form-control mb-3" type="text" placeholder="E-mail" />
+                <button class="btn btn-primary">Send Invite</button>
+            </div>
+        </div>
+
+    </div>
+</div>

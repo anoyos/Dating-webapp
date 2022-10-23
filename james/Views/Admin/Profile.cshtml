@@ -1,0 +1,133 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model james.Models.DB.User
+<style>
+    .chart-circle-md {
+        height: 118px;
+        width: 118px;
+        font-size: 5.8rem;
+    }
+</style>
+
+<style>
+    .profile-editt{
+    background-color: rgb(235 235 235 / 70%);
+    padding: 50px 90px;
+    border-radius: 10px;
+    }
+        .profile-editt input.form-control {
+            background-color: #E3E3E3;
+            border:none;
+
+        }
+            .profile-editt input.form-control::placeholder {
+                color: #A5A5A5 !important;
+            }
+    .form-style--3 .profile-editt input.form-control.no-icon {
+        padding-left: 20px;
+        padding-right: 35px;
+    }
+    .profile-editt i.fa {
+        position: absolute;
+        right: 30px;
+        top: 21px;
+    }
+</style>
+<link href="~/Admin/assets/css/james-nav-sty2.css" rel="stylesheet" />
+<div class="profile-page  mt-5">
+
+    <div class="row m-0 form-style--3 ">
+
+        <div class="col-md-9">
+            <div class="col-md-9 m-auto">
+
+                <form  onsubmit="return OnSumbitData()" class="row profile-editt" >
+                    <div class="col-md-12 text-center">
+                        <h1 class="mb-1">Admin Profile</h1>
+                        <p>Update Profile</p>
+                    </div>
+                    <div class="col-lg-12 mb-5">
+                        <div class="input-box">
+                            <input class="form-control no-icon" value="@Model.username" placeholder="Username" />
+                            <i class="fa fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 mb-5">
+                        <div class="input-box">
+                            <input class="form-control no-icon" type="password" required name="password" placeholder="Enter Password" />
+                            <i class="fa fa-eye"></i>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 mb-5">
+                        <div class="input-box">
+                            <input class="form-control no-icon" type="password" required name="newpassword" placeholder="Enter your new password" />
+                            <i class="fa fa-eye"></i>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 mb-5">
+                        <button class="btn btn-primary btn-block">Update</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="col-md-3 side-nav-right-sty">
+            <div class="wgit">
+
+                <h3 class="mb-0">Notification</h3>
+                <p>Send push notifications to all users</p>
+                <textarea style="" class="form-control mb-3" rows="6" placeholder="Write a message"></textarea>
+                <button class="btn w-100 btn-primary">Send Message</button>
+            </div>
+            <div class="wgit">
+                <h3>VIP Subscription</h3>
+                <div class="form-group relative">
+                    <img class="form-icon-l" src="~/Admin/icons/cart.png" />
+                    <input class="form-control int-sty" placeholder="Add Subscription ID" />
+                    <img class="form-icon-r" src="~/Admin/icons/add.png" />
+                </div>
+
+                <div class="vip-list">
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    function OnSumbitData() {
+
+        XHRPOSTRequest("/Admin/UpdatePassword", { password: $('[name=password]').val(), newpassword: $('[name=newpassword]').val() }, function (result) {
+            if (result.Status == ResultStatus.Success) {
+       
+                showNotification(result.Message, "success");
+            }
+            else {
+                showNotification(result.Message, "error")
+            }
+        });
+        
+        return false;
+    }
+</script>

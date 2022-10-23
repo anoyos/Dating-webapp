@@ -1,0 +1,429 @@
+﻿@model james.Models.ViewModel.UserEventListModel
+@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .color-btn-sty {
+        color: white;
+        background: #59D6D6;
+        border-radius: 10px;
+        font-size: 20px;
+    }
+
+    .gray-btn-sty {
+        color: white;
+        background: #989898;
+        font-weight: 700;
+        width: 350px;
+        font-size: 20px;
+    }
+
+
+
+    .story-card {
+        background-size: contain;
+        padding: 30px 25px;
+        color: white;
+    }
+
+    .top-space {
+        margin-bottom: 328px;
+    }
+
+        .top-space img {
+            width: 17px;
+            position: relative;
+            top: -2px;
+        }
+
+    .card-detail .per-dts ul li {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+        .card-detail .per-dts ul li img {
+            width: 23px;
+            margin-right: 6px;
+        }
+
+        .card-detail .per-dts ul li span {
+            float: right;
+        }
+
+    .link-btn-icon img {
+        width: 80%;
+        background: rgb(89 214 214 / 74%);
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+        .link-btn-icon img:hover {
+            background: #59D6D6;
+            cursor: pointer
+        }
+
+    .link-btn-icon .list-inline .list-inline-item {
+        display: table-cell;
+    }
+
+    .link-btn-icon {
+        margin-top: 60px;
+    }
+
+
+
+    /*Extra css*/
+    .extra-class {
+        height: 740px;
+        width: 470px;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+
+    .theme-color {
+        color: #59D6D6
+    }
+
+    .heading-a h2 {
+        font-size: 18px;
+        margin: 0px;
+    }
+
+    .heading-a p {
+        font-size: 14px;
+    }
+
+    .event-box img {
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+
+    .event-box h3 {
+        font-size: 18px;
+        margin: 0px;
+    }
+
+    .event-box p {
+        color: #A5A5A5;
+        font-size: 12px;
+    }
+
+    .event-card {
+        width: 100%;
+        display: flex;
+    }
+
+    .event-sec {
+        padding: 20px;
+        border-top: solid 2px #CBCBCB;
+        margin-top: 50px;
+        padding-bottom: 0px;
+    }
+
+    .event-box {
+        margin-right: 20px;
+    }
+
+
+
+
+    .event-card2 .color-btn-sty {
+        position: absolute;
+        font-size: 12px;
+        color: white;
+        padding: 3px 8px;
+        border-radius: 5px;
+        background: #59D6D6;
+        bottom: 10px;
+        left: 10px
+    }
+
+    .gray-btn-sty {
+        color: white;
+        background: #989898;
+        font-weight: 700;
+        width: 350px;
+        font-size: 20px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    .theme-color {
+        color: #59D6D6
+    }
+
+    .heading-a h2 {
+        font-size: 18px;
+        margin: 0px;
+    }
+
+    .heading-a p {
+        font-size: 14px;
+    }
+
+    .event-box img {
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+
+    .event-box h3 {
+        font-size: 18px;
+        margin: 0px;
+    }
+
+    .event-box p {
+        color: #A5A5A5;
+        font-size: 12px;
+    }
+
+    .event-card.extra_class {
+        width: 281px;
+    }
+
+
+    .event-box {
+        margin-right: 20px;
+    }
+
+    .rst {
+        width: 141px;
+    }
+
+    .like {
+        position: absolute;
+        width: 21px;
+        right: 5px;
+        top: 5px;
+    }
+
+    .event-2 {
+        position: relative;
+        width: 141px;
+    }
+
+    .event-box2 {
+        margin-right: 20px;
+    }
+
+        .event-box2 h3 {
+            font-size: 18px;
+            margin: 12px 0px;
+        }
+
+    .event-card2 {
+        display: flex;
+    }
+
+    .event-2 a.color-btn-sty.btn {
+        color: white;
+    }
+</style>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+</button>
+ 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            
+            <div class="modal-body" style="padding: 30px">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="text-center">Select Payment Method:</h3>
+
+                <ul class="pay-ops">
+                    <li>
+                        <img class="mr-3" src="~/Admin/icons/bank.png" /> Banco Santander
+                    </li>
+                    <li>
+                        <img class="mr-3" src="~/Admin/icons/paypal.png" /> Paypal
+                    </li>
+                    <li>
+                        <img class="mr-3" src="~/Admin/icons/Google-Pay.png" /> Google Pay
+                    </li>
+                    <li>
+                        <img class="mr-3" src="~/Admin/icons/apple-pay.png" /> Apple Pay
+                    </li>
+                </ul>
+            </div>
+           
+        </div>
+    </div>
+</div>
+<div class="row mt-5">
+    @if (Model.events.Count() == 0)
+    {
+
+        <div class="col-md-12">
+            <div class="nodata">
+                <img src="~/Admin/icons/760759.png" />
+                <h3 class="text-primary">No Record Found</h3>
+            </div>
+
+        </div>
+    }
+    else
+    {
+        var topEvent = Model.events.OrderBy(x => x.startDate).FirstOrDefault();
+        <div class="col-md-12">
+            <h2>Events</h2>
+            <h4>James Club (Events @Model.events.Count())</h4>
+        </div>
+
+        <div class="col-md-7">
+            <img src="/img/upload/@topEvent.photo" />
+        </div>
+        <div class="col-md-5">
+            <h2 class="text-primary font-weight-normal">@(topEvent.startDate.Value.ToString("dd MMM"))</h2>
+            <h2 class=" font-weight-normal">
+                @topEvent.title
+
+            </h2>
+            <h3 class=" font-weight-normal">@topEvent.location</h3>
+        </div>
+
+        @foreach (var eg in Model.events.Where(x => x.id != topEvent.id).GroupBy(x => x.category))
+        {
+            <div class="event-sec">
+                <div class="heading-a">
+                    <h2>@eg.Key</h2>
+                </div>
+                <div class="event-card extra_classx">
+                    @foreach (var item in eg)
+                    {
+                        <div class="event-box">
+                            <a href="/User/Event?id=@item.id">
+
+                                <img src="/img/upload/@item.photo" />
+                                <h3>@item.title</h3>
+                                <p class="text-muted">@item.startDate.Value.ToString("dd MMM")</p>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+
+        @*<div class="event-sec">
+
+                <div class="heading-a">
+                    <h2>THE BEST RESTAURANTS</h2>
+                    <p class="theme-color">Local-approved eats nearby</p>
+                </div>
+
+                <div class="event-card2 extra_classx">
+
+
+                    <div class="event-box2">
+                        <div class="event-2">
+                            <img class="like" src="~/Admin/upload/images/star-b.png" />
+                            <img class="rst" src="~/Admin/upload/images/event-2.png" />
+                            <a class="color-btn-sty btn">Resturant</a>
+                        </div>
+                        <h3>Do Darya</h3>
+                    </div>
+
+                    <div class="event-box2">
+                        <div class="event-2">
+                            <img class="like" src="~/Admin/upload/images/star-b.png" />
+                            <img class="rst" src="~/Admin/upload/images/event-2.png" />
+                            <a class="color-btn-sty btn">Resturant</a>
+                        </div>
+                        <h3>Do Darya</h3>
+                    </div>
+
+                    <div class="event-box2">
+                        <div class="event-2">
+                            <img class="like" src="~/Admin/upload/images/star-b.png" />
+                            <img class="rst" src="~/Admin/upload/images/event-2.png" />
+                            <a class="color-btn-sty btn">Resturant</a>
+                        </div>
+                        <h3>Do Darya</h3>
+                    </div>
+
+                    <div class="event-box2">
+                        <div class="event-2">
+                            <img class="like" src="~/Admin/upload/images/star-b.png" />
+                            <img class="rst" src="~/Admin/upload/images/event-2.png" />
+                            <a class="color-btn-sty btn">Resturant</a>
+                        </div>
+                        <h3>Do Darya</h3>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+            <div class="event-sec">
+
+                <div class="heading-a">
+                    <h2>THE BEST CAFES</h2>
+                    <p class="theme-color">Jeans & t-shirt venues</p>
+                </div>
+
+                <div class="event-card2 extra_classx">
+
+
+                    <div class="event-box2">
+                        <div class="event-2">
+                            <img class="like" src="~/Admin/upload/images/star-b.png" />
+                            <img class="rst" src="~/Admin/upload/images/event-2.png" />
+                            <a class="color-btn-sty btn">Resturant</a>
+                        </div>
+                        <h3>Do Darya</h3>
+                    </div>
+
+                    <div class="event-box2">
+                        <div class="event-2">
+                            <img class="like" src="~/Admin/upload/images/star-b.png" />
+                            <img class="rst" src="~/Admin/upload/images/event-2.png" />
+                            <a class="color-btn-sty btn">Resturant</a>
+                        </div>
+                        <h3>Do Darya</h3>
+                    </div>
+
+                    <div class="event-box2">
+                        <div class="event-2">
+                            <img class="like" src="~/Admin/upload/images/star-b.png" />
+                            <img class="rst" src="~/Admin/upload/images/event-2.png" />
+                            <a class="color-btn-sty btn">Resturant</a>
+                        </div>
+                        <h3>Do Darya</h3>
+                    </div>
+
+                    <div class="event-box2">
+                        <div class="event-2">
+                            <img class="like" src="~/Admin/upload/images/star-b.png" />
+                            <img class="rst" src="~/Admin/upload/images/event-2.png" />
+                            <a class="color-btn-sty btn">Resturant</a>
+                        </div>
+                        <h3>Do Darya</h3>
+                    </div>
+
+
+                </div>
+            </div>*@
+
+    }
+
+</div>
+
+

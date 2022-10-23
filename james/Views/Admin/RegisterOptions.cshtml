@@ -1,0 +1,138 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<james.Models.DB.DDL>
+@{ 
+    
+}
+<div class="mt-5 pt-5">
+
+    <div class="row m-0 form-style--3 ">
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>@ViewBag.screenTitle</h2>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="#" class="btn btaddmodal  btn-primary"><i class="fa fa-plus"></i> New @ViewBag.screenTitle</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.name</td>
+                                    <td>
+                                        <a class="fa fa-pencil fs-20" onclick="Edit(@item.id, '@item.name')"></a> <span class="fs-20">|</span>
+                                        <a class="fa fa-trash fs-20" onclick="Delete(@item.id)"></a> 
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<div class="modal" id="addModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                @(ViewBag.screenTitle)
+            </div>
+            <form onsubmit="return OnSubmitData()">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h4> Name:</h4>
+                            <input class="form-control" required placeholder="Enter  title" name="name" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-lg-12 text-left">
+                            <button type="submit" class="btn btn-primary btsubmit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<script>
+    var activeId;
+    $(function () {
+        $('.btaddmodal').on('click', function () {
+            activeId = null;
+            $('#addModal').modal('show');
+            $('[name=name]').val('');
+        })
+    })
+    function Edit(id, name) {
+        activeId=id ;
+        $('[name=name]').val(name);
+        $('#addModal').modal('show');
+        
+    }
+    function Delete(id) {
+        swal({
+            title: 'Are You Sure',
+            text: 'Delete This Record',
+            confirmButtonText: 'Confirm',
+            cancelButtonText: 'Cancel',
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            closeOnConfirm: false
+        }, function (isConfirm) {
+
+            if (isConfirm) {
+                var myurl = "/Admin/DeleteDDL";
+                var mydata = new Object();
+                mydata.id = id;
+                XHRPOSTRequest(myurl, mydata, function (result) {
+
+                    swal({
+                        title: 'Deleted',
+                        text: 'Deleted Successfully',
+                        type: "success",
+                        showCancelButton: false,
+                        confirmButtonColor: '#DD6B55',
+                        confirmButtonText: 'OK',
+                        closeOnConfirm: true,
+                        closeOnCancel: false
+                    });
+                    setTimeout(function () { window.location.reload() }, 1000);
+                });
+            }
+            $(".sweet-alert .sa-button-container .sa-custom-check").remove();
+        });
+    }
+    function OnSubmitData() {
+
+        XHRPOSTRequest("/Admin/AddUpdateDDL", { id: activeId, type:@ViewBag.type, name: $('[name=name]').val() }, function (result) {            
+            showNotification("Saved Successfully", "error");
+            window.location.reload();
+        });
+        return false;
+    }
+</script>

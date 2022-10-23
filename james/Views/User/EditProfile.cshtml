@@ -1,0 +1,633 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@using james.Helpers.General
+@model james.Models.ViewModel.EditProfileViewModel
+<style>
+    .profile-imgEdit {
+        position: absolute;
+        top: 35px;
+        left: 18px;
+    }
+
+    .banner-imgEdit {
+        position: absolute;
+        top: 6px;
+        left: 18px;
+    }
+
+    .multibtn button.active, .singlebtn button.active {
+        background-color: #a7e9e9;
+    }
+    button.btn.btn-primary.btprivatealbummodal.btn-sm.pull-right {
+        position: relative;
+        top: -15px;
+    }
+</style>
+<div class="profile-page">
+    <div class="row mb-1">
+        <div class="col-md-12">
+            <h2>Edit Profile</h2>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <i class="fa fa-pencil banner-imgEdit edit-btn-sty"></i>
+            <img src="~/Admin/Upload/images/pro-banner.png" />
+            <div class="pro-dtl">
+                <div class="row">
+                    <div class="col-md-2">
+                        @if (!string.IsNullOrEmpty(Model.data.photo))
+                        {
+                            <img class="cus profileimg" data-src="@Model.data.photo" src="/img/upload/@Model.data.photo" />
+                        }
+                        else
+                        {
+                            <img class="cus profileimg" src="~/img/upload/avatar.png" />
+                        }
+                        <i class="fa fa-pencil profile-imgEdit edit-btn-sty btprofileimg"></i>
+                        <input type="file" id="profileimgfup" style="display:none" />
+                    </div>
+                    <div class="col-md-4">
+                        <div class="vac">
+                            <img class="mr-3" src="~/Admin/Upload/icone/vac.png" />
+                            <div>
+                                <h4>Vaccine Status</h4>
+                                
+                                <p class="color-black">
+                                    @if (Model.data.vaccine != null)
+            {
+                                        <span>@Model.data.vaccine.name</span>
+            }
+                                    </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; float: right; align-items: flex-end; justify-content: flex-end;" class="col-md-6">
+                        <button style="position: relative; right: 70px; bottom: 60px;" class="btn btn-primary">
+                            View as
+                            <img style="width: 20px; margin-left: 15px; " src="~/Admin/Upload/icone/eye.png" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-2"></div>
+        <div class="col-md-10 profile-wgit mb-3">
+            <div class="pro-wgit">
+                <h1 style=" margin-bottom: 5px; ">
+                
+                    @Model.data.name
+                    @if (Model.data.age.HasValue)
+            {
+                    <span>, @Model.data.age</span>
+            }
+                
+                
+                </h1>
+                <h4 style="font-weight:300">@Model.data.profession</h4>
+            </div>
+            <div class="pro-wgit">
+                <p class="test-green">
+                    <img src="~/Admin/Upload/icone/online.png" />
+                    Now online
+                </p>
+                <p class="color-black">
+                    <img src="~/Admin/Upload/icone/home-icon.png" />
+                    @Model.data.city
+                </p>
+            </div>
+            <div class="pro-wgit">
+                <p class="text-primary">
+                    <img src="~/Admin/Upload/icone/offline.png" />
+                    New Member
+                </p>
+                <p class="color-black">
+                    <img src="~/Admin/Upload/icone/pin.png" />
+                    100 KM
+                </p>
+            </div>
+            <div class="pro-wgit">
+                <p class="text-primary">
+                    <img src="~/Admin/Upload/icone/star.png" />
+                    @Model.data.rating rating
+                </p>
+                <p class="text-primary">
+
+                    Received likes @Model.data.likes
+                </p>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <div class="row mt-7  form-style--2 datacontainer ">
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>User Name:</label>
+                <img class="form-icon" src="~/public/assets/images/icons/user.png" />
+                <input class="form-control" placeholder="Enter your User name" disabled value="@Model.data.username" name="username" />
+            </div>
+        </div>
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Name for the James:</label>
+                <img class="form-icon" src="~/public/assets/images/icons/user.png" />
+                <input class="form-control" placeholder="Name for the James" value="@Model.data.name" name="name" />
+            </div>
+        </div>
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Email:</label>
+                <img class="form-icon" src="~/public/assets/images/icons/user.png" />
+                <input class="form-control" disabled placeholder="Enter your Email Address" value="@Model.data.email" name="email" />
+            </div>
+        </div>
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>City:</label>
+                <img class="form-icon" src="~/public/assets/images/icons/user.png" />
+                <input class="form-control" placeholder="Enter your City" value="@Model.data.city" name="city" />
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Age:</label>
+                <img class="form-icon" src="~/public/assets/images/icons/calendar.png" />
+                <input class="form-control" type="number" placeholder="Age" value="@Model.data.age" name="age" />
+            </div>
+        </div>
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Profession:</label>
+                <img class="form-icon" src="~/public/assets/images/icons/calendar.png" />
+                <input class="form-control" type="text" placeholder="Enter your Profession" value="@Model.data.profession" name="profession" />
+            </div>
+        </div>
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>I'm Looking for:</label>
+
+                <div class="row multibtn" data-name="lookingRelations" data-field="relationId">
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.LookingRelation))
+                    {
+                        <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between @(Model.data.lookingRelations.Any(x=>x.id== item.id)?"active":"")">@item.name</button>}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Gender:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/gender.png" />
+                <select class="form-control" name="genderId">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Gender))
+                    {
+                        <option value="@item.id" @(Model.data.gender != null && item.id == Model.data.gender.id ? "selected" : "")>@item.name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Sexual Orientation:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/sexual.png" />
+                <select class="form-control" name="sexualOrientationId">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.SexualOrientation))
+                    {
+                        <option value="@item.id" @(Model.data.sexualOrientation != null && item.id == Model.data.sexualOrientation.id ? "selected" : "")>@item.name</option>
+                    }
+
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>My Profession:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/profession.png" />
+                <select class="form-control" name="myProfessionId">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Myproffession))
+                    {
+                        <option value="@item.id" @(Model.data.myProfession != null && item.id == Model.data.myProfession.id ? "selected" : "")>@item.name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Relationship Status:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/relationship.png" />
+                <select class="form-control" name="relationshipStatusId">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.RelationshipStatus))
+                    {
+                        <option value="@item.id" @(Model.data.relationshipStatus != null && item.id == Model.data.relationshipStatus.id ? "selected" : "")>@item.name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Height:</label>
+                <img style=" height: 29px; " class="form-icon" src="~/public/assets/images/icons/height.png" />
+                <input class="form-control" placeholder="Enter your Height" name="height" value="@Model.data.height" />
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Education:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/edu.png" />
+                <input class="form-control" placeholder="Enter your Education" name="eduction" value="@Model.data.eduction" />
+            </div>
+        </div>
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Physical Type:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/physical.png" />
+                <select class="form-control" name="physicalTypeId">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.PhysicalType))
+                    {
+                        <option value="@item.id" @(Model.data.physicalType != null && item.id == Model.data.physicalType.id ? "selected" : "")>@item.name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Region:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/glob.png" />
+                <select class="form-control" name="religionId">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Religon))
+                    {
+                        <option value="@item.id" @(Model.data.religion != null && item.id == Model.data.religion.id ? "selected" : "")>@item.name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>I'm Looking for:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/dating.png" />
+                <select class="form-control" name="lookingGenderId">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.LookingGender))
+                    {
+                        <option value="@item.id" @(Model.data.lookingGender != null && item.id == Model.data.lookingGender.id ? "selected" : "")>@item.name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Children:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/user.png" />
+                <select class="form-control" name="childrenId">
+                    <option value="">Select Children</option>
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Children))
+                    {
+                        <option value="@item.id" @(Model.data.children != null && item.id == Model.data.children.id ? "selected" : "")>@item.name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Annual Income:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/income.png" />
+                <select class="form-control" name="annualIncome">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.AnnualIncome))
+                    {
+                        <option value="@item.id" @(Model.data.annualIncome != null && item.id == Model.data.annualIncome.id ? "selected" : "")>@item.name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Alcohol Consumption:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/alcohol.png" />
+                <select class="form-control" name="alcoholConsumptionId">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Alcohol))
+                    {
+                        <option value="@item.id" @(Model.data.alcoholConsumption != null && item.id == Model.data.alcoholConsumption.id ? "selected" : "")>@item.name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Vaccine:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/vac-g.png" />
+                <select class="form-control" name="vaccineId">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Vacine))
+                    {
+                        <option value="@item.id" @(Model.data.vaccine != null && item.id == Model.data.vaccine.id ? "selected" : "")>@item.name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Hobbies:</label>
+                @*<img class="form-icon" src="~/Admin/Upload/icone/hobbies.png" />*@
+                <div class="row multibtn" data-name="hobbies" data-field="hobbyId">
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Hobbies))
+                    {
+                        <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between @(Model.data.hobbies.Any(x => x.id == item.id) ? "active" : "")">@item.name</button>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Sign:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/sign.png" />
+                <select class="form-control" name="signId">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Sign))
+                    {
+                        <option value="@item.id" @(Model.data.sign != null && item.id == Model.data.sign.id ? "selected" : "")>@item.name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Zip code:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/map-2.png" />
+                <input class="form-control" placeholder="" value="@Model.data.zipcode" />
+            </div>
+        </div>
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Festiches:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/Fetiches.png" />
+                <select class="form-control" name="fetichesId">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Fetches))
+                    {
+                        <option value="@item.id" @(Model.data.fetiches != null && item.id == Model.data.fetiches.id ? "selected" : "")>@item.name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Smokes:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/smokes.png" />
+                <select class="form-control" name="smokeId">
+                    <option value="">Select</option>
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Smokes))
+                    {
+                        <option value="@item.id" @(Model.data.smoke != null && item.id == Model.data.smoke.id ? "selected" : "")>@item.name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Where am I now:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/map-1.png" />
+                <select class="form-control" name="whereamiknow">
+                    <option value="">Select </option>
+                    <option value="1" @(Model.data.whereamiknow != null && Model.data.whereamiknow.id == 1 ? "selected" : "" )>Yes</option>
+                    <option value="0" @(Model.data.whereamiknow != null && Model.data.whereamiknow.id == 0 ? "selected" : "" )>No</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Personality:</label>
+                @*<img class="form-icon" src="~/Admin/Upload/icone/profession.png" />*@
+                <div class="row multibtn" data-name="personalities" data-field="personalityId">
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Personlity))
+                    {
+                        <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between @(Model.data.personalities.Any(x => x.id == item.id) ? "active" : "")">@item.name</button>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Geolocation by distance:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/map-1.png" />
+                <select class="form-control" name="gelocationBydistance">
+                    <option value="">Select </option>
+                    <option value="1" @(Model.data.gelocationBydistance != null && Model.data.gelocationBydistance.id == 1 ? "selected" : "" )>Yes</option>
+                    <option value="0" @(Model.data.gelocationBydistance != null && Model.data.gelocationBydistance.id == 0 ? "selected" : "" )>No</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Qualities:</label>
+                @*<img class="form-icon" src="~/Admin/Upload/icone/profession.png" />*@
+                <div class="row multibtn" data-name="qualities" data-field="qualityId">
+                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Qualities))
+                    {
+                        <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between @(Model.data.qualities.Any(x => x.id == item.id) ? "active" : "")">@item.name</button>
+                    }
+                </div>
+            </div>
+        </div>
+        @*<div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Qualities:</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/eye-g.png" />
+                <select class="form-control">
+                    <option selected>Want to be seen online?</option>
+                    <option value="1" @(Model.data.seeo != null && Model.data.gelocationBydistance.id == 1 ? "selected" : "" )>Yes</option>
+                    <option>B</option>
+                </select>
+            </div>
+        </div>*@
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>
+                    What didn't you like about your last
+                    relationship?
+                </label>
+                <img style="top: 74px" class="form-icon" src="~/Admin/Upload/icone/relationship.png" />
+                <input class="form-control" placeholder=" " name="last_relationship" value="@Model.data.last_relationship" />
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-5 pr-9">
+            <div class="input-box">
+                <label>Hide age?</label>
+                <img class="form-icon" src="~/Admin/Upload/icone/user.png" />
+                <select class="form-control" name="hideage">
+                    <option value="">Select </option>
+                    <option value="" @(Model.data.hideage ? "selected" : "")>Yes</option>
+                    <option value="" @(!Model.data.hideage ? "selected" : "")>No</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-12 mb-5 pr-9">
+            <div class="input-box">
+                <label>
+                    About me:
+                </label>
+                <img style="top: 42px" class="form-icon" src="~/Admin/Upload/icone/info-g.png" />
+                <textarea rows="5" style="padding-left: 40px;" class="form-control" name="aboutMe" placeholder="Write about you">@(Html.Raw(Model.data.aboutMe))</textarea>
+            </div>
+        </div>
+
+        <div class="col-lg-12 mb-5 pr-9">
+            <button class="btn btn-primary btsave">Save</button>
+        </div>
+
+
+
+
+        <div class="col-md-12 mt-5">
+            <a class="pull-right btaddalbum" href="javascript:void()"><h4><i class="fa fa-plus "></i> Add New Album</h4></a>
+        </div>
+        <input type="file" id="albumimgfup" multiple accept="image/*"  style="display:none;" />
+        <div class="col-md-12 mt-5">
+            <div class="albumpanel"></div>
+        </div>
+
+            @*<div class="col-md-12 mt-5">
+                <h4>PICTURE OF MY PET OR MY HOBBIE</h4>
+                <div class="row">
+                    <div class="col-md-2 mb-5">
+                        <img src="~/Admin/Upload/images/m9.png" />
+                    </div>
+                    <div class="col-md-2 mb-5">
+                        <img src="~/Admin/Upload/images/m10.png" />
+                    </div>
+                    <div class="col-md-2 mb-5">
+                        <img src="~/Admin/Upload/images/m11.png" />
+                    </div>
+                    <div class="col-md-2 mb-5">
+                        <img src="~/Admin/Upload/images/m12.png" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 mb-5">
+                        <img src="~/Admin/Upload/icone/add-img.png" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 mt-5">
+                <h4>PHOTOS: FAMILY, FRIENDS</h4>
+                <div class="row">
+                    <div class="col-md-2 mb-5">
+                        <img src="~/Admin/Upload/images/m13.png" />
+                    </div>
+                    <div class="col-md-2 mb-5">
+                        <img src="~/Admin/Upload/images/m14.png" />
+                    </div>
+                    <div class="col-md-2 mb-5">
+                        <img src="~/Admin/Upload/images/m15.png" />
+                    </div>
+                    <div class="col-md-2 mb-5">
+                        <img src="~/Admin/Upload/images/m16.png" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 mb-5">
+                        <img src="~/Admin/Upload/icone/add-img.png" />
+                    </div>
+                </div>
+            </div>*@
+        </div>
+    </div>
+
+
+
+
+
+<div class="modal" id="albumModal" >
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                Add New Album
+            </div>
+            <form onsubmit="return OnSubmitAlbum()">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h4>Album Name:</h4>
+                            <input class="form-control" required placeholder="Enter Album name" name="albumName" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-lg-12 text-left">
+                            <button type="submit" class="btn btn-primary btsubmit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<div class="modal fade" id="privatealbummodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            @*<div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>*@
+            <div class="modal-body text-center">
+                <h2 class="text-center">Generated Code</h2>
+                <img src="~/Admin/icons/hide.jpg" class="mb-5" />
+                <input class="form-control text-center" disabled name="hiddenalbumcode" value="12345" type="password" />
+                <p class="mt-3 mb-3">
+                    Note: The Password will give you <br />
+                    access to the hiddine album onli once.
+                </p>
+                <button class="btn-block btn-primary btcopycode btn">Copy Code</button>
+                <hr class="or" />
+                <button class="btn-block btn-primary btn">Send It to specific profile</button>
+            </div>
+            @*<div class="modal-footer">
+                </div>*@
+        </div>
+    </div>
+</div>
+<script src="~/Admin/Script/Custom/EditProfile.js"></script>

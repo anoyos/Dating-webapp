@@ -1,0 +1,97 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .last-winner {
+        background: #F2F2F2;
+        border-radius:5px
+    }
+    .prize-sty li span {
+        background: #F2F2F2;
+        padding: 20px 7px;
+        border-radius: 5px;
+    }
+    ul.prize-sty.list-inline li span {
+        font-size: 45px;
+        /* padding: 27px; */
+        color: black;
+    }
+    ul.prize-sty.list-inline  {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    }
+    ul.prize-sty.list-inline li  {
+        
+        padding: 27px;
+        color: black;
+    }
+        ul.prize-sty.list-inline li a {
+            font-size: 21px;
+            text-decoration: none;
+            position: relative;
+            bottom: -28px;
+            left: 4px;
+    }
+    .last-winner ul li h3 img{
+        width:53px;
+        margin-right:20px;
+    }
+    </style>
+
+<div class="row mt-5">
+    <div class="col-md-9">
+        <h2>Prize Draw:</h2>
+        <ul class="prize-sty list-inline">
+            <li><span>23</span><a>d</a></li>
+            <li><span>10</span></li>
+            <li style=" padding: 0px; font-size: 45px; line-height: 118px;">:</li>
+            <li><span>48</span><a>hr</a></li>
+        </ul>
+
+        <div class="row m-5">
+            <div class="col-md-12">
+                <img class="mb-7" src="~/Admin/Upload/icone/gift-box.png" />
+            </div>
+            <div class="col-md-12 text-center">
+                <h3 class="fw-normal">
+                    23 Days Left<br />
+                    for Monthly Gift
+                </h3>
+                <p class="text-center">Draw Item</p>
+            </div>
+            <div class="col-md-12">
+                <h3>Draw Rules:</h3>
+                <ul class="list-style color-black">
+                    <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</li>
+                    <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</li>
+                    <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</li>
+                    <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt</li>
+                </ul>
+            </div>
+            <div class="col-md-12 text-center  mt-5">
+                <h3 class="text-left">Draw Prize:</h3>
+
+                <img style="margin:auto;" width="160" src="~/Admin/Upload/icone/clock.png" />
+                <p class="color-black text-center">Clock</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 last-winner">
+        <h2 class="mt-4 text-center">Last Year<br />
+        Winner List
+        </h2>
+        <ul>
+            <li><h3><img src="~/Admin/Upload/images/user-winner.png" />M.Aslam</h3></li>
+            <li><h3><img src="~/Admin/Upload/images/user-winner.png" />M.Aslam</h3></li>
+            <li><h3><img src="~/Admin/Upload/images/user-winner.png" />M.Aslam</h3></li>
+            <li><h3><img src="~/Admin/Upload/images/user-winner.png" />M.Aslam</h3></li>
+            <li><h3><img src="~/Admin/Upload/images/user-winner.png" />M.Aslam</h3></li>
+            <li><h3><img src="~/Admin/Upload/images/user-winner.png" />M.Aslam</h3></li>
+            <li><h3><img src="~/Admin/Upload/images/user-winner.png" />M.Aslam</h3></li>
+            <li><h3><img src="~/Admin/Upload/images/user-winner.png" />M.Aslam</h3></li>
+            <li><h3><img src="~/Admin/Upload/images/user-winner.png" />M.Aslam</h3></li>
+            <li><h3><img src="~/Admin/Upload/images/user-winner.png" />M.Aslam</h3></li>
+        </ul>
+    </div>
+</div>

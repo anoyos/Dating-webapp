@@ -1,0 +1,365 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .color-btn-sty {
+        color: white;
+        background: #59D6D6;
+        font-weight: 700;
+        width: 400px;
+        font-size: 20px;
+    }
+
+    .gray-btn-sty {
+        color: white;
+        background: #989898;
+        font-weight: 700;
+        width: 350px;
+        font-size: 20px;
+    }
+
+    .message-list {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 8px 10px;
+        background: #A7E9E9;
+        border-radius: 5px;
+    }
+
+    .txt-sty {
+        padding-left: 15px;
+    }
+
+    .img-sty img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .txt-sty h3 {
+        font-size: 17px;
+        margin: 0px;
+        font-weight: 400;
+    }
+
+    .txt-sty p {
+        font-size: 14px;
+        margin: 0px;
+        color: #A5A5A5;
+    }
+
+    .time-sty p {
+        margin: 0px;
+        text-align: right;
+    }
+
+    .time-sty {
+        width: 60px;
+        margin: 0px;
+        text-align: center;
+    }
+
+    .chat-head {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        border-radius: 10px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        padding: 10px 15px;
+    }
+
+    .pro-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .chat-head .pro-info img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .head-btn li img {
+        width: 26px;
+        margin-left: 20px;
+    }
+
+    .pro-info h4 {
+        margin: 0px;
+        font-size: 18px;
+    }
+
+    .pro-info p {
+        margin: 0px;
+        font-size: 12px;
+    }
+
+    .text-green {
+        color: #14B82F;
+    }
+
+    #chat-box {
+        background: url(/Admin/Upload/images/chat-bg.png);
+        background-size: cover;
+    }
+
+    .head-btn ul {
+        margin: 0px;
+    }
+
+    .chat-txt div {
+        background: #59D6D6;
+        color: white;
+        font-weight: 400;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .chat-rigth img {
+        width: 40px;
+        height: 40px;
+        margin: 0px 20px;
+        border-radius: 50%;
+    }
+
+    .chat-left img {
+        width: 40px;
+        height: 40px;
+        margin: 0px 20px;
+        border-radius: 50%;
+    }
+
+    .chat-txt span {
+        color: #CBCBCB;
+    }
+
+    .chat-rigth {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .chat-left {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .chat-body {
+        padding: 30px 0px;
+    }
+
+    .chat-body {
+        min-height: 530px;
+    }
+
+    .sd-sty a img {
+        width: 45px;
+        height: 50px;
+    }
+
+    .sd-sty a {
+        background: rgb(181 181 181 / 55%);
+        padding: 14px 12px 21px 0px;
+        border-radius: 10px;
+    }
+
+    .in-sty {
+        width: 86%;
+    }
+
+        .in-sty input {
+            background: rgb(181 181 181 / 55%);
+            border: 0px;
+            height: 53px;
+            border-radius: 10px;
+            width: 100%;
+            padding: 0px 15px;
+            color: white;
+        }
+
+    .chat-footer {
+        display: flex;
+        padding: 20px;
+        justify-content: space-between;
+    }
+
+    .in-sty input:focus-visible {
+        border: 0px !important;
+        outline: none;
+    }
+
+    .in-sty input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: white;
+    }
+    .msg-list {
+        background: #f2f2f2;
+        padding: 25px 8px;
+        border-radius: 5px;
+    }
+</style>
+
+<style>
+    .color-btn-sty {
+        color: white;
+        background: #59D6D6;
+        font-weight: 700;
+        width: 400px;
+        font-size: 20px;
+    }
+
+    .gray-btn-sty {
+        color: white;
+        background: #989898;
+        font-weight: 700;
+        width: 350px;
+        font-size: 20px;
+    }
+
+    .message-list {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 15px;
+        background: #A7E9E9;
+        border-radius: 5px;
+    }
+
+    .txt-sty {
+        padding-left: 15px;
+    }
+
+    .img-sty img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .txt-sty h3 {
+        font-size: 17px;
+        margin: 0px;
+        font-weight: 400;
+    }
+
+    .txt-sty p {
+        font-size: 14px;
+        margin: 0px;
+        color: #A5A5A5;
+    }
+
+    .time-sty p {
+        margin: 0px;
+        text-align: right;
+    }
+
+    .time-sty {
+        width: 60px;
+        margin: 0px;
+        text-align: center;
+    }
+
+</style>
+
+
+
+<div class="row mt-5">
+    <div class="col-md-8">
+        <!---Chat Code start--->
+        <div id="chat-box">
+            <div class="chat-head">
+                <div class="pro-info">
+                    <img src="~/Admin/Upload/images/profile.png" />
+                    <div style="padding-left:15px;">
+                        <h4>Sophia</h4>
+                        <p class="text-green">online</p>
+                    </div>
+                </div>
+                <div class="head-btn">
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><img src="~/Admin/Upload/images/phone.png" /></li>
+                        <li class="list-inline-item"><img src="~/Admin/Upload/images/video-call.png" /></li>
+                        <li class="list-inline-item"><img src="~/Admin/Upload/images/info.png" /></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="chat-body">
+                <div class="chat-rigth">
+                    <img src="~/Admin/Upload/images/cer-img.png" />
+                    <div class="chat-txt">
+                        <div>Hello</div>
+                        <span>01 min</span>
+                    </div>
+                </div>
+                <div class="chat-left">
+                    <img src="~/Admin/Upload/images/profile.png" />
+                    <div class="chat-txt">
+                        <div>Hello</div>
+                        <span>01 min</span>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="chat-footer">
+
+                <div class="in-sty"><input placeholder="Type Mesasage" type="text" class="text-send" /></div>
+                <div class="sd-sty"><a><img src="~/Admin/Upload/images/send.png" /></a></div>
+            </div>
+        </div>
+        <!---Chat Code End--->
+    </div>
+
+    <div class="col-md-4 msg-list">
+        <h2 class="mb-5 fw-normal">Message List</h2>
+        <div class="message-list mb-5">
+            <div class="img-sty">
+                <img class="" src="~/Admin/Upload/images/profile.png" />
+            </div>
+            <div class="txt-sty">
+                <h3>Alishba</h3>
+                <p>How are you... Alhumdulillah</p>
+            </div>
+            <div class="time-sty">
+                <p class="color-black">85:00</p>
+            </div>
+        </div>
+        <div class="message-list mb-5">
+            <div class="img-sty">
+                <img class="" src="~/Admin/Upload/images/profile.png" />
+            </div>
+            <div class="txt-sty">
+                <h3>Alishba</h3>
+                <p>How are you... Alhumdulillah</p>
+            </div>
+            <div class="time-sty">
+                <p class="color-black">85:00</p>
+            </div>
+        </div>
+        <div class="message-list mb-5">
+            <div class="img-sty">
+                <img class="" src="~/Admin/Upload/images/profile.png" />
+            </div>
+            <div class="txt-sty">
+                <h3>Alishba</h3>
+                <p>How are you... Alhumdulillah</p>
+            </div>
+            <div class="time-sty">
+                <p class="color-black">85:00</p>
+            </div>
+        </div>
+        <div class="message-list mb-5">
+            <div class="img-sty">
+                <img class="" src="~/Admin/Upload/images/profile.png" />
+            </div>
+            <div class="txt-sty">
+                <h3>Alishba</h3>
+                <p>How are you... Alhumdulillah</p>
+            </div>
+            <div class="time-sty">
+                <p class="color-black">85:00</p>
+            </div>
+        </div>
+    </div>
+</div>

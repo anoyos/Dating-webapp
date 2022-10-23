@@ -1,0 +1,123 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model james.Models.ViewModel.UserApprovalViewModel
+<link href="~/Admin/assets/css/james-nav-sty2.css" rel="stylesheet" />
+<div class="profile-page  mt-5">
+
+    <div class="row m-0 form-style--3 ">
+
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>User Approval</h2>
+                </div>
+                <div class="col-lg-6 text-right">
+                    <div class="input-box">
+                        <label style=" margin-bottom: 0.5rem;" class="custom-switch">
+                            <span class="custom-switch-description mr-5">Automatic User Approved </span>
+                            <input type="checkbox" name="userAutoApprove" @(Model.userAutoApprove?"checked":"") class="custom-switch-input">
+                            <span class="custom-switch-indicator custom-switch-indicator-lg"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-center">
+                        <thead>
+                            <tr>
+                                <th>Profile&nbsp;Photo</th>
+                                <th>Full&nbsp;Name</th>
+                                <th>User&nbsp;ID</th>
+                                <th>Approve</th>
+                                <th>Flagged</th>
+                                <th>Blocked</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.users)
+                            {
+                                <tr data-id="@item.id">
+                                    <td><img style="max-height:50px" src="/img/upload/@(item.photo??"avatar.png")" /></td>
+                                    <td>@item.name</td>
+                                    <td>@item.username</td>
+                                    <td><input name="isApprove" class="form-control" type="checkbox" @(item.isApprove ? "checked" : "") /></td>
+                                    <td><input name="isFlagged" class="form-control" type="checkbox" @(item.isFlagged ? "checked" : "") /></td>
+                                    <td><input name="isBlocked" class="form-control" type="checkbox" @(item.isBlocked ? "checked" : "") /></td>
+                                    <td><button class="btn btn-primary btn-primary-sm btupdate">Update</button></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 side-nav-right-sty">
+            <div class="wgit">
+
+                <h3 class="mb-0">Notification</h3>
+                <p>Send push notifications to all users</p>
+                <textarea style="" class="form-control mb-3" rows="6" placeholder="Write a message"></textarea>
+                <button class="btn w-100 btn-primary">Send Message</button>
+            </div>
+            <div class="wgit">
+                <h3>VIP Subscription</h3>
+                <div class="form-group relative">
+                    <img class="form-icon-l" src="~/Admin/icons/cart.png" />
+                    <input class="form-control int-sty" placeholder="Add Subscription ID" />
+                    <img class="form-icon-r" src="~/Admin/icons/add.png" />
+                </div>
+
+                <div class="vip-list">
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('[name=userAutoApprove]').on('change', function () {
+
+            XHRPOSTRequest("/Admin/UpdateUserAutoApprove", { ischeck: $('[name=userAutoApprove]').prop('checked') }, function (result) {
+                showNotification("Updated!", "success");
+            });
+        })
+        $('.btupdate').on('click', function () {
+            var container = $(this).closest('tr');
+            var data = {
+                id: $(container).attr('data-id'),
+                isApprove: $('[name=isApprove]', container).prop('checked'),
+                isFlagged: $('[name=isFlagged]', container).prop('checked'),
+                isBlocked: $('[name=isBlocked]', container).prop('checked'),
+            };
+
+            XHRPOSTRequest("/Admin/UpdateUserConfig", { data: data }, function (result) {
+                showNotification("Updated!", "success");
+            });
+        })
+    });
+</script>

@@ -1,0 +1,206 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    button.btn.btn-gray.btn-2.mr-3.btn-block {
+        padding: 10px 20px;
+    }
+        button.btn.btn-gray.btn-2.mr-3.btn-block:hover {
+            background: #c3c3c3;
+        }
+    .nav-tabs .nav-link.active {
+        color: #59D6D6;
+        background: none;
+        border-bottom: solid 4px;
+        font-size: 20px;
+        padding: 0px;
+        padding-bottom: 10px;
+    }
+    .nav-tabs .nav-link {
+        border: 0;
+        color: inherit;
+        color: #6b6f80;
+        transition: .3s border-color;
+        font-weight: 500;
+        border-bottom: solid 4px white;
+        font-size: 20px;
+        padding: 0px;
+        padding-bottom: 10px;
+        font-size: 20px;
+        text-align: center;
+        margin-right: 50px;
+    }
+    .nav-tabs {
+        border: none;
+        margin-left:0px;
+    }
+        .nav-tabs .nav-link:hover {
+            color: #59D6D6;
+            border-bottom: solid 4px white;
+        }
+            .nav-tabs .nav-link:hover:not(.disabled) {
+                color: #59D6D6 !important;
+            }
+    #PrizeWinner th
+
+    {
+        vertical-align: middle !important;
+    }
+            
+</style>
+<link href="~/Admin/assets/css/james-nav-sty2.css" rel="stylesheet" />
+<div class="profile-page  mt-5">
+
+    <div class="row m-0 form-style--3 ">
+
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Prize Draw</h2>
+                </div>
+            </div>
+            
+
+
+
+
+
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#PrizeCreate" role="tab" aria-controls="home" aria-selected="true">Prize Create</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#PrizeWinner" role="tab" aria-controls="profile" aria-selected="false">Prize Winner Select</a>
+                </li>
+              
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="PrizeCreate" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="row mt-6">
+                       
+                        <div class="col-lg-12 mb-5 pr-5">
+                            <div class="input-box">
+                                <input class="form-control no-icon" placeholder="Prize Name" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 mb-5 pr-5">
+                            <div class="input-box">
+                                <textarea class="form-control no-icon" rows="6" placeholder="Prize description"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 mb-5 text-center">
+                            <button class="btn btn-gray btn-2 mr-3 mb-5 btn-block">
+                                <img src="~/Admin/Upload/icone/img-upload.png" /> Upload Photo
+                            </button>
+                            <button class="btn btn-primary ">Upload Prize</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="PrizeWinner" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="row mt-5">
+                        <div class="col-md-12">
+                            <table class="table table-center">
+                                <thead>
+                                    <tr>
+                                        <th width="100">Profile&nbsp;Photo</th>
+                                        <th>Full&nbsp;Name</th>
+                                        <th>User ID</th>
+                                        <th>Video call usage <br /> time</th>
+                                        <th>
+                                            Balances of purchased<br />
+                                            packages
+                                        </th>
+                                        
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="~/Admin/icons/pro-user.png" /></td>
+                                        <td>Sara</td>
+                                        <td>0001</td>
+                                        <td>03:23 hr</td>
+                                        <td>$850</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><img src="~/Admin/icons/pro-user.png" /></td>
+                                        <td>Sara</td>
+                                        <td>0001</td>
+                                        <td>03:23 hr</td>
+                                        <td>$850</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="~/Admin/icons/pro-user.png" /></td>
+                                        <td>Sara</td>
+                                        <td>0001</td>
+                                        <td>03:23 hr</td>
+                                        <td>$850</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="~/Admin/icons/pro-user.png" /></td>
+                                        <td>Sara</td>
+                                        <td>0001</td>
+                                        <td>03:23 hr</td>
+                                        <td>$850</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="~/Admin/icons/pro-user.png" /></td>
+                                        <td>Sara</td>
+                                        <td>0001</td>
+                                        <td>03:23 hr</td>
+                                        <td>$850</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 side-nav-right-sty">
+            <div class="wgit">
+
+                <h3 class="mb-0">Notification</h3>
+                <p>Send push notifications to all users</p>
+                <textarea style="" class="form-control mb-3" rows="6" placeholder="Write a message"></textarea>
+                <button class="btn w-100 btn-primary">Send Message</button>
+            </div>
+            <div class="wgit">
+                <h3>VIP Subscription</h3>
+                <div class="form-group relative">
+                    <img class="form-icon-l" src="~/Admin/icons/cart.png" />
+                    <input class="form-control int-sty" placeholder="Add Subscription ID" />
+                    <img class="form-icon-r" src="~/Admin/icons/add.png" />
+                </div>
+
+                <div class="vip-list">
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

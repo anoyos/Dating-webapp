@@ -1,0 +1,114 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model james.Models.DB.DiscountCoupon
+<link href="~/Admin/assets/css/james-nav-sty2.css" rel="stylesheet" />
+<div class="profile-page  mt-5">
+
+    <div class="row m-0 form-style--3 ">
+
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Discount Coupon</h2>
+                </div>
+            </div>
+            <form method="post" action="/Admin/Discount" class="row">
+                <input type="hidden" name="id" value="@Model.id" />
+                <div class="col-md-12">
+                    <h3>Coupon Name</h3>
+                </div>
+                <div class="col-lg-6 mb-5 pr-5">
+                    <div class="input-box">
+                        <input class="form-control no-icon" name="title" value="@Model.title" required placeholder="Add Titile" />
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5 pr-5">
+                    <div class="input-box">
+                        <input class="form-control no-icon" name="code" value="@Model.code" required placeholder="Discount Code" />
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5 pr-5">
+                    <div class="input-box">
+                        <input type="date" class="form-control no-icon" name="start" required value="@(Model.start!=DateTime.MinValue? Model.start.ToString("yyyy-MM-dd"):"")" placeholder="Start Date" />
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5 pr-5">
+                    <div class="input-box">
+                        <input type="date" class="form-control no-icon" name="end" required value="@(Model.end!=DateTime.MinValue? Model.end.ToString("yyyy-MM-dd"):"")" placeholder="End Date" />
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5 pr-5">
+                    <div class="input-box">
+                        <input class="form-control no-icon" name="percentage" required value="@Model.percentage" placeholder="Percentage" />
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5 pr-5">
+                    <div class="input-box">
+                        Is Active <input type="checkbox" value="true" name="isActive" @(Model.isActive ? "checked" : "") />
+                    </div>
+                </div>
+                <div class="col-lg-12 mb-5 pr-5">
+                    <div class="input-box">
+                        <textarea class="form-control no-icon" rows="6" placeholder="Write Description" name="description">@Html.Raw(Model.description)</textarea>
+                    </div>
+                </div>
+                <div class="col-lg-12 mb-5 text-right">
+                    <a href="/Admin/Discount" class="btn btn-primary btn-2 mr-3">Cancel</a>
+                    <button class="btn btn-primary" type="submit">Publish</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-3 side-nav-right-sty">
+            <div class="wgit">
+
+                <h3 class="mb-0">Notification</h3>
+                <p>Send push notifications to all users</p>
+                <textarea style="" class="form-control mb-3" rows="6" placeholder="Write a message"></textarea>
+                <button class="btn w-100 btn-primary">Send Message</button>
+            </div>
+            <div class="wgit">
+                <h3>VIP Subscription</h3>
+                <div class="form-group relative">
+                    <img class="form-icon-l" src="~/Admin/icons/cart.png" />
+                    <input class="form-control int-sty" placeholder="Add Subscription ID" />
+                    <img class="form-icon-r" src="~/Admin/icons/add.png" />
+                </div>
+
+                <div class="vip-list">
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@if (ViewBag.Error != null) { 
+<script>
+    $(function () {
+        showNotification("@ViewBag.Error","error");
+    })
+</script>
+
+}

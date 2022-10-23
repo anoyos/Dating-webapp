@@ -1,0 +1,41 @@
+﻿@model List<james.Helpers.Custom.EmployeeForChat>
+@{
+    Layout = null;
+}
+@using james.Models;
+
+<style>
+    .message-list {
+        cursor: pointer;
+    }
+</style>
+@foreach (var item in @Model)
+{
+
+    <div class="message-list mb-5 threadblock" data-threadId="@item.threadId" data-userid="@item.EmpId">
+        <div class="img-sty">
+            @if (!string.IsNullOrEmpty(item.photo))
+            {
+                <img alt="" src="/img/upload/@item.photo">
+            }
+            else
+            {
+                <img class="" src="~/img/upload/avatar.png" />
+
+            }
+
+
+
+        </div>
+        <div class="txt-sty" style=" width: 165px; ">
+            <h3>@item.Name</h3>
+            <p>@Html.Raw(item.last_message)</p>
+        </div>
+        <div class="time-sty">
+            <p class="color-black">
+                @(item.last_message_timestamp.HasValue ?CommonModel.GetTimeAgoFormat(item.last_message_timestamp.Value) : "")
+            </p>
+        </div>
+    </div>
+}
+

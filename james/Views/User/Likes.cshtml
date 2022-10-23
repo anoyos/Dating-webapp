@@ -1,0 +1,249 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@model james.Models.ViewModel.LikeViewModel
+@using james.Helpers.General
+<style>
+    .color-btn-sty {
+        color: white;
+        background: #59D6D6;
+        border-radius: 5px;
+        font-size: 10px;
+        left: 0px;
+        position: relative;
+        top: -10px;
+        padding: 2px 5px;
+    }
+
+    .gray-btn-sty {
+        color: white;
+        background: #989898;
+        font-weight: 700;
+        width: 350px;
+        font-size: 20px;
+    }
+
+
+
+    .story-card {
+        padding: 30px 13px;
+        color: white;
+        background-size: cover;
+        background-position: center top;
+        padding-bottom: 10px;
+        margin-bottom: 12px;
+        border-radius: 15px;
+        box-shadow: rgb(0 0 0 / 17%) 0px 4px 6px;
+    }
+    .per-dts h3 {
+        color: white;
+        font-size: 18px;
+    }
+    .top-space {
+        margin-bottom: 120px;
+    }
+
+        .top-space img {
+            width: 8px;
+            position: relative;
+            top: -1px;
+        }
+
+
+    .card-detail .per-dts ul li {
+        font-size: 11px;
+        margin-bottom: 5px;
+        color: white;
+    }
+
+        .card-detail .per-dts ul li img {
+            width: 15px;
+            margin-right: 6px;
+        }
+
+        .card-detail .per-dts ul li span {
+            float: right;
+        }
+
+    .link-btn-icon img {
+        width: 80%;
+        background: rgb(89 214 214 / 74%);
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+        .link-btn-icon img:hover {
+            background: #59D6D6;
+            cursor: pointer
+        }
+
+    .link-btn-icon .list-inline .list-inline-item {
+        display: table-cell;
+    }
+
+    .link-btn-icon {
+        margin-top: 60px;
+    }
+
+
+
+    /*Extra css*/
+    .extra-classx {
+        height: 740px;
+        width: 470px;
+        margin: auto;
+        margin-top: 20px;
+    }
+    .top-right-space {
+        position: absolute;
+        top: 30px;
+        right: 25px;
+    }
+    .user-detail {
+        padding: 20px 10px;
+        background: #F2F2F2;
+        border-radius: 5px;
+    }
+    .dtl-obs {
+        padding: 0px 10px;
+        position: relative;
+        width: 100%;
+        bottom: 110px;
+        margin-bottom: -100px;
+    }
+
+        .dtl-obs .vac p {
+            font-size: 12px;
+            margin-bottom: 0px;
+        }
+        
+        .dtl-obs .vac h4 {
+            font-size: 16px;
+        }
+    .user-detail .btn-primary {
+        background: #59d6d6;
+        border-color: #59D6D6;
+        border-radius: 10px;
+        padding: 5px 20px;
+        font-size: 10px;
+    }
+        .dtl-obs .vac img {
+            width: 30px;
+        
+        }
+        .dtl-obs .profile-wgit {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 5px;
+            padding-top: 11px;
+            align-content: flex-end;
+            align-items: flex-start;
+            background: white;
+            margin-top: 15px;
+            border-radius: 10px;
+            flex-direction: column;
+            box-shadow: 0px 0px 7px #cdcccc;
+        }
+        .dtl-obs .r1 {
+            display: flex;
+            flex-direction: row;
+            align-content: stretch;
+            width:100%;
+        }
+        .dtl-obs .pro-wgit {
+            width: 50%;
+        
+        }
+        .dtl-obs .vac {
+            background: rgb(167 233 233 / 80%);
+            padding: 10px 5px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            border-radius: 5px;
+        }
+        .dtl-obs .pro-wgit h1 {
+            font-size: 15px;
+        }
+        .dtl-obs .pro-wgit p img {
+            width:14px;
+        }
+        .dtl-obs .pro-wgit p {
+            font-size: 10px;
+        }
+        .dtl-obs .pro-wgit h4 {
+            font-size: 10px;
+        }
+</style>
+<div class="row">
+    <div class="col-md-12 mt-5">
+        <h2>Likes</h2>
+    </div>
+</div>
+
+<div class="row">
+
+    @if (Model.list.Count == 0)
+    {
+        <div class="col-md-12">
+            <div class="nodata">
+                <img src="~/Admin/icons/760759.png" />
+                <h3 class="text-primary">No Record Found</h3>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="col-md-9 ">
+            <div class="row">
+                @foreach (var item in Model.list)
+                {
+                    <div class="col-md-3">
+                        <a onclick="QuickViewProfile(@item.id)">
+                            <div class="story-card extra-class" style='@(!string.IsNullOrEmpty(item.photo)? "background-image:url(/img/upload/"+item.photo+")":" background-color: #808080;")'>
+                                <div class="top-space">
+                                    <span class="color-btn-sty btn"><img src="/Admin/upload/images/location.png" /> @item.distance KM</span>
+                                </div>
+                                <div class="top-right-space">
+                                    <span class="color-btn-sty btn"> Add to diary</span>
+                                </div>
+                                <div class="card-detail">
+                                    <div class="per-dts">
+                                        <h3>@item.name, @item.age</h3>
+                                        <ul class="list-inline">
+                                            <li><img src="/Admin/upload/images/edu.png" /> @item.eduction</li>
+                                            <li><img src="/Admin/upload/images/office.png" /> @item.profession  <span> </span></li>
+                                            <li><img src="/Admin/upload/images/star.png" /> @(Math.Round(item.rating,1)) rating</li>
+                                            <li>Received likes @item.likes</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-md-3 userquickviewpanel">
+            @Html.Action("QuickViewProfile", "User", new { id = Model.list.Select(x => x.id).FirstOrDefault() })
+        </div>
+    }
+</div>
+<style>
+    .commsec{display:none !important;}
+</style>
+<script>
+    function QuickViewProfile(id) {
+        $.ajax({
+            url: "/user/QuickViewProfile?id="+id,
+            type: "get",
+            dataType: 'html',
+            async: true,
+            cache: false
+        }).done(function (data) {
+            $('.userquickviewpanel').html(data);
+        }).always(function () { });
+    }
+</script>

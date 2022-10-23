@@ -1,0 +1,89 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@using james.Models;
+@using james.Helpers.Custom;
+@{
+    Layout = null;
+    var login = (tblLogin)ViewBag.login;
+    var header = (EnChatHeader)ViewBag.Header;
+}
+@model List<james.Helpers.Custom.EnMessaging>
+@using james.Helpers.General;
+
+
+<div class="action-header  chat-head">
+    <div class="pro-info">
+        @if (!string.IsNullOrEmpty(header.photo))
+        {
+            <img src="~/img/upload/@header.photo">
+        }
+        else
+        {
+            <img src="/img/upload/avatar.png">
+        }
+        <div style="padding-left:15px;">
+            <h4>@header.name</h4>
+            <p class="text-green">online</p>
+        </div>
+    </div>
+    <div class="head-btn">
+        <ul class="list-inline">
+            <li class="list-inline-item btdialcall" data-photo="@header.photo" data-username="@header.name" data-userid="@header.id"><img src="~/Admin/Upload/images/phone.png" /></li>
+            <li class="list-inline-item btdialvideocall"  data-photo="@header.photo" data-username="@header.name"  data-userid="@header.id"><img src="~/Admin/Upload/images/video-call.png" /></li>
+            <li class="list-inline-item"  data-userid="@header.id"><img src="~/Admin/Upload/images/info.png" /></li>
+        </ul>
+    </div>
+</div>
+
+<div class="chat-body" id="ChatBody"  style="height:400px;overflow-y:scroll">
+    @foreach (var item in Model)
+    {
+        @if (item.SenderId == login.id)
+        {
+            <div class="chat-rigth">
+                @if (!string.IsNullOrEmpty(item.Photo))
+                {
+                    <img src="~/img/upload/@item.Photo" alt="">
+                }
+                else
+                {
+                    <img src="/img/upload/avatar.png" alt="">
+                }
+
+                <div class="chat-txt">
+                    <div>@item.Message</div>
+                    <span>@CommonModel.GetTimeAgoFormat(item.TimeStamp)</span>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="chat-left">
+                @if (!string.IsNullOrEmpty(item.Photo))
+                {
+                    <img src="~/img/upload/@item.Photo" alt="">
+                }
+                else
+                {
+                    <img src="/img/upload/avatar.png" alt="">
+                }
+
+                <div class="chat-txt">
+                    <div>@item.Message</div>
+                    <span>@CommonModel.GetTimeAgoFormat(item.TimeStamp)</span>
+                </div>
+            </div>
+        }
+
+    }
+</div>
+<div class="chat-footer  msb-reply">
+
+    <div class="in-sty"><input placeholder="Type Mesasage" type="text" class="messagetxt text-send" /></div>
+    <div class="sd-sty btsendmessage"><a><img src="~/Admin/Upload/images/send.png" /></a></div>
+</div>

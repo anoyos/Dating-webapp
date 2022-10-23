@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+@model List<james.Models.DB.Album>
+
+@foreach (var item in Model.OrderByDescending(x => x.id))
+{
+<div class="col-md-12 mt-5" data-albumid="@item.id">
+  <div class="row">
+      <div class="col-md-6">
+          <h4>@item.name  x( <input type="checkbox" name="isPrivate" @(item.isPrivate ? "checked" : "") /> Is Private ) </h4>
+        
+      </div>
+      <div class="col-md-6">
+          @if (item.isPrivate)
+          {
+              <button type="button" class="btn btn-primary btprivatealbummodal btn-sm pull-right">
+                  Generate Hidden Album Code
+              </button>
+          }
+      </div>
+  </div>
+    <div class="row albumimgpanel">
+        @foreach (var img in item.images.OrderByDescending(x => x.timestamp))
+        {
+            <div class="col-md-2 mb-5">
+                <img src="/img/upload/@img.photo" />
+            </div>
+        }
+        <div class="col-md-2 mb-5">
+            <img src="~/Admin/Upload/icone/add-img.png" style="width: 150px;" class="btaddalbumimg" />
+        </div>
+    </div>
+
+</div>
+}

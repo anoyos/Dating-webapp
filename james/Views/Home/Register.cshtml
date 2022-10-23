@@ -1,0 +1,670 @@
+﻿@model james.Models.ViewModel.RegisterViewModel
+@using james.Helpers.General
+@{
+    Layout = null;
+}
+<!doctype html>
+<html class="no-js preview-html" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Register</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon ->
+    <link rel="shortcut icon" href="~/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="~/img/icon.png"> -->
+    <link rel="stylesheet" href="~/public/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/public/assets/css/revoulation.css">
+    <link rel="stylesheet" href="~/public/assets/css/plugins.min.css">
+    <link rel="stylesheet" href="~/public/assets/css/style.min.css">
+    <link rel="preconnect" href="~/https://fonts.googleapis.com">
+    <link rel="preconnect" href="~/https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="~/public/assets/css/jamesClub.css">
+    <link href="~/Admin/assets/plugins/toastr/toastr.min.css" rel="stylesheet" />
+
+</head>
+
+
+<body class="template-color-1 template-font-1 preview-html" style="position:relative;">
+    <img style=" position: absolute; top: 30px; left: 60px; z-index:1;" src="~/public/assets/images/logo-s.png" />
+    <div id="page-preloader" class="page-loading clearfix">
+        <div class="page-load-inner">
+            <div class="preloader-wrap">
+                <div class="wrap-2">
+                    <div> <img src="~/public/assets/images/logo-s.png" class="" alt="JAMES CLUB"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="wrapper" class="wrapper">
+        <!-- Page Conttent -->
+        <main class="page-content">
+            <div class="container-fluid">
+                <div style="min-height:100vh" class="row">
+                    <div class="col-lg-5  col-md-6 col-sm-12 col-12 wow move-up" style="background-image: url('/public/assets/images/img/bg-reg.png'); background-size: cover;">
+
+                    </div>
+
+                    <div style="padding-bottom: 75px; " class="bg-color-1 col-lg-7 col-md-12 col-sm-12 col-12 wow move-up">
+                        <div class="contact-formx form-style">
+                            <form class="datacontainer for wow move-up form-style--2 extra-padding divs " action="#">
+                                <div id="step1" class="row iit lr-m-15">
+
+
+                                    <h2 class="text-center text-white fw-600 mt--20 mb--30">Register</h2>
+                                    <img style="width:165px;margin:auto;" class="imgbt" src="~/public/assets/images/img/uplosd.png" />
+
+                                    <input type="file" id="imgfup" style="display:none;" />
+                                    <h2 class="text-center text-white fw-600 mt--20 mb--30">About Yourself</h2>
+                                    <div class="col-lg-6 mb--20">
+                                        <div class="input-box">
+                                            <label>User Name: *</label>
+                                            <img class="form-icon" src="~/public/assets/images/icons/user.png" />
+                                            <input type="text" name="username" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb--20">
+                                        <div class="input-box">
+                                            <label>Name for the James: *</label>
+                                            <img class="form-icon" src="~/public/assets/images/icons/user.png" />
+                                            <input type="text" placeholder="" name="name">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb--20">
+                                        <div class="input-box">
+                                            <label>Email: *</label>
+                                            <img class="form-icon" src="~/public/assets/images/icons/user.png" />
+                                            <input type="text" placeholder="" name="email">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb--20">
+                                        <div class="input-box">
+                                            <label>Password: *</label>
+                                            <img class="form-icon" src="~/public/assets/images/icons/user.png" />
+                                            <input type="password" placeholder="" name="password">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb--20">
+                                        <div class="input-box">
+                                            <label>Age:</label>
+                                            <img class="form-icon" src="~/public/assets/images/icons/calendar.png" />
+                                            <input type="number" placeholder="" name="age">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb--20">
+                                        <div class="input-box">
+                                            <label>Gender:</label>
+                                            <img class="form-icon" src="~/public/assets/images/icons/gender.png" />
+                                            <select class="form-control" name="genderId">
+                                                <option value="" disabled selected></option>
+                                                @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Gender))
+                                                {
+                                                    <option value="@item.id">@item.name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="mt--10 move-up wow text-center">
+                                        <a id="" class="nextt brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between"
+                                           href="">Next <img src="~/public/assets/images/icons/arrow-right.png" /></a>
+                                    </div>
+                                </div>
+
+                                <div id="step2" class="row iit lr-m-15">
+
+                                    <h2 class="text-center text-white fw-600 mt--40 mb--60">What is your purpose in the app?</h2>
+                                    <div class="col-lg-12 mb--20 width-cus">
+                                        <div class="input-box">
+                                            <label class="col-md-12 text-center text-white">I'm Looking for:</label>
+                                        </div>
+                                        <div class="row multibtn" data-name="lookingRelations" data-field="relationId">
+                                            @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.LookingRelation))
+                                            {
+                                                <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between">@item.name</button>
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 mb--20 mt--40 width-cus" style="margin-top:50px;">
+                                        <div class="input-box">
+                                            <label class="col-md-12 text-center text-white">I'm Looking for:</label>
+                                        </div>
+                                        <div class="row singlebtn" data-name="lookingGenderId">
+                                            @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.LookingGender))
+                                            {
+                                                <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between">@item.name</button>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="mt--50 move-up wow text-center">
+                                        <a id="" class=" prevv brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-l"
+                                           href=""><img src="~/public/assets/images/icons/arrow-left.png" /> Back</a>
+                                        <a id="" class="nextt brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-r"
+                                           href="">Next <img src="~/public/assets/images/icons/arrow-right.png" /></a>
+                                    </div>
+                                </div>
+
+
+                                <div id="step3" class=" iit row lr-m-15">
+
+                                    <h2 class="text-center text-white fw-600 mt--40 mb--60">Educational Background</h2>
+
+                                    <div class="col-lg-3 mb--20"></div>
+                                    <div class="col-lg-6 mb--20">
+                                        <div class="input-box">
+                                            <label>Education:</label>
+                                            <img class="form-icon" src="~/public/assets/images/icons/Education.png" />
+                                            <input type="text" placeholder="" name="eduction">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 mb--20"></div>
+                                    <div class="col-lg-3 mb--20"></div>
+                                    <div class="col-lg-6 mb--20">
+                                        <div class="input-box">
+                                            <label>Profession:</label>
+                                            <img class="form-icon" src="~/public/assets/images/icons/businessman.png" />
+                                            <input type="text" placeholder="" name="profession">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 mb--20"></div>
+                                    <div class="col-lg-3 mb--20"></div>
+                                    <div class="col-lg-6 mb--20">
+                                        <div class="input-box">
+                                            <label>Annual Income:</label>
+                                            <img class="form-icon" src="~/public/assets/images/icons/hand-dolor.png" />
+                                            <select class="form-control" name="annualIncomeId">
+                                                <option value="">Select</option>
+                                                @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.AnnualIncome))
+                                                {
+                                                    <option>@item.name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt--50 move-up wow text-center">
+                                        <a id="" class=" prevv brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-l"
+                                           href=""><img src="~/public/assets/images/icons/arrow-left.png" /> Back</a>
+                                        <a id="" class="nextt brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-r"
+                                           href="">Next <img src="~/public/assets/images/icons/arrow-right.png" /></a>
+                                    </div>
+                                </div>
+
+
+                                <div id="step4" class="row  iit lr-m-15">
+
+                                    <h2 class="text-center text-white fw-600 mt--40 mb--60">About Me</h2>
+
+                                    <div class="col-lg-12 mb--20">
+                                        <div class="input-box">
+                                            <label>About me:</label>
+                                            <img style="top: 48px; " class="form-icon" src="~/public/assets/images/icons/info-g.png" />
+                                            <textarea name="aboutMe" style="padding-top: 8px; padding-left: 40px;" type="text" class="form-control" rows="5" placeholder="Write about you"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7 mb--20">
+                                        <div class="input-box">
+
+                                            <label>What didn't you like about your last relationship?:</label>
+                                            <img style="top:85px" class="form-icon" src="~/public/assets/images/icons/heart-1.png" />
+                                            <input type="text" placeholder="" name="last_relationship">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="mt--50 move-up wow text-center">
+                                        <a id="" class=" prevv brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-l"
+                                           href=""><img src="~/public/assets/images/icons/arrow-left.png" /> Back</a>
+                                        <a id="" class="nextt brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-r"
+                                           href="">Next <img src="~/public/assets/images/icons/arrow-right.png" /></a>
+                                    </div>
+                                </div>
+
+                                <div id="step5" class="row iit lr-m-15">
+
+                                    <h2 class="text-center text-white fw-600 mt--40 mb--60">Alcohol Consumption</h2>
+                                    <div class="col-md-7 m-auto mb--20 " style="margin:auto">
+                                        <div class="row singlebtn" data-name="alcoholConsumptionId">
+                                            @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Alcohol))
+                                            {
+                                                <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between">@item.name</button>
+                                            }
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-7 m-auto mb--20 " style="margin:auto">
+                                        <div class="input-box" style="margin-top:50px">
+                                            <label class="fw-bolder">Smokes</label>
+                                        </div>
+                                        <div class="row singlebtn" data-name="smokeId">
+                                            @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Smokes))
+                                            {
+                                                <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between">@item.name</button>
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <div class="mt--50 move-up wow text-center">
+                                        <a id="" class=" prevv brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-l"
+                                           href=""><img src="~/public/assets/images/icons/arrow-left.png" /> Back</a>
+                                        <a id="" class="nextt brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-r"
+                                           href="">Next <img src="~/public/assets/images/icons/arrow-right.png" /></a>
+                                    </div>
+                                </div>
+
+
+                                <div id="step6" class="row iit lr-m-15">
+
+                                    <h2 class="text-center text-white fw-600 mt--40 mb--60">Sexual Orientation</h2>
+                                    <div class="col-md-7 m-auto mb--20 " style="margin:auto">
+                                        <div class="row singlebtn" style="justify-content: center;" data-name="sexualOrientationId">
+                                            @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.SexualOrientation))
+                                            {
+                                                <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between">@item.name</button>
+                                            }
+                                        </div>
+                                    </div>
+
+
+
+                                    <div style="margin-top:210px;" class="mt--50 move-up wow text-center">
+
+                                        <a id="" class=" prevv brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-l"
+                                           href=""><img src="~/public/assets/images/icons/arrow-left.png" /> Back</a>
+                                        <a id="" class="nextt brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-r"
+                                           href="">Next <img src="~/public/assets/images/icons/arrow-right.png" /></a>
+                                    </div>
+                                </div>
+
+                                <div id="step7" class="row iit lr-m-15">
+
+                                    <h2 class="text-center text-white fw-600 mt--40 mb--60">Vaccine</h2>
+                                    <div style="margin: auto; margin-top: 50px;" class="col-md-6 mb--20">
+                                        <div class="input-box">
+                                            <label>Vaccine:</label>
+
+
+                                            @*<div class="dropdown drp-sty">
+                                                <input style=" text-align: left; padding-left: 57px;" class="form-control" type="button" id="dropdownMenuButton1" placeholder="Select" data-bs-toggle="dropdown" aria-expanded="false">
+
+
+                                                <img style="left: 20px; top: 16px;" class="form-icon" src="~/public/assets/images/icons/vaccine.png" />
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Vacine))
+                                                    {
+                                                        <li><a class="dropdown-item item-text" href="#"><input class="item-value " value="@item.id" type="radio" /> @item.name</a></li>
+                                                    }
+                                                </ul>
+                                            </div>*@
+
+                                            <select class="form-control" name="vaccineId">
+                                                    <option selected disabled></option>
+                                                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Vacine))
+                                                    {
+                                                        <option value="@item.id"> @item.name</option>
+                                                    }
+                                                </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div style="margin-top: 210px;" class="mt--50 move-up wow text-center">
+
+                                        <a id="" class=" prevv brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-l"
+                                           href=""><img src="~/public/assets/images/icons/arrow-left.png" /> Back</a>
+                                        <a id="" class="nextt brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-r"
+                                           href="">Next <img src="~/public/assets/images/icons/arrow-right.png" /></a>
+                                    </div>
+                                </div>
+
+                                <div id="step8" class="row iit lr-m-15">
+
+                                    <h2 class="text-center text-white fw-600 mt--40 mb--60">Children?   </h2>
+                                    <div class="col-md-5 m-auto mb--20 " style="margin:auto">
+                                        <div class="input-box">
+                                            <label>Children:</label>
+                                        </div>
+                                        <div class="row singlebtn" style="justify-content: ; " data-name="childrenId">
+                                            @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Children))
+                                            {
+                                                <button data-id="@item.id" type="button" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between">&nbsp;&nbsp;&nbsp; @item.name &nbsp;&nbsp;&nbsp;</button>
+                                            }
+                                        </div>
+                                    </div>
+
+
+                                    <div style="margin-top:210px;" class="mt--50 move-up wow text-center">
+
+                                        <a id="" class=" prevv brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-l"
+                                           href=""><img src="~/public/assets/images/icons/arrow-left.png" /> Back</a>
+                                        <a id="" class="nextt brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-r"
+                                           href="">Next <img src="~/public/assets/images/icons/arrow-right.png" /></a>
+                                    </div>
+                                </div>
+
+
+                                <div id="step9" class="row iit lr-m-15">
+                                    <h2 class="text-center text-white fw-600 mt--40 mb--60">Qualities You Have</h2>
+                                    <div class="col-md-10 m-auto mb--20  " style="margin:auto">
+                                        <div class="input-box">
+                                            <label class=" mt--20">Qualities:</label>
+                                        </div>
+                                        <div class="row multibtn" style="justify-content: ; " data-name="qualities" data-field="qualityId">
+                                            @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Qualities))
+                                            {
+                                                <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between">@item.name</button>
+                                            }
+                                        </div>
+                                    </div>
+
+
+                                    <div style="margin-top:30px;" class="mt--50 move-up wow text-center">
+
+                                        <a id="" class=" prevv brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-l"
+                                           href=""><img src="~/public/assets/images/icons/arrow-left.png" /> Back</a>
+                                        <a id="" class="nextt brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-r"
+                                           href="">Next <img src="~/public/assets/images/icons/arrow-right.png" /></a>
+                                    </div>
+                                </div>
+
+
+
+                                <div id="step10" class="row iit lr-m-15">
+
+                                    <h2 class="text-center text-white fw-600 mt--40 mb--20">My Profession</h2>
+
+                                    <div class="col-md-10 m-auto mb--20  " style="margin: auto; margin-top: 50px !important;">
+                                        <div class="row singlebtn" style="justify-content: ; " data-name="myProfessionId">
+                                            @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Myproffession))
+                                            {
+                                                <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between">@item.name</button>
+                                            }
+                                        </div>
+                                    </div>
+
+
+                                    <div style="margin-top:110px;" class="mt--50 move-up wow text-center">
+
+                                        <a id="" class=" prevv brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-l"
+                                           href=""><img src="~/public/assets/images/icons/arrow-left.png" /> Back</a>
+                                        <a id="" class="nextt brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-r"
+                                           href="">Next <img src="~/public/assets/images/icons/arrow-right.png" /></a>
+                                    </div>
+                                </div>
+
+
+                                <div id="step11" class="row iit lr-m-15">
+
+                                    <h2 class="text-center text-white fw-600 mt--40 mb--20">Festiches</h2>
+
+                                    <div class="col-md-10 m-auto mb--20  " style="margin: auto; margin-top: 50px !important;">
+                                        <div class="row singlebtn" style="justify-content: ; " data-name="fetichesId">
+                                            @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Fetches))
+                                            {
+                                                <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between">@item.name</button>
+                                            }
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-md-10 m-auto mb--20  " style="margin:auto">
+                                        <div class="col-lg-6 mb--20" style=" padding: 0px 5px;">
+                                            <div style="margin: 0px -15px;" class="input-box mt-3">
+                                                <label>Height:</label>
+                                                <img style="top:50px" class="form-icon" src="~/public/assets/images/icons/height.png" />
+                                                <input type="text" placeholder="Enter your Height" name="height">
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <label>Physical Type:</label>
+                                        </div>
+                                        <div class="row singlebtn" style="justify-content: ; " data-name="physicalTypeId">
+                                            @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.PhysicalType))
+                                            {
+                                                <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between">@item.name</button>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10 m-auto mb--0  " style="margin: auto; margin-top: 15px !important">
+                                        <div class="input-box">
+                                            <label>Religion:</label>
+                                        </div>
+                                        <div class="row singlebtn" style="justify-content: ; " data-name="religionId">
+                                            @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Religon))
+                                            {
+                                                <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between">@item.name</button>
+                                            }
+
+                                        </div>
+                                    </div>
+
+
+                                    <div style="margin-top:40px;" class="mt--50 move-up wow text-center">
+
+                                        <a id="" class=" prevv brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-l"
+                                           href=""><img src="~/public/assets/images/icons/arrow-left.png" /> Back</a>
+                                        <a id="" class="nextt brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-r"
+                                           href="">Next <img src="~/public/assets/images/icons/arrow-right.png" /></a>
+                                    </div>
+                                </div>
+
+                                <div id="step12" class="row iit lr-m-15">
+                                    <h2 class="text-center text-white fw-600 mt--40 mb--20">My Relationship Status</h2>
+                                    <div class="col-md-8 m-auto mb--0  " style="margin: auto; margin-top: 65px !important">
+                                        <div class="input-box">
+                                            <label>Relationship Status</label>
+                                        </div>
+                                        <div class="row singlebtn" style="justify-content: ; " data-name="relationshipStatusId">
+                                            @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.RelationshipStatus))
+                                            {
+                                                <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between">@item.name</button>
+                                            }
+                                        </div>
+                                    </div>
+
+
+                                    <div style="margin-top:180px;" class="mt--50 move-up wow text-center">
+
+                                        <a id="" class=" prevv brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-l"
+                                           href=""><img src="~/public/assets/images/icons/arrow-left.png" /> Back</a>
+                                        <a id="" class="nextt brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-r"
+                                           href="">Next <img src="~/public/assets/images/icons/arrow-right.png" /></a>
+                                    </div>
+                                </div>
+
+
+
+                                <div id="step13" class="row iit lr-m-15">
+
+                                    <h2 class="text-center text-white fw-600 mt--40 mb--20">Hobbies</h2>
+
+                                    <div class="col-md-10 m-auto mb--0  " style="margin: auto; margin-top: 65px !important">
+                                        <div class="input-box">
+                                            <label>Select upto 5</label>
+                                        </div>
+                                        <div class="row multibtn" style="justify-content: ; " data-name="hobbies" data-field="hobbyId">
+                                            @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Hobbies))
+                                            {
+                                                <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between">@item.name</button>
+                                            }
+
+                                        </div>
+                                    </div>
+
+
+                                    <div style="margin-top:90px;" class="mt--50 move-up wow text-center">
+
+                                        <a id="" class=" prevv brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-l"
+                                           href=""><img src="~/public/assets/images/icons/arrow-left.png" /> Back</a>
+                                        <a id="" class="nextt brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-r"
+                                           href="">Next <img src="~/public/assets/images/icons/arrow-right.png" /></a>
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <div id="step14" class="row iit lr-m-15">
+
+                                    <h2 class="text-center text-white fw-600 mt--40 mb--20">Personality</h2>
+
+
+                                    <div class="col-md-10 m-auto mb--0  " style="margin: auto; margin-top: 65px !important">
+                                        <div class="input-box">
+                                            <label>Select upto 5</label>
+                                        </div>
+                                        <div class="row multibtn" style="justify-content: ; " data-name="personalities" data-field="personalityId">
+                                            @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Personlity))
+                                            {
+                                                <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between">@item.name</button>
+                                            }
+                                        </div>
+                                    </div>
+
+
+                                    <div style="margin-top:90px;" class="mt--50 move-up wow text-center">
+
+                                        <a id="" class=" prevv brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-l"
+                                           href=""><img src="~/public/assets/images/icons/arrow-left.png" /> Back</a>
+                                        <a id="" class="nextt brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-r"
+                                           href="">Next <img src="~/public/assets/images/icons/arrow-right.png" /></a>
+                                    </div>
+                                </div>
+
+
+                                <div id="step15" class="row iit lr-m-15">
+                                    <h2 class="text-center text-white fw-600 mt--20 mb--80"></h2>
+                                    <div class="col-lg-6 mb--20">
+                                        <div class="input-box">
+                                            <label>Geolocation by distance:</label>
+                                            <img class="form-icon" src="~/public/assets/images/icons/location-g.png" />
+                                            <select class="form-control" name="gelocationBydistance">
+                                                <option selected disabled> </option>
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    @*<div class="col-lg-6 mb--20">
+                                            <div class="input-box">
+                                                <label>Want to be seen online?:</label>
+                                                <img class="form-icon" src="~/public/assets/images/icons/location-g.png" />
+                                                <select class="form-control">
+                                                    <option selected disabled> </option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="0">No</option>
+                                                </select>
+                                            </div>
+                                        </div>*@
+                                    <div class="col-lg-6 mb--20">
+                                        <div class="input-box">
+                                            <label>Hide age:</label>
+                                            <img class="form-icon" src="~/public/assets/images/icons/user.png" />
+                                            <select class="form-control" name="hideage">
+                                                <option selected disabled> </option>
+                                                <option value="true">Yes</option>
+                                                <option value="false">No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb--20">
+                                        <div class="input-box">
+                                            <label>Where am i now:</label>
+                                            <img class="form-icon" src="~/public/assets/images/icons/location-g.png" />
+                                            <select class="form-control" name="whereamiknow">
+                                                <option selected disabled> </option>
+
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 mb--20">
+                                        <div class="input-box">
+                                            <label>Zip code:</label>
+                                            <img class="form-icon" src="~/public/assets/images/icons/location-g.png" />
+                                            <input type="text" placeholder=" " name="zipcode">
+                                        </div>
+                                    </div>
+
+
+
+                                    <div style="margin-top:90px;" class="mt--50 move-up wow text-center">
+
+                                        <a id="" class=" prevv brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-l"
+                                           href=""><img src="~/public/assets/images/icons/arrow-left.png" /> Back</a>
+                                        <a id="" class="btsave brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between btn-icon-r"
+                                           href="javascript:void()">Save <img src="~/public/assets/images/icons/arrow-right.png" /></a>
+                                    </div>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--// Page Conttent -->
+
+
+    </div>
+    <footer class="fixedd">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-6">
+                    <p class="text-white">Term and conditions of service | Privacy | language </p>
+                </div>
+                <div class="col-6 text-end">
+                    <p class="text-white">James Club 248 all rights reserved </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--// Wrapper -->
+
+
+    <script src="~/public/assets/js/vendor/vendor.min.js"></script>
+    <script src="~/public/assets/js/plugins.min.js"></script>
+    <!-- REVOLUTION JS FILES -->
+    <script src="~/public/assets/js/revolution.tools.min.js"></script>
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS -->
+    <script src="~/public/assets/js/revolution.extension.min.js"></script>
+    <script src="~/public/assets/js/main.js"></script>
+    <script src="~/Admin/Script/Custom/helper.js"></script>
+    <script src="~/public/assets/js/revoulation.js"></script>
+    <script src="~/Admin/Script/Custom/Constants.js"></script>
+    <script src="~/Admin/Script/Custom/Register.js"></script>
+    <script src="~/Admin/Script/Custom/toastr.js"></script>
+    <script>
+        $('.dropdown-menu').on('click', 'a', function () {
+            var val = $(".item-value", this).val();
+            var text = $(this).text();
+            alert(val); 
+            $(this).closest('.dropdown').find('#dropdownMenuButton1').val(text);
+        });
+    </script>
+    <style>
+        .drp-sty .dropdown-menu input[type=radio] {
+            width: 15px;
+            height: 15px;
+            margin-right: 10px;
+        }
+
+        .drp-sty .dropdown-menu {
+            min-width: 100%;
+            border: none;
+        }
+    </style>
+</body>
+
+
+</html>

@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+}
+@model james.Models.ViewModel.ProfileViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="user-detail">
+            <a href="/User/Profile?id=@Model.profile.id">
+                <img src="/img/upload/@(Model.profile.photo??"avatar.png")" />
+            </a>
+            <div class="dtl-obs">
+                <div class="vac">
+                    <img class="mr-3" src="/img/upload/@(Model.profile.photo??"avatar.png")">
+                    <div>
+                        <h4>Vaccine Status</h4>
+                        <p class="color-black">@(Model.profile.vaccine??"N/A")</p>
+                    </div>
+                </div>
+                <div class="profile-wgit mb-3">
+                    <div class="r1">
+                        <div class="pro-wgit">
+                            <h1 style=" margin-bottom: 5px; ">@Model.profile.name, @Model.profile.age</h1>
+                            <h4 style="font-weight:300">@Model.profile.profession</h4>
+                        </div>
+                        <div class="pro-wgit">
+                            <p class="text-black">
+                                <img src="/Admin/Upload/icone/star.png">
+                                @Model.profile.rating rating
+                            </p>
+                            <p class="text-black">
+                                @Model.profile.likes Likes Recives
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="r1">
+                        <div class="pro-wgit">
+                            <p class="test-green">
+                                <img src="/Admin/Upload/icone/online.png">
+                                Now online
+                            </p>
+                            <p class="color-black">
+                                <img src="/Admin/Upload/icone/home-icon.png">
+                                @Model.profile.city
+                            </p>
+                        </div>
+                        <div class="pro-wgit">
+                            <p class="text-primary">
+                                <img src="/Admin/Upload/icone/offline.png">
+                                New Member
+                            </p>
+                            <p class="color-black">
+                                <img src="/Admin/Upload/icone/pin.png">
+                                @Model.profile.distance KM
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-inline-flex justify-content-between commsec" style=" width: 100%; ">
+                <a href="/Messenger/Index?id=@Model.profile.id" class="btn btn-primary">Message</a>
+                <button class="btn btn-primary btdialvideocall" data-photo="@Model.profile.photo" data-username="@Model.profile.name" data-userid="@Model.profile.id">Video Call</button>
+            </div>
+            <div class="mt-3">
+                <h5>Bio</h5>
+                <p>
+                    @(Model.profile.aboutMe??"N/A")
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

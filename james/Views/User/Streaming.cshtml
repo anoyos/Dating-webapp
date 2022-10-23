@@ -1,0 +1,138 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .cardd {
+        height: 184px;
+        width: 365px;
+        border-radius: 5px;
+    }
+    .card2 {
+        height: 164px;
+        width: 118px;
+        border-radius: 5px;
+    }
+
+
+
+    /*   .slider-container {
+        width: 100%;
+        height: 415px;
+        position: absolute;
+        top: 212px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+    }*/
+    .slider-container {
+        height: 210px;
+        overflow: hidden;
+    }
+
+    .inner-slider {
+        display: flex;
+        gap: 10px;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+</style>
+<div class="row> mt-5">
+    <form class="form-inline search-sty col-md-7">
+        <div class="search-element">
+            <img class="cus" src="/Admin/Upload/icone/search.png">
+            <input style=" width: 100%;" type="search" class="form-control header-search" placeholder="Find partner" aria-label="Search" tabindex="1">
+            <button class="btn btn-primary" type="submit">
+
+                <img src="/Admin/Upload/icone/filter.png">
+            </button>
+        </div>
+    </form>
+    <h4>Video Streaming</h4>
+    <div class="slider-container col-md-12" onclick="window.location.href='/User/StreamingDetail'">
+        <div class="inner-slider">
+            <div class="cardd"><img src="~/Admin/Upload/images/video1.png" /></div>
+            <div class="cardd"><img src="~/Admin/Upload/images/video2.png" /></div>
+            <div class="cardd"><img src="~/Admin/Upload/images/video3.png" /></div>
+            <div class="cardd"><img src="~/Admin/Upload/images/video2.png" /></div>
+            <div class="cardd"><img src="~/Admin/Upload/images/video1.png" /></div>
+            <div class="cardd"><img src="~/Admin/Upload/images/video2.png" /></div>
+            <div class="cardd"><img src="~/Admin/Upload/images/video3.png" /></div>
+        </div>
+    </div>
+</div>
+
+<div class="row> mt-5">
+    <h4>Trending Categories</h4>
+    <div class="slider-container col-md-12" onclick="window.location.href='/User/StreamingDetail'">
+        <div class="inner-slider" >
+            <div class="card2" ><img src="~/Admin/Upload/images/video4.png" /></div>
+            <div class="card2"><img src="~/Admin/Upload/images/video5.png" /></div>
+            <div class="card2"><img src="~/Admin/Upload/images/video6.png" /></div>
+            <div class="card2"><img src="~/Admin/Upload/images/video7.png" /></div>
+            <div class="card2"><img src="~/Admin/Upload/images/video4.png" /></div>
+            <div class="card2"><img src="~/Admin/Upload/images/video5.png" /></div>
+            <div class="card2"><img src="~/Admin/Upload/images/video6.png" /></div>
+            <div class="card2"><img src="~/Admin/Upload/images/video7.png" /></div>
+            <div class="card2"><img src="~/Admin/Upload/images/video4.png" /></div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    let sliderContainer = document.querySelector(".slider-container");
+    let innerSlider = document.querySelector(".inner-slider");
+
+    let pressed = false;
+    let startX;
+    let x;
+
+    sliderContainer.addEventListener("mousedown", (e) => {
+        pressed = true;
+        startX = e.offsetX - innerSlider.offsetLeft;
+        sliderContainer.style.cursor = "grabbing";
+    });
+
+    sliderContainer.addEventListener("mouseenter", () => {
+        sliderContainer.style.cursor = "grab";
+    });
+
+    sliderContainer.addEventListener("mouseleave", () => {
+        sliderContainer.style.cursor = "default";
+    });
+
+    sliderContainer.addEventListener("mouseup", () => {
+        sliderContainer.style.cursor = "grab";
+        pressed = false;
+    });
+
+    window.addEventListener("mouseup", () => {
+        // pressed = false;
+    });
+
+    sliderContainer.addEventListener("mousemove", (e) => {
+        if (!pressed) return;
+        e.preventDefault();
+
+        x = e.offsetX;
+
+        innerSlider.style.left = `${x - startX}px`;
+
+        checkBoundary();
+    });
+
+    const checkBoundary = () => {
+        let outer = sliderContainer.getBoundingClientRect();
+        let inner = innerSlider.getBoundingClientRect();
+
+        if (parseInt(innerSlider.style.left) > 0) {
+            innerSlider.style.left = "0px";
+        }
+
+        if (inner.right < outer.right) {
+            innerSlider.style.left = `-${inner.width - outer.width}px`;
+        }
+    };
+</script>

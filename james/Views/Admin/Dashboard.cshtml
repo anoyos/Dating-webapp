@@ -1,0 +1,116 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .chart-circle-md {
+        height: 118px;
+        width: 118px;
+        font-size: 5.8rem;
+    }
+</style>
+<link href="~/Admin/assets/css/james-nav-sty2.css" rel="stylesheet" />
+<div class="profile-page  mt-5">
+
+    <div class="row m-0 form-style--3 ">
+
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Dashboard</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-12">
+                    <div class="card box-shadow-0">
+                        <div class="card-body" style="background: #FDECD4; border-radius: 10px">
+                            <p class="mb-1 fs-18 text-black">Daily</p>
+                            <h2 class="mb-1 font-weight-bold">$5,250</h2>
+                            <span class="mb-1 fs-18 text-black">Daily Sales</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12">
+                    <div class="card box-shadow-0">
+                        <div class="card-body" style="background: #FCE4F8; border-radius: 10px">
+                            <p class="mb-1 fs-18 text-black">Weekly</p>
+                            <h2 class="mb-1 font-weight-bold">$10,530</h2>
+                            <span class="mb-1 fs-18 text-black">Weekly Sales</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12">
+                    <div class="card box-shadow-0">
+                        <div class="card-body" style="background: #C9EDF3; border-radius: 10px ">
+                            <p class="mb-1 fs-18 text-black">Monthly</p>
+                            <h2 class="mb-1 font-weight-bold">$50,820</h2>
+                            <span class="mb-1 fs-18 text-black">Monthly Sales</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <h3>Daily Sales Overview</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-lg-12">
+                    <div class="card box-shadow-0 p-0">
+                        <div class="card-body p-0">
+                            <div class="chartjs-wrapper-demo">
+                                <div id="chart-timeline" class="h-300 mh-300"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- col-6 -->
+            </div>
+        </div>
+
+        <div class="col-md-3 side-nav-right-sty">
+            <div class="wgit">
+
+                <h3 class="mb-0">Notification</h3>
+                <p>Send push notifications to all users</p>
+                <textarea style="" class="form-control mb-3" rows="6" placeholder="Write a message"></textarea>
+                <button class="btn w-100 btn-primary">Send Message</button>
+            </div>
+            <div class="wgit">
+                <h3>VIP Subscription</h3>
+                <div class="form-group relative">
+                    <img class="form-icon-l" src="~/Admin/icons/cart.png" />
+                    <input class="form-control int-sty" placeholder="Add Subscription ID" />
+                    <img class="form-icon-r" src="~/Admin/icons/add.png" />
+                </div>
+
+                <div class="vip-list">
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Chart js -->
+<script src="~/Admin/assets/js/apexcharts.js"></script>
+<script src="~/Admin/assets/js/apexchart-custom.js"></script>

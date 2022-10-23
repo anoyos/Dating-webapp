@@ -1,0 +1,64 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<james.Models.DB.Blog>
+<style>
+    .table td {
+        padding: 0.75rem;
+        vertical-align: middle !important;
+    }
+</style>
+<div class="mt-5 pt-5">
+
+    <div class="row m-0 form-style--3 ">
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Blogs</h2>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/Admin/Blog" class="btn  btn-primary"><i class="fa fa-plus"></i> New Blog</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th width="100">Blog&nbsp;Banner</th>
+                                <th>Title</th>
+                                <th>Publish</th>
+                                @*<th>Description</th>*@
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(item.banner))
+                                        {
+                                            <img style="width:50px;height:40px;border-radius:10px;" src="/img/upload/@item.banner" />
+                                        }
+                                    </td>
+                                    <td>@item.title</td>
+                                    <td>@(item.isPublish?"Yes":"No")</td>
+                                    @*<td>@item.description</td>*@
+                                    <td>
+                                        <a class="fa fs-20 fa-pencil" href="/Admin/Blog?id=@item.id"></a>
+                                        <a class="fa fs-20 fa-eye" href="/Admin/BlogPreview?id=@item.id"></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

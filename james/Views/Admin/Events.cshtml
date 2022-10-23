@@ -1,0 +1,68 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<james.Models.DB.Event>
+<style>
+    .table td {
+        padding: 0.75rem;
+        vertical-align: middle !important;
+    }
+</style>
+<div class="mt-5 pt-5">
+
+    <div class="row m-0 form-style--3 ">
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Events</h2>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="/Admin/EventCreate" class="btn  btn-primary"><i class="fa fa-plus"></i> New Event</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th width="100">Event&nbsp;Photo</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Start&nbsp;Date</th>
+                                <th>End&nbsp;Date</th>
+                                <th>Amount</th>
+                                <th>Publish</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(item.photo))
+                                        {
+                                            <img style="width:50px;height:40px;border-radius:10px;" src="/img/upload/@item.photo" />
+                                        }
+                                    </td>
+                                    <td>@item.title</td>
+                                    <td>@item.category</td>
+                                    <td>@(item.startDate.HasValue?item.startDate.Value.ToString("dd-MMM-yyyy"):"")</td>
+                                    <td>@(item.endDate.HasValue?item.endDate.Value.ToString("dd-MMM-yyyy"):"")</td>
+                                    <td>@(item.amount)</td>
+                                    <td>@(item.isPublish?"Yes":"No")</td>                     
+                                    <td>
+                                        <a class="fa fa-pencil" href="/Admin/EventCreate?id=@item.id"></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,596 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    Layout = null;
+}
+
+@using james.Helpers.Custom;
+@using james.Helpers.General;
+@{
+    var login = (tblLogin)ViewBag.login;
+}
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+
+    <!-- Meta data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <!-- Title -->
+    <title>James Club</title>
+
+    <!--Favicon -->
+    @*
+        <link rel="icon" href="/Admin/assets/images/brand/favicon.ico" type="image/x-icon" />*@
+
+    <!-- Style css -->
+    <link href="/Admin/assets/css/style.css" rel="stylesheet" />
+
+    <!-- Dark css -->
+    <link href="/Admin/assets/css/dark.css" rel="stylesheet" />
+
+    <!-- Skins css -->
+    <link href="/Admin/assets/css/skins.css" rel="stylesheet" />
+
+    <!-- Animate css -->
+    <link href="/Admin/assets/css/animated.css" rel="stylesheet" />
+
+    <!--Sidemenu css -->
+    <link id="theme" href="/Admin/assets/css/sidemenu.css" rel="stylesheet">
+
+    <!-- P-scroll bar css-->
+    <link href="/Admin/assets/plugins/p-scrollbar/p-scrollbar.css" rel="stylesheet" />
+
+    <!---Icons css-->
+    <link href="/Admin/assets/plugins/web-fonts/icons.css" rel="stylesheet" />
+    <link href="/Admin/assets/plugins/web-fonts/font-awesome/font-awesome.min.css" rel="stylesheet">
+    <link href="/Admin/assets/plugins/web-fonts/plugin.css" rel="stylesheet" />
+
+    <!-- Select2 css -->
+    <link href="/Admin/assets/plugins/select2/select2.min.css" rel="stylesheet" />
+
+    <!-- File Uploads css -->
+    <link href="/Admin/assets/plugins/fancyuploder/fancy_fileupload.css" rel="stylesheet" />
+
+    <!-- Time picker css -->
+    <link href="/Admin/assets/plugins/time-picker/jquery.timepicker.css" rel="stylesheet" />
+
+    <!-- Date Picker css -->
+    <link href="/Admin/assets/plugins/date-picker/date-picker.css" rel="stylesheet" />
+
+    <!-- File Uploads css-->
+    <link href="/Admin/assets/plugins/fileupload/css/fileupload.css" rel="stylesheet" type="text/css" />
+
+    <!--Mutipleselect css-->
+    <link rel="stylesheet" href="/Admin/assets/plugins/multipleselect/multiple-select.css">
+
+    <!--Sumoselect css-->
+    <link rel="stylesheet" href="/Admin/assets/plugins/sumoselect/sumoselect.css">
+
+    <!--intlTelInput css-->
+    <link rel="stylesheet" href="/Admin/assets/plugins/intl-tel-input-master/intlTelInput.css">
+
+    <!--Jquerytransfer css-->
+    <link rel="stylesheet" href="/Admin/assets/plugins/jQuerytransfer/jquery.transfer.css">
+    <link rel="stylesheet" href="/Admin/assets/plugins/jQuerytransfer/icon_font/icon_font.css">
+
+    <!-- Data table css -->
+    <link href="/Admin/assets/plugins/datatable/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="/Admin/assets/plugins/datatable/css/buttons.bootstrap4.min.css" rel="stylesheet">
+    <link href="/Admin/assets/plugins/datatable/responsive.bootstrap4.min.css" rel="stylesheet" />
+
+    <!---Sweetalert css-->
+    <link href="/Admin/assets/plugins/sweet-alert/jquery.sweet-modal.min.css" rel="stylesheet" />
+    <link href="/Admin/assets/plugins/sweet-alert/sweetalert.css" rel="stylesheet" />
+    <link href="~/Admin/assets/css/zain.css" rel="stylesheet" />
+
+
+    <!-- Jquery js-->
+    <script src="/Admin/assets/js/vendors/jquery-3.4.0.min.js"></script>
+
+    <!-- Bootstrap4 js-->
+    <script src="/Admin/assets/plugins/bootstrap/popper.min.js"></script>
+    <script src="/Admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <link href="~/Admin/assets/plugins/toastr/toastr.min.css" rel="stylesheet" />
+
+
+    @*
+        <script src="~/Admin/Script/Custom/helper.js"></script>*@
+
+    <script src="~/Admin/Script/Custom/helper.js"></script>
+    <!--Sumoselect js-->
+    <script src="/Admin/assets/plugins/sumoselect/jquery.sumoselect.js"></script>
+    <script src="~/Admin/assets/plugins/sumoselect/jquery.sumoselect.js"></script>
+    <script src="~/Admin/assets/plugins/sweet-alert/sweetalert.min.js"></script>
+    <script src="~/Admin/Script/Custom/toastr.js"></script>
+
+    <script src="~/Admin/Script/Custom/Constants.js"></script>
+    <script src="~/Admin/Script/Custom/underscore-min.js"></script>
+    <script src="/Admin/Script/Custom/GenericLib.js"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+    .row.multibtn button.brook-btn {
+        background: #f2f2f2;
+        border-radius: 8px;
+        border: none;
+        margin-right: 6px;
+        margin-bottom: 6px;
+        padding: 2px 10px;
+    }
+
+        .row.multibtn button.brook-btn:hover {
+            color: #a7e9e9;
+            background: #f2f2f2;
+        }
+    .multibtn button.brook-btn.active, .singlebtn button.brook-btn.active {
+        background-color: #a7e9e9;
+        color:white;
+    }
+    button.btn.btn-primary.btn-2 {
+        background: white;
+        color: #59d6d6 !important;
+    }
+    hr.or:after {
+        content: "or";
+        top: -10px;
+        position: relative;
+        background: white;
+        padding: 0px 20px;
+    }
+    .btn-primary.gray-btn {
+        background: #A5A5A5;
+        border-color: #A5A5A5;
+    }
+    @@media only screen and (max-width: 1200px){
+        .app-content .side-app {
+            width: 1000px;
+        }
+        .app-content{
+            overflow:scroll;
+        }
+}
+
+        .page-header {
+            display: block !important;
+        }
+    </style>
+
+</head>
+
+<body class="app sidebar-mini light-mode default-sidebar">
+
+    <!---Global-loader-->
+    <div id="global-loader">
+        <img width="450" src="/Admin/icons/logo-xl.png" alt="loader">
+
+        @*        <img src="/Admin/assets/images/svgs/loader.svg" alt="loader">*@
+    </div>
+
+
+    <div class="page container-fluid">
+        <div class="page-main">
+            <!--aside open-->
+            <div class="app-sidebar app-sidebar2">
+                <div class="app-sidebar__logo">
+                    <a class="header-brand" href="index.html">
+                        <img src="~/Admin/Upload/img/logo-main.png" />
+                        @*<img src="../../assets/images/brand/logo.png" class="header-brand-img desktop-lgo" alt="logo">
+                            <img src="../../assets/images/brand/logo1.png" class="header-brand-img dark-logo" alt="logo">
+                            <img src="../../assets/images/brand/favicon.png" class="header-brand-img mobile-logo" alt="logo">
+                            <img src="../../assets/images/brand/favicon1.png" class="header-brand-img darkmobile-logo" alt="logo">*@
+                    </a>
+                </div>
+            </div>
+            <aside class="app-sidebar app-sidebar3">
+                @*<div class="app-sidebar__user">
+                        <div class="dropdown user-pro-body text-center">
+                            <div class="user-pic">
+                                <img src="../../assets/images/users/16.jpg" alt="user-img" class="avatar-xl rounded-circle mb-1">
+                            </div>
+                            <div class="user-info">
+                                <h5 class=" mb-1 font-weight-bold">John Thomson</h5>
+                                <span class="text-muted app-sidebar__user-name text-sm">App Developer</span>
+                            </div>
+                        </div>
+                    </div>*@
+                <ul class="side-menu" style="background: #F2F2F2">
+                    <li class="slide">
+                        <a class="side-menu__item" href="/User/Index">
+                            <img src="~/Admin/Upload/icone/home.png" />
+                            <span class="side-menu__label">Home</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="/Messenger/Index">
+                            <img src="~/Admin/Upload/icone/messages.png" />
+                            <span class="side-menu__label">Messages</span>
+                        </a>
+                    </li>
+
+                    <li class="slide">
+                        <a class="side-menu__item" href="/User/Likes">
+                            <img src="~/Admin/Upload/icone/likes.png" />
+                            <span class="side-menu__label">Likes</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="/User/DisLike">
+                            <img src="~/Admin/Upload/icone/dislike.png" />
+                            <span class="side-menu__label">Dislike</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="/User/Matches">
+                            <img src="~/Admin/Upload/icone/matches.png" />
+                            <span class="side-menu__label">Matches</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="/User/EditProfile">
+                            <img src="~/Admin/Upload/icone/edit-profile.png" />
+                            <span class="side-menu__label">Edit Profile</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="#">
+                            <img src="~/Admin/Upload/icone/my-purchases.png" />
+                            <span class="side-menu__label">My Purchases</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="/User/VIPAccount">
+                            <img src="~/Admin/Upload/icone/vip-account.png" />
+                            <span class="side-menu__label">VIP Account</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="/User/Diary">
+                            <img src="~/Admin/Upload/icone/diary.png" />
+                            <span class="side-menu__label">Diary</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="/User/Events">
+                            <img src="~/Admin/Upload/icone/events.png" />
+                            <span class="side-menu__label">Events</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="/User/PrizeDraw">
+                            <img src="~/Admin/Upload/icone/prize-draw.png" />
+                            <span class="side-menu__label">Prize Draw</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="#">
+                            <img src="~/Admin/Upload/icone/24-hours.png" />
+                            <span class="side-menu__label">
+                                Single Service<br />
+                                Packages
+                            </span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="#">
+                            <img src="~/Admin/Upload/icone/my-ticket.png" />
+                            <span class="side-menu__label">My Tickets</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="#">
+                            <img src="~/Admin/Upload/icone/preferences.png" />
+                            <span class="side-menu__label">Preferences</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="#">
+                            <img src="~/Admin/Upload/icone/about-us.png" />
+                            <span class="side-menu__label">About us</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="/User/PrivacyPolicy">
+                            <img src="~/Admin/Upload/icone/privacy-policy.png" />
+                            <span class="side-menu__label">Privacy Policy</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="/User/TermsConditions">
+                            <img src="~/Admin/Upload/icone/terms-and-conditions.png" />
+                            <span class="side-menu__label">
+                                Terms & <br />
+                                Conditions
+                            </span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="#">
+                            <img src="~/Admin/Upload/icone/hide-account.png" />
+                            <span class="side-menu__label">Hide Account</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="#">
+                            <img src="~/Admin/Upload/icone/logout.png" />
+                            <span class="side-menu__label">Log Out</span>
+                        </a>
+                    </li>
+
+                    <li class="slide">
+                        <a class="side-menu__item" href="/User/EmojiandGifts">
+                            <img src="~/Admin/Upload/icone/emojii.png" />
+                            <span class="side-menu__label">Emoji's &Aacute; Gifts</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="/User/ProfileStatics">
+                            <img src="~/Admin/Upload/icone/proStst.png" />
+                            <span class="side-menu__label">Profile Statics</span>
+                        </a>
+                    </li>
+                    <li class="slide">
+                        <a class="side-menu__item" href="/User/Streaming">
+                            <img src="~/Admin/Upload/icone/live.png" />
+                            <span class="side-menu__label">Streaming</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </aside>
+            <!--aside closed-->
+
+            <div class="app-content main-content">
+                <div class="side-app">
+
+
+                    <!--app header-->
+                    <div class="app-header header top-header">
+                        <div class="container-fluid">
+                            <div class="d-flex">
+                                <a class="header-brand" href="index.html">
+                                    <img src="~/Admin/Upload/img/logo-main.png" />
+                                    @*<img src="../../assets/images/brand/logo.png" class="header-brand-img desktop-lgo" alt="Dashtic logo">
+                                        <img src="../../assets/images/brand/logo1.png" class="header-brand-img dark-logo" alt="Dashtic logo">
+                                        <img src="../../assets/images/brand/favicon.png" class="header-brand-img mobile-logo" alt="Dashtic logo">
+                                        <img src="../../assets/images/brand/favicon1.png" class="header-brand-img darkmobile-logo" alt="Dashtic logo">*@
+                                </a>
+                                @*<div class="dropdown side-nav">
+                                        <div class="app-sidebar__toggle" data-toggle="sidebar">
+                                            <a class="open-toggle" href="#">
+                                                <svg class="header-icon mt-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                                            </a>
+                                            <a class="close-toggle" href="#">
+                                                <svg class="header-icon mt-1" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none" /><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" /></svg>
+                                            </a>
+                                        </div>
+                                    </div>*@
+
+                                <div class="d-flex order-lg-2 ml-auto">
+                                    <div class="dropdown  header-option">
+                                        <a class="nav-link icon p-0" data-toggle="dropdown">
+
+                                            <img width="24" src="~/Admin/Upload/icone/united-states-of-america.png" />
+                                            <span class="nav-span"><i class="fa fa-angle-down ml-1 fs-18"></i></span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow animated">
+                                            <a class="dropdown-item" href="#">
+                                                App Design Projects
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                Web Design Projects
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                App Development Projects
+                                            </a>
+                                            <a class="dropdown-item" href="#">
+                                                Back-End Projects
+                                            </a>
+                                            <div class="text-left pr-5 pl-5 p-2 border-top">
+                                                <a href="#" class="">View Projects</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="nav-link icon p-0">
+
+                                        <span class="nav-span">Blog </span>
+                                    </a>
+                                    <a class="nav-link icon p-0" href="/User/Profile?id=@login.id">
+
+                                        <span class="nav-span">Profile </span>
+                                    </a>
+                                    <a class="nav-link icon p-0">
+
+                                        <span class="nav-span">Search </span>
+                                    </a>
+                                    <a class="nav-link icon p-0">
+
+                                        <span class="nav-span">Contact </span>
+                                    </a>
+                                    <a class="nav-link icon p-0" href="/User/Diary">
+
+                                        <span class="nav-span">Diary </span>
+                                    </a>
+                                    <a class="nav-link icon p-0" href="/Messenger/Index">
+
+                                        <span class="nav-span">Message </span>
+                                    </a>
+
+                                    <a href="#" data-toggle="search" class="nav-link nav-link-lg d-md-none navsearch">
+                                        <svg class="header-icon search-icon" x="1008" y="1248" viewBox="0 0 24 24" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                                        </svg>
+                                    </a>
+
+
+
+                                    <div class="dropdown profile-dropdown">
+                                        <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+                                            <span>
+                                                <img style="border-radius:5px;" src="/img/upload/@(login.photo??"avatar.png")" class="avatar avatar-md brroundx" />
+
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow animated">
+                                            <div class="text-center">
+                                                <a href="#" class="dropdown-item text-center user pb-0 font-weight-bold">@login.name</a>
+                                                <span class="text-center user-semi-title">User</span>
+                                                <div class="dropdown-divider"></div>
+                                            </div>
+                                            <a class="dropdown-item d-flex" href="/User/Profile?id=@login.id">
+                                                <svg class="header-icon mr-3" x="1008" y="1248" viewBox="0 0 24 24" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
+                                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                                    <path d="M12 16c-2.69 0-5.77 1.28-6 2h12c-.2-.71-3.3-2-6-2z" opacity=".3" />
+                                                    <circle cx="12" cy="8" opacity=".3" r="2" />
+                                                    <path d="M12 14c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm-6 4c.22-.72 3.31-2 6-2 2.7 0 5.8 1.29 6 2H6zm6-6c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" />
+                                                </svg>
+                                                <div class="mt-1">Profile</div>
+                                            </a>
+                                        
+                                            <a class="dropdown-item d-flex" href="/Messenger/Index">
+                                                <svg class="header-icon mr-3" x="1008" y="1248" viewBox="0 0 24 24" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
+                                                    <path d="M15 11V4H4v8.17l.59-.58.58-.59H6z" opacity=".3" />
+                                                    <path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-5 7c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10zM4.59 11.59l-.59.58V4h11v7H5.17l-.58.59z" />
+                                                </svg>
+                                                <div class="mt-1">Messages</div>
+                                            </a>
+                                            <a class="dropdown-item d-flex" href="/home/logout">
+                                                <svg class="header-icon mr-3" x="1008" y="1248" viewBox="0 0 24 24" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
+                                                    <path d="M0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none" />
+                                                    <path d="M6 20h12V10H6v10zm2-6h3v-3h2v3h3v2h-3v3h-2v-3H8v-2z" opacity=".3" />
+                                                    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM8.9 6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2H8.9V6zM18 20H6V10h12v10zm-7-1h2v-3h3v-2h-3v-3h-2v3H8v2h3z" />
+                                                </svg>
+                                                <div class="mt-1">Sign Out</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/app header-->
+
+                    @RenderBody()
+
+
+
+                </div>
+            </div><!-- end app-content-->
+        </div>
+
+        <!--Footer-->
+        @*<footer class="footer">
+            <div class="container">
+                <div class="row align-items-center flex-row-reverse">
+                    <div class="col-md-12 col-sm-12 mt-3 mt-lg-0 text-center">
+                        Copyright © 2020 <a href="#">Dashtic</a>. Designed by <a href="#">Spruko Technologies Pvt.Ltd</a> All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </footer>*@
+        <!-- End Footer-->
+
+    </div>
+
+    <!-- Back to top -->
+    @*<a href="#top" id="back-to-top">
+        <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none" /><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" /></svg>
+    </a>*@
+
+
+
+
+    <!--Othercharts js-->
+    <script src="/Admin/assets/plugins/othercharts/jquery.sparkline.min.js"></script>
+
+    <!-- Circle-progress js-->
+    <script src="/Admin/assets/js/vendors/circle-progress.min.js"></script>
+
+    <!-- Jquery-rating js-->
+    <script src="/Admin/assets/plugins/rating/jquery.rating-stars.js"></script>
+
+    <!--Sidemenu js-->
+    <script src="/Admin/assets/plugins/sidemenu/sidemenu.js"></script>
+
+    <!-- P-scroll js-->
+    <script src="/Admin/assets/plugins/p-scrollbar/p-scrollbar.js"></script>
+    <script src="/Admin/assets/plugins/p-scrollbar/p-scroll1.js"></script>
+
+    <!-- Data tables -->
+    <script src="/Admin/assets/plugins/datatable/js/jquery.dataTables.js"></script>
+    <script src="/Admin/assets/plugins/datatable/js/dataTables.bootstrap4.js"></script>
+    <script src="/Admin/assets/plugins/datatable/js/dataTables.buttons.min.js"></script>
+    <script src="/Admin/assets/plugins/datatable/js/buttons.bootstrap4.min.js"></script>
+    <script src="/Admin/assets/plugins/datatable/js/jszip.min.js"></script>
+    <script src="/Admin/assets/plugins/datatable/js/pdfmake.min.js"></script>
+    <script src="/Admin/assets/plugins/datatable/js/vfs_fonts.js"></script>
+    <script src="/Admin/assets/plugins/datatable/js/buttons.html5.min.js"></script>
+    <script src="/Admin/assets/plugins/datatable/js/buttons.print.min.js"></script>
+    <script src="/Admin/assets/plugins/datatable/js/buttons.colVis.min.js"></script>
+    <script src="/Admin/assets/plugins/datatable/dataTables.responsive.min.js"></script>
+    <script src="/Admin/assets/plugins/datatable/responsive.bootstrap4.min.js"></script>
+    <script src="/Admin/assets/js/datatables.js"></script>
+
+    <!-- Select2 js -->
+    <script src="/Admin/assets/plugins/select2/select2.full.min.js"></script>
+    <script src="/Admin/assets/js/select2.js"></script>
+    <!-- Form Advanced Element -->
+    @*<script src="/Admin/assets/js/formelementadvnced.js"></script>
+        <script src="/Admin/assets/js/form-elements.js"></script>
+        <script src="/Admin/assets/js/file-upload.js"></script>*@
+
+    <!-- Custom js-->
+    <script src="/Admin/assets/js/custom.js"></script>
+
+    <script src="/js/@@microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/Admin/Script/Custom/notification.js"></script>
+
+
+    <input type="hidden" name="userHiddenId" class="userHiddenId" value="@login.id" />
+    <input type="hidden" name="userHiddenPhoto" value="/img/upload/@(login.photo??"avatar.png")" />
+    @*<input type="hidden" name="username" id="username" class="userHiddenId" value="@login.username" />*@
+
+    @Html.Partial("~/Views/Shared/_callapp.cshtml");
+
+
+
+    <div class="modal fade" id="matchmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-contentsty">
+
+                <div class="modal-body text-center">
+                    <img src="~/img/upload/hd.png" class="mb-5 mt-7" />
+                    <img src="~/img/upload/@(login.photo??"avatar.png")" style="width:50px;" class="mb-5 match1img" />
+                    <img src="~/img/upload/avatar.png" style="width:50px;" class="mb-5 match2img" />
+                    <p class="text-center color-black mb-3">
+                        what did not please you in the last
+                        relationship  and what you expect
+                        from the next.
+                    </p>
+                    <p class="text-center text-primary mb-3">
+                        what did not please you in the last
+                        relationship  and what you expect
+                        from the next.
+                    </p>
+                    <p class="text-center  mb-3">
+                        what did not please you in the last
+                        You both like each other, ask her
+                        about something interest
+                    </p>
+                    <button type="button" class="btn btn-primary btn-block mb-5 btmatchhello">Say "Hello"</button>
+                    <button type="button" class="btn btn-primary btn-block gray-btn">Keep Swipping</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

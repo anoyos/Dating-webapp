@@ -1,0 +1,183 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@model james.Helpers.Custom.Api.EnProfileStats
+<style>
+    input.header-search::-webkit-input-placeholder {
+        font-size: 20px
+    }
+
+
+
+
+    /*story listing---------------------------start*/
+    .color-btn-sty {
+        color: white;
+        background: #59D6D6;
+        border-radius: 10px;
+        font-size: 12px;
+    }
+
+    .gray-btn-sty {
+        color: white;
+        background: #989898;
+        font-weight: 700;
+        width: 350px;
+        font-size: 20px;
+    }
+
+    .card-detail h3 {
+        color: white;
+    }
+
+    .story-card {
+        background-size: contain;
+        padding: 30px 25px;
+        color: white;
+    }
+
+    .top-space {
+        margin-bottom: 328px;
+    }
+
+        .top-space img {
+            width: 10px;
+            position: relative;
+            top: -2px;
+        }
+
+    .card-detail .per-dts ul li {
+        font-size: 18px;
+        margin-bottom: 5px;
+        color: white;
+    }
+
+        .card-detail .per-dts ul li img {
+            width: 23px;
+            margin-right: 6px;
+        }
+
+        .card-detail .per-dts ul li span {
+            float: right;
+        }
+
+    .link-btn-icon img {
+        width: 80%;
+        background: rgb(89 214 214 / 74%);
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+        .link-btn-icon img:hover {
+            background: #59D6D6;
+            cursor: pointer
+        }
+
+    .link-btn-icon .list-inline .list-inline-item {
+        display: table-cell;
+    }
+
+    .link-btn-icon {
+        margin-top: 60px;
+    }
+
+
+
+    /*Extra css*/
+    .extra-class {
+        height: 740px;
+        width: 470px;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    /*end ---------------------------------*/
+    .borr:after {
+        content: " ";
+        width: 1px;
+        height: 160px;
+        background: rgb(112 112 112 / 28%);
+        display: block;
+        position: absolute;
+        top: 20px;
+        right:0px;
+    }
+
+    .borb:before {
+        content: " ";
+        width: 220px;
+        height: 1px;
+        background: rgb(112 112 112 / 28%);
+        display: block;
+        position: absolute;
+        left: 50px;
+        bottom: 0px;
+    }
+</style>
+
+<!--Page header-->
+<div class="page-header">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Profile Statics</h2>
+            <div class="row">
+                <div class="col-md-6 text-center borb borr">
+                    <img src="~/Admin/Upload/images/super-likes.png" />
+                    <h1>@Model.superlikes</h1>
+                    <h4 class="text-primary">Super Likes</h4>
+                </div>
+                <div class="col-md-6 text-center borb">
+                    <img src="~/Admin/Upload/images/likes.png" />
+                    <h1>@Model.likes</h1>
+                    <h4 class="text-primary">Likes</h4>
+                </div>
+                <div class="col-md-6 text-center borr borb">
+                    <img src="~/Admin/Upload/images/views.png" />
+                    <h1>@Model.views</h1>
+                    <h4 class="text-primary">Views</h4>
+                </div>
+                @*<div class="col-md-6 text-center borb">
+                    <img src="~/Admin/Upload/images/follower.png" />
+                    <h1>16.3K</h1>
+                    <h4 class="text-primary">Followers</h4>
+                </div>*@
+                <div class="col-md-6 text-center ">
+                    <img src="~/Admin/Upload/images/dislike-.png" />
+                    <h1>@Model.dislikes</h1>
+                    <h4 class="text-primary">Dislike</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="side-right bg-thm-gy">
+                <div class="wgit">
+
+                    <h3>Find My Match</h3>
+                    <p>
+                        You have rated all
+                        members, soon we will
+                        show you the newest
+                        members here.
+                    </p>
+                </div>
+                <div class="wgit">
+                    <h3>SUBSCRIBE</h3>
+                    <p>
+                        Get full access to all
+                        features
+                    </p>
+                    <button class="btn btn-primary">Get Membership</button>
+                </div>
+
+                <div class="wgit">
+                    <h3>Invite a Friend</h3>
+                    <input class="form-control mb-3" type="text" placeholder="First Name" />
+                    <input class="form-control mb-3" type="text" placeholder="E-mail" />
+                    <button class="btn btn-primary">Send Invite</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

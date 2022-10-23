@@ -1,0 +1,173 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model james.Models.ViewModel.ForgotCodeViewModel
+<!doctype html>
+<html class="no-js preview-html" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>SignIn</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon ->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/icon.png"> -->
+    <link rel="stylesheet" href="~/public/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/public/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/public/assets/css/revoulation.css">
+    <link rel="stylesheet" href="~/public/assets/css/plugins.min.css">
+    <link rel="stylesheet" href="~/public/assets/css/style.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="~/public/assets/css/jamesClub.css">
+    <style>
+        .contact-form input {
+            border: 1px solid #E3E3E3;
+            background-color: #E3E3E3;
+            border-color: #E3E3E3;
+        }
+    </style>
+</head>
+
+
+<body class="template-color-1 template-font-1 preview-html" style="background-image:url('../public/assets/images/img/bg.png');background-size:cover;">
+    <img style=" position: absolute; top: 30px; left: 60px;" src="~/public/assets/images/logo-s.png" />
+    <div id="page-preloader" class="page-loading clearfix">
+        <div class="page-load-inner">
+            <div class="preloader-wrap">
+                <div class="wrap-2">
+                    <!-- <div> <img src="~/public/assets/img/icons/brook-preloader.gif" alt="Brook Preloader"></div>-->
+                    <div>
+                        <img width="450" src="/Admin/icons/logo-xl.png" alt="loader">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="wrapper" class="wrapper">
+        <!-- Page Conttent -->
+        <main class="page-content">
+            <div class="container">
+                <div class="row mt--30 mt_sm--20 mt_md--30">
+                    @if (!Model.error && !string.IsNullOrEmpty(Model.message))
+                    {
+                        <div class="col-lg-6 offset-lg-3 col-md-6 col-sm-12 col-12 wow move-up">
+                            <div class="service service--1 text-center mt--90">
+                                <div class="contact-form">
+                                    <div class="col-lg-12 mb--30">
+                                        <h4 class="text-success">@Model.message</h4>
+                                    </div>
+                                    <div class="col-12 mt--0 text-center">
+                                        <p class="text-white">Go Back To <a href="/Home/Login" class="txt-color-1">Login</a></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                    else if (Model.error && Model.message== "Invalid Link")
+                    {
+                        <div class="col-lg-6 offset-lg-3 col-md-6 col-sm-12 col-12 wow move-up">
+                            <div class="service service--1 text-center mt--x">
+                                <div class="contact-form">
+                                    <div class="col-lg-12 mb--30x">
+                                        <h4 class="text-danger">@Model.message</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-lg-6 offset-lg-3 col-md-6 col-sm-12 col-12 wow move-up">
+                            <div class="service service--1 text-center mt--90">
+                                <div class="contact-form">
+                                    <form class="for form-style wow move-up" action="/home/ForgotCode" method="post">
+                                        <div class="row">
+                                            <h2 class="text-center text-white fw-400 mb--30">Reset Code</h2>
+
+                                            @if (Model.error && !string.IsNullOrEmpty(Model.message))
+                                            {
+                                                <div class="col-lg-12 mb--30">
+                                                    <h4 class="text-danger">@Model.message</h4>
+                                                </div>
+                                            }
+
+                                            <input type="hidden" name="uid" value="@Model.uid" />
+                                            <div class="col-lg-12 mb--30">
+                                                <div class="input-box">
+                                                    <input type="text" value="@Model.email" name="email" placeholder="Email" disabled>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12 mb--30">
+                                                <div class="input-box">
+                                                    <input type="text" value="@Model.code" name="code" placeholder="Code">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12 mb--30">
+                                                <div class="input-box">
+                                                    <input type="text" value="@Model.password" name="password" placeholder="Password">
+                                                </div>
+                                            </div>
+                                            <div class="mt--10 move-up wow ">
+                                                <button type="submit" style="width:100%" class="brook-btn bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between" href="/Home/Login">Submit</button>
+                                            </div>
+
+                                            <div class="col-12 mt--0 text-center">
+                                                <p class="text-white">Go Back To <a href="/Home/Login" class="txt-color-1">Login</a></p>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </main>
+        <!--// Page Conttent -->
+
+
+    </div>
+    <footer class="fixedd">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-6">
+                    <p class="text-white">Term and conditions of service | Privacy | language </p>
+                </div>
+                <div class="col-6 text-end">
+                    <p class="text-white">James Club 248 all rights reserved </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--// Wrapper -->
+
+
+    <script src="~/public/assets/js/vendor/vendor.min.js"></script>
+    <script src="~/public/assets/js/plugins.min.js"></script>
+    <!-- REVOLUTION JS FILES -->
+    <script src="~/public/assets/js/revolution.tools.min.js"></script>
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS -->
+    <script src="~/public/assets/js/revolution.extension.min.js"></script>
+    <script src="~/public/assets/js/main.js"></script>
+    <script src="~/public/assets/js/revoulation.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="/Admin/Script/Custom/helper.js"></script>
+    <script>
+
+    </script>
+</body>
+
+
+</html>

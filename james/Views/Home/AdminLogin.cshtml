@@ -1,0 +1,244 @@
+﻿@model james.Models.ViewModel.LoginViewModel
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+
+    <!-- Meta data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <!-- Title -->
+    <title>JAMES</title>
+
+    <!--Favicon -->
+    @*
+        <link rel="icon" href="/Admin/assets/images/brand/favicon.ico" type="image/x-icon" />*@
+
+    <!-- Style css -->
+    <link href="/Admin/assets/css/style.css" rel="stylesheet" />
+
+    <!-- Dark css -->
+    <link href="/Admin/assets/css/dark.css" rel="stylesheet" />
+
+    <!-- Skins css -->
+    <link href="/Admin/assets/css/skins.css" rel="stylesheet" />
+
+    <!-- Animate css -->
+    <link href="/Admin/assets/css/animated.css" rel="stylesheet" />
+
+    <!--Sidemenu css -->
+    <link id="theme" href="/Admin/assets/css/sidemenu.css" rel="stylesheet">
+
+    <!-- P-scroll bar css-->
+    <link href="/Admin/assets/plugins/p-scrollbar/p-scrollbar.css" rel="stylesheet" />
+
+    <!---Icons css-->
+    <link href="/Admin/assets/plugins/web-fonts/icons.css" rel="stylesheet" />
+    <link href="/Admin/assets/plugins/web-fonts/font-awesome/font-awesome.min.css" rel="stylesheet">
+    <link href="/Admin/assets/plugins/web-fonts/plugin.css" rel="stylesheet" />
+
+    <!-- Select2 css -->
+    <link href="/Admin/assets/plugins/select2/select2.min.css" rel="stylesheet" />
+
+    <!-- File Uploads css -->
+    <link href="/Admin/assets/plugins/fancyuploder/fancy_fileupload.css" rel="stylesheet" />
+
+    <!-- Time picker css -->
+    <link href="/Admin/assets/plugins/time-picker/jquery.timepicker.css" rel="stylesheet" />
+
+    <!-- Date Picker css -->
+    <link href="/Admin/assets/plugins/date-picker/date-picker.css" rel="stylesheet" />
+
+    <!-- File Uploads css-->
+    <link href="/Admin/assets/plugins/fileupload/css/fileupload.css" rel="stylesheet" type="text/css" />
+
+    <!--Mutipleselect css-->
+    <link rel="stylesheet" href="/Admin/assets/plugins/multipleselect/multiple-select.css">
+
+    <!--Sumoselect css-->
+    <link rel="stylesheet" href="/Admin/assets/plugins/sumoselect/sumoselect.css">
+
+    <!--intlTelInput css-->
+    <link rel="stylesheet" href="/Admin/assets/plugins/intl-tel-input-master/intlTelInput.css">
+
+    <!--Jquerytransfer css-->
+    <link rel="stylesheet" href="/Admin/assets/plugins/jQuerytransfer/jquery.transfer.css">
+    <link rel="stylesheet" href="/Admin/assets/plugins/jQuerytransfer/icon_font/icon_font.css">
+
+    <!-- Data table css -->
+    <link href="/Admin/assets/plugins/datatable/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="/Admin/assets/plugins/datatable/css/buttons.bootstrap4.min.css" rel="stylesheet">
+    <link href="/Admin/assets/plugins/datatable/responsive.bootstrap4.min.css" rel="stylesheet" />
+
+    <!---Sweetalert css-->
+    <link href="/Admin/assets/plugins/sweet-alert/jquery.sweet-modal.min.css" rel="stylesheet" />
+    <link href="/Admin/assets/plugins/sweet-alert/sweetalert.css" rel="stylesheet" />
+    <link href="~/Admin/assets/css/zain.css" rel="stylesheet" />
+
+
+    <!-- Jquery js-->
+    <script src="/Admin/assets/js/vendors/jquery-3.4.0.min.js"></script>
+
+    <!-- Bootstrap4 js-->
+    <script src="/Admin/assets/plugins/bootstrap/popper.min.js"></script>
+    <script src="/Admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <link href="~/Admin/assets/plugins/toastr/toastr.min.css" rel="stylesheet" />
+    <link href="~/Admin/assets/css/james.css" rel="stylesheet" />
+
+
+    @*
+        <script src="~/Admin/Script/Custom/helper.js"></script>*@
+
+    <script src="~/Admin/Script/Custom/helper.js"></script>
+    <!--Sumoselect js-->
+    <script src="/Admin/assets/plugins/sumoselect/jquery.sumoselect.js"></script>
+    <script src="~/Admin/assets/plugins/sumoselect/jquery.sumoselect.js"></script>
+    <script src="~/Admin/assets/plugins/sweet-alert/sweetalert.min.js"></script>
+    <script src="~/Admin/Script/Custom/toastr.js"></script>
+
+    <script src="~/Admin/Script/Custom/Constants.js"></script>
+    <script src="~/Admin/Script/Custom/underscore-min.js"></script>
+    <script src="/Admin/Script/Custom/GenericLib.js"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        .bg-style:before {
+            background: #a7e9e9 !important;
+        }
+
+        .login-banner {
+            max-width: 546px !important;
+            position: relative;
+            right: -50px;
+            top: 40px;
+            z-index: 11;
+        }
+
+        .page-style2.page-style1:before {
+            background: #abe9e9 !important;
+        }
+
+        .page-style1 .form-control {
+            border: none;
+            border-bottom: 1px solid #c6c6c6;
+            border-radius: 0px;
+            background: none;
+            font-size: 18px;
+            padding: 0px 60px 0px 0px;
+        }
+
+            .page-style1 .form-control::placeholder {
+                font-size: 16px;
+                color: #c6c6c6 !important;
+            }
+
+        .bg-style .header-brand-img {
+            position: absolute;
+            top: 30px;
+            left: 55px;
+            width: 90px !important;
+            height: 81px !important;
+        }
+
+        .input-group img {
+            position: absolute;
+            right: 8px;
+            top: 15px;
+        }
+
+        .w-80.page-content {
+            border-top-left-radius: 50px;
+            background: red;
+        }
+
+        .page-style1:before {
+            opacity: 1 !important;
+        }
+
+        .w-80.page-content {
+            background: #abe9e9 !important;
+            position: relative;
+        }
+
+        .page-single-content.styy {
+            background: white;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body class="page-style1 page-style2 light-mode default-sidebar">
+    <div class="d-md-flex">
+        <div class="w-40 bg-style h-100vh page-style">
+            <div class="page-content">
+                <div class="page-single-content">
+                    <img src="~/Admin/icons/logo-color.png" alt="img" class="header-brand-img mb-5">
+                    <div class="card-body text-white py-5 px-8 text-center">
+                        <img src="~/Admin/icons/login-banner.png" alt="img" class="login-banner">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-80 page-content">
+            <div class="page-single-content styy">
+                <div class="card-body p-6">
+                    <form class="row"  action="/home/adminlogin" method="post">
+                        <div class="col-md-8 mx-auto d-block">
+                            <div class="">
+                                <h1 class="mb-5">Log In</h1>
+                            </div>
+                            @if (Model.error && !string.IsNullOrEmpty(Model.message))
+                            {
+                                <div class="input-group mb-3">
+                                    <h4 class="text-danger">@Model.message</h4>
+                                </div>
+                            }
+
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" value="@Model.username" name="username" placeholder="Username">
+                                <img src="~/Admin/icons/e-mail.png" />
+                            </div>
+                            <div class="input-group mb-4">
+                                <input type="password" class="form-control" value="@Model.password" name="password" placeholder="Password">
+                                <img src="~/Admin/icons/eye-off.png" />
+                            </div>
+                            <div class="row">
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-block mt-5"> <i class="fe fe-arrow-right"></i> Log in</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery js-->
+    <script src="~/Admin/assets/js/vendors/jquery-3.4.0.min.js"></script>
+
+    <!-- Bootstrap4 js-->
+    <script src="~/Admin/assets/plugins/bootstrap/popper.min.js"></script>
+    <script src="~/Admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <!--Othercharts js-->
+    <script src="~/Admin/assets/plugins/othercharts/jquery.sparkline.min.js"></script>
+
+    <!-- Circle-progress js-->
+    <script src="~/Admin/assets/js/vendors/circle-progress.min.js"></script>
+
+    <!-- Jquery-rating js-->
+    <script src="~/Admin/assets/plugins/rating/jquery.rating-stars.js"></script>
+
+</body>
+</html>

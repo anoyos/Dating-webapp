@@ -1,0 +1,232 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@model james.Models.ViewModel.DiaryViewModel
+<style>
+    .day {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .clndr {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .day .datee, .day .dott {
+        color: black;
+        font-weight: 600
+    }
+
+    .day.act .datee, .day.act .dott {
+        color: white !important;
+        font-weight: 600
+    }
+
+    .day.act {
+        background: #59d6d6;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: white;
+        box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px;
+    }
+
+    button.btn.btn-primary.color-black {
+        color: black !important;
+        padding: 3px 12px;
+        border-radius: 5px;
+        background: #A7E9E9;
+        border: none;
+    }
+
+    .Diary-page {
+        background: #EBEEFB;
+        padding-left: 30px;
+        margin-left: -24px;
+        padding-top: 5px;
+    }
+
+    button.btn.btn-primary.btn-2 {
+        background: white;
+        color: #59d6d6 !important;
+    }
+
+    .addDiary {
+        background: white;
+        border-radius: 20px;
+        margin: 0px -26px;
+        padding: 30px 30px;
+        position: relative;
+        left: -3px;
+    }
+
+    .wgit {
+        margin-bottom: 30px;
+    }
+
+    #diarydatepicker {
+        visibility: hidden;
+        position: absolute;
+        top: 3px;
+    }
+</style>
+
+<div class="Diary-page mt-5">
+
+
+    <div class="row">
+
+        <div class=" col-md-8">
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <h2>Diary</h2>
+                </div>
+                <div class="col-md-6"><button id="selectedDate" class="btn btn-primary color-black">@DateTime.Now.Date.ToString("dd MMM, yyyy")</button> </div>
+                <div class="col-md-6 text-right">
+
+
+                    <img width="40" id="calender" class="btdate" src="~/Admin/Upload/images/cal.png" />
+                    <img width="40" class="btattach" src="~/Admin/Upload/images/cam.png" />
+                    <input style="" class="form-control fc-datepicker" value="@DateTime.Now.Date.ToString("MM/dd/yyyy")" placeholder="MM/DD/YYYY" type="text" id="diarydatepicker">
+                    <input type="file" id="fup" style="display:none" />
+                </div>
+            </div>
+            <div class="mb-6 imgpanel" style="display:none"></div>
+            @*<div class="clndr mb-6">
+                    <div class="day">
+                        <span class="dayy">Th</span>
+                        <span class="datee">05</span>
+                        <span class="dott">.</span>
+                    </div>
+                    <div class="day">
+                        <span class="dayy">Th</span>
+                        <span class="datee">05</span>
+                        <span class="dott">.</span>
+                    </div>
+                    <div class="day act">
+                        <span class="dayy">Th</span>
+                        <span class="datee">05</span>
+                        <span class="dott">.</span>
+                    </div>
+                    <div class="day">
+                        <span class="dayy">Th</span>
+                        <span class="datee">05</span>
+                        <span class="dott">.</span>
+                    </div>
+                    <div class="day">
+                        <span class="dayy">Th</span>
+                        <span class="datee">05</span>
+                        <span class="dott">.</span>
+                    </div>
+                    <div class="day">
+                        <span class="dayy">Th</span>
+                        <span class="datee">05</span>
+                        <span class="dott">.</span>
+                    </div>
+                    <div class="day">
+                        <span class="dayy">Th</span>
+                        <span class="datee">05</span>
+                        <span class="dott">.</span>
+                    </div>
+                    <div class="day">
+                        <span class="dayy">Th</span>
+                        <span class="datee">05</span>
+                        <span class="dott">.</span>
+                    </div>
+                </div>*@
+
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <form id="addDiaryFrm" class="addDiary" onsubmit="return OnSubmitDiary()">
+                        <div class="col-lg-12 mb-5">
+                            <div class="input-box">
+                                <label>Add to Title:</label>
+                                <input class="form-control" name="title" placeholder="Add to Title">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 mb-5 ">
+                            <div class="input-box">
+                                <label>Description:</label>
+                                <textarea class="form-control" name="description" placeholder="write a text" rows="10"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-lg-6 text-center ">
+                                <button type="button" class="btn btn-primary btn-2 btcancel">Cancel</button>
+                            </div>
+                            <div class="col-lg-6 text-center ">
+                                <button class="btn btn-primary" type="submit">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="side-right bg-thm-gy" style=" margin-top: -5px;">
+                <div class="wgit">
+
+                    <h2>Diary History <img class="pull-right" width="40" src="~/Admin/Upload/icone/add-b2.png" /></h2>
+
+                </div>
+                @foreach (var item in Model.list.OrderByDescending(x => x.id))
+                {
+                    <div class="wgit">
+
+                        <p class="color-black">
+                            <img class="mr-2" width="30"  height="30" style="border-radius: 5px;" src="/img/upload/@item.photo" />  @item.title
+                        </p>
+                        <img class="border-radius-5 mb-2" height="120" src="/img/upload/@item.photo" />
+                        <p class="color-black text-limit-4">@item.description </p>
+                    </div>
+                }
+
+
+                @*<div class="wgit">
+
+                    <p class="color-black">
+                        <img class="mr-2" src="~/Admin/Upload/images/diary-thm.png" />  Story of Lara
+                    </p>
+                    <img src="~/Admin/Upload/images/diary-banner.png" />
+                    <p class="color-black">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam </p>
+                </div>
+                <div class="wgit">
+
+                    <p class="color-black">
+                        <img class="mr-2" src="~/Admin/Upload/images/diary-thm.png" />  Story of Lara
+                    </p>
+                    <img src="~/Admin/Upload/images/diary-banner.png" />
+                    <p class="color-black">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam </p>
+                </div>
+                <div class="wgit">
+
+                    <p class="color-black">
+                        <img class="mr-2" src="~/Admin/Upload/images/diary-thm.png" />  Story of Lara
+                    </p>
+                    <img src="~/Admin/Upload/images/diary-banner.png" />
+                    <p class="color-black">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam </p>
+                </div>*@
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+<!-- Datepicker js -->
+<script src="/admin/assets/plugins/date-picker/date-picker.js"></script>
+<script src="/admin/assets/plugins/date-picker/jquery-ui.js"></script>
+<script src="/admin/assets/plugins/input-mask/jquery.maskedinput.js"></script>
+<script src="~/Admin/assets/plugins/calendar/moment.js"></script>
+<script src="~/Admin/Script/Custom/Diary.js"></script>

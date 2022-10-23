@@ -1,0 +1,11 @@
+.dropdown.profile-dropdown:before {
+    content: "";
+    background: #e6f9f9;
+    display: block;
+    width: 2600.4%;
+    height: 120px;
+    position: absolute;
+    top: -20px;
+    left: 14px;
+    z-index: -1;
+}

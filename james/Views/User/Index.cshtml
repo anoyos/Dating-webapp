@@ -1,0 +1,969 @@
+﻿
+@using james.Helpers.General
+@model james.Models.ViewModel.UserIndexViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+
+<style>
+    input.header-search::-webkit-input-placeholder {
+        font-size: 20px
+    }
+
+
+
+
+    /*story listing---------------------------start*/
+    .color-btn-sty {
+        color: white;
+        background: #59D6D6;
+        border-radius: 10px;
+        font-size: 15px;
+    }
+
+    .gray-btn-sty {
+        color: white;
+        background: #989898;
+        font-weight: 700;
+        width: 350px;
+        font-size: 20px;
+    }
+
+    .card-detail h3 {
+        color: white;
+    }
+
+    .story-card {
+        background-size: contain;
+        padding: 30px 25px;
+        color: white;
+    }
+
+    .top-space {
+        margin-bottom: 328px;
+    }
+
+        .top-space img {
+            width: 10px;
+            position: relative;
+            top: -2px;
+        }
+
+    .card-detail .per-dts ul li {
+        font-size: 18px;
+        margin-bottom: 5px;
+        color: white;
+    }
+
+        .card-detail .per-dts ul li img {
+            width: 23px;
+            margin-right: 6px;
+        }
+
+        .card-detail .per-dts ul li span {
+            float: right;
+        }
+
+    .link-btn-icon img {
+        width: 80%;
+        background: rgb(89 214 214 / 74%);
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+        .link-btn-icon img:hover {
+            background: none;
+            cursor: pointer
+        }
+
+    .link-btn-icon .list-inline .list-inline-item {
+        display: table-cell;
+    }
+
+    .link-btn-icon {
+        margin-top: 60px;
+    }
+
+
+
+    /*Extra css*/
+    .extra-class {
+        height: 740px;
+        width: 470px;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    .story-card {
+        background-size: cover !important;
+        border-radius: 30px !important;
+    }
+    /*end ---------------------------------*/
+
+
+
+    .modal-dialog {
+        max-width: 700px;
+        margin: 1.75rem auto;
+    }
+
+    .story-card.extra-class > img {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        height: 470px;
+    }
+
+    .story-card.extra-class {
+        position: relative;
+        z-index: 1;
+        box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px;
+    }
+
+    .card-detail {
+        position: relative;
+        z-index: 2;
+    }
+
+    .link-btn-icon img {
+        width: 100%;
+        background: none;
+        border-radius: 0px;
+        padding: 0px;
+    }
+
+    .list-inline-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    link-btn-icon .list-inline.list-inline-center .list-inline-item {
+        display: table-cell;
+        margin: 0px 10px;
+    }
+
+    .tag-yellow img {
+        width: 27px;
+        margin-right: 5px;
+    }
+
+    .tag-yellow {
+        background-color: #ffbb04;
+        color: #fff;
+        position: absolute;
+        right: 0px;
+        padding: 7px 20px 2px 10px;
+        border-radius: 10px 0px 0px 10px;
+    }
+
+    .tag-blue img {
+        width: 20px;
+        margin-right: 5px;
+        height: 20px;
+    }
+
+    .tag-blue {
+        background-color: #0492FF;
+        color: #fff;
+        position: absolute;
+        right: 0px;
+        padding: 9px 20px 5px 14px;
+        border-radius: 10px 0px 0px 10px;
+        top: 80px;
+    }
+
+    .icon-roket svg {
+        border: 1px solid #8ce2e2;
+        border-radius: 10px;
+        padding: 20px;
+        width: 90px;
+        height: 90px;
+    }
+
+    .icon-closee svg {
+        border: 1px solid #8ce2e2;
+        border-radius: 10px;
+        padding: 10px;
+        width: 66px;
+        height: 66px;
+    }
+
+    .icon-likee svg {
+        border: 1px solid #8ce2e2;
+        border-radius: 10px;
+        padding: 13px;
+        width: 66px;
+        height: 66px;
+    }
+
+    .icon-eyee svg {
+        border: 1px solid #8ce2e2;
+        border-radius: 5px;
+        padding: 7px;
+        width: 45px;
+        height: 45px;
+    }
+
+    .icon-backk svg {
+        border: 1px solid #8ce2e2;
+        border-radius: 5px;
+        padding: 7px;
+        width: 45px;
+        height: 45px;
+    }
+
+    .icon-svg svg:hover {
+        background: rgb(89 214 214 / 74%);
+        border: 0px solid #8ce2e2;
+    }
+
+        .icon-svg svg:hover path {
+            fill: white;
+        }
+
+    .list-inline-center .list-inline-item:not(:last-child) {
+        margin-right: 1rem;
+    }
+
+    .search-sty .search-element img.cus {
+        position: absolute;
+        top: 14px;
+        left: 23px;
+        width: 25px;
+    }
+
+    input.form-control.header-search {
+        padding: 15px 65px !important;
+    }
+
+    .scl {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        padding-bottom: 10px;
+        margin-bottom: 40px;
+    }
+
+    .stories li > img:first-child {
+        min-width: 85px;
+        margin-right: 8px;
+    }
+
+
+    .modal-contentsty {
+        background-size: contain;
+        width: 80%;
+        background-color: #fff;
+        background-image: url(../../../img/upload/heart-bg.png);
+        padding: 30px 130px;
+        margin: auto;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .modal-contentsty2 {
+        width: 80%;
+        margin: auto;
+    }
+
+    .modal-content {
+        border-radius: 10px;
+    }
+
+    .report-user li {
+        border: solid 1px #59D6D6;
+        padding: 10px 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        color: black;
+    }
+
+        .report-user li:hover {
+            background: #d2ffff;
+            cursor: pointer;
+        }
+
+    .xl-size {
+        min-width: 100% !important;
+        margin: 0px;
+        min-height: 100vh;
+    }
+
+    .story-tem .modal-content {
+        background-color: rgb(0 0 0 / 65%);
+    }
+
+    .story-bar {
+        display: flex;
+        /* flex-direction: row; */
+        justify-content: center;
+    }
+
+        .story-bar .progress {
+            /* min-width: 100% !important; */
+            display: -ms-flexbox;
+            display: inline-flex !important;
+            height: 6px;
+            overflow: hidden;
+            font-size: 0.703125rem;
+            background-color: white;
+            border-radius: 3px;
+            width: 100% !important;
+            /* max-width: 100% !important; */
+            margin-right: 10px;
+            margin-top: 15px;
+        }
+
+        .story-bar .progress-bar {
+            background-color: #59d6d6;
+        }
+
+    .user-detail img {
+        width: 65px;
+        height: 65px;
+        border-radius: 10px;
+        margin-right: 10px;
+    }
+
+    .user-detail {
+        display: flex;
+        margin-top: 20px
+    }
+
+    .name-tym h4 {
+        color: white
+    }
+
+    .name-tym p {
+        color: white
+    }
+
+    .story-tem .modal-content {
+        height: 100vh;
+        border-radius: 0px;
+    }
+
+    .story-images img {
+        height: 100vh;
+        margin: auto;
+    }
+
+    .story-images {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+    }
+
+    .caption-text {
+        position: absolute;
+        bottom: 30px;
+        background: #0000003d;
+        width: 100%;
+        text-align: center;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+        .caption-text p {
+            margin: 0px;
+            color: white;
+        }
+
+    .close-btnn {
+        position: absolute;
+        right: 50px;
+        top: 30px;
+        color: white;
+    }
+    .btreport{
+        cursor:pointer;
+    }
+</style>
+
+
+<link href="~/Admin/assets/css/range.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
+
+
+@*<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Story</button>*@
+
+
+
+<!-- Modal -->
+<div class="modal fade  bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Filter</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/user/index">
+                <div class="modal-body">
+                    <div class="row  form-style--2 datacontainer ">
+                        <div class="col-lg-6 mb-5">
+                            <div class="input-box">
+                                <label>Name:</label>
+                                <img class="form-icon" src="~/public/assets/images/icons/user.png" />
+                                <input class="form-control" placeholder="Enter name" value="@Model.filter.name" name="name" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-5">
+                            <div class="input-box">
+                                <label>Age Between:</label>
+                                <input id="range" class="range-modi" type="text" />
+                                <span class="min-age">18</span>
+                                <span class="max-age">60</span>
+
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-lg-6 mb-5">
+                            <div class="input-box">
+                                <label>I'm Looking for:</label>
+
+                                <div class="row multibtn m-0" data-name="lookingRelations" data-field="relationId">
+                                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.LookingRelation))
+                                    {
+                                        <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between @(Model.filter.lookingforRelation!=null && Model.filter.lookingforRelation.Any(x => x == item.id) ? "active" : "")">@item.name</button>
+                                    }
+
+                                    <select class="form-control" multiple name="lookingforRelation" style="display:none;">
+                                        <option value="">Select</option>
+                                        @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.LookingRelation))
+                                        {
+                                            <option value="@item.id" @(Model.filter.lookingforRelation != null && Model.filter.lookingforRelation.Any(x => x == item.id) ? "selected" : "")>@item.name</option>
+                                        }
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="col-lg-6 mb-5">
+                            <div class="input-box">
+                                <label>I'm Looking for:</label>
+                                <img class="form-icon" src="~/Admin/Upload/icone/dating.png" />
+                                <select class="form-control" name="lookingGenderId">
+                                    <option value="">Select</option>
+                                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.LookingGender))
+                                    {
+                                        <option value="@item.id" @(item.id == Model.filter.lookingForGender ? "selected" : "")>@item.name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 mb-5">
+                            <div class="input-box">
+                                <label>Profession:</label>
+                                <img class="form-icon" src="~/public/assets/images/icons/calendar.png" />
+                                <input class="form-control" type="text" placeholder="" value="@Model.filter.profession" name="profession" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-5">
+                            <div class="input-box">
+                                <label>City:</label>
+                                <img class="form-icon" src="~/public/assets/images/icons/user.png" />
+                                <input class="form-control" placeholder="Enter your City" value="@Model.filter.city" name="city" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 mb-5">
+                            <div class="input-box">
+                                <label>Children:</label>
+                                <img class="form-icon" src="~/Admin/Upload/icone/user.png" />
+                                <select class="form-control" name="childrenId">
+                                    <option value="">Select Children</option>
+                                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Children))
+                                    {
+                                        <option value="@item.id" @( item.id == Model.filter.children ? "selected" : "")>@item.name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        @*<div class="col-lg-6 mb-5">
+                                <div class="input-box">
+                                    <label>Alcohol Consumption:</label>
+                                    <img class="form-icon" src="~/Admin/Upload/icone/alcohol.png" />
+                                    <select class="form-control" name="alcoholConsumptionId">
+                                        <option value="">Select</option>
+                                        @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Alcohol))
+                                        {
+                                            <option value="@item.id" @(Model.data.alcoholConsumption != null && item.id == Model.data.alcoholConsumption.id ? "selected" : "")>@item.name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>*@
+
+                        @*<div class="col-lg-6 mb-5">
+                                <div class="input-box">
+                                    <label>Vaccine:</label>
+                                    <img class="form-icon" src="~/Admin/Upload/icone/vac-g.png" />
+                                    <select class="form-control" name="vaccineId">
+                                        <option value="">Select</option>
+                                        @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Vacine))
+                                        {
+                                            <option value="@item.id" @(Model.data.vaccine != null && item.id == Model.data.vaccine.id ? "selected" : "")>@item.name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>*@
+
+
+
+
+                        <div class="col-lg-6 mb-5">
+                            <div class="input-box">
+                                <label>Smokes:</label>
+                                <img class="form-icon" src="~/Admin/Upload/icone/smokes.png" />
+                                <select class="form-control" name="smokeId">
+                                    <option value="">Select</option>
+                                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Smokes))
+                                    {
+                                        <option value="@item.id" @( item.id == Model.filter.smoke ? "selected" : "")>@item.name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 mb-5">
+                            <div class="input-box">
+                                <label>Sexual Orientation:</label>
+                                <img class="form-icon" src="~/Admin/Upload/icone/sexual.png" />
+                                <select class="form-control" name="sexualOrientation">
+                                    <option value="">Select</option>
+                                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.SexualOrientation))
+                                    {
+                                        <option value="@item.id" @(Model.filter.sexualOrientation != null && item.id == Model.filter.sexualOrientation ? "selected" : "")>@item.name</option>
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 mb-5">
+                            <div class="input-box">
+                                <label>Physical Type:</label>
+                                <img class="form-icon" src="~/Admin/Upload/icone/physical.png" />
+                                <select class="form-control" name="bodyArt">
+                                    <option value="">Select</option>
+                                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.PhysicalType))
+                                    {
+                                        <option value="@item.id" @(Model.filter.bodyArt != null && item.id == Model.filter.bodyArt ? "selected" : "")>@item.name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-5">
+                            <div class="input-box">
+                                <label>Relationship Status:</label>
+                                <div class="row multibtn m-0" data-name="relationStatus" data-field="relationId">
+                                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.RelationshipStatus))
+                                    {
+                                        <button type="button" data-id="@item.id" class="brook-btn btn-outline bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between @(Model.filter.relationStatus != null && Model.filter.relationStatus.Any(x => x == item.id) ? "active" : "")">@item.name</button>
+                                    }
+                                    <select class="form-control" multiple name="relationStatus" style="display:none;">
+                                        <option value="">Select</option>
+                                        @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.RelationshipStatus))
+                                        {
+                                            <option value="@item.id" @(Model.filter.relationStatus != null && Model.filter.relationStatus.Any(x => x == item.id) ? "selected" : "")>@item.name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-5">
+                            <div class="input-box">
+                                <label>Religon:</label>
+                                <img class="form-icon" src="~/Admin/Upload/icone/glob.png" />
+                                <select class="form-control" name="religionId">
+                                    <option value="">Select</option>
+                                    @foreach (var item in Model.ddls.Where(x => x.type == (int)DDLTypeEnum.Religon))
+                                    {
+                                        <option value="@item.id" @(Model.filter.religion != null && item.id == Model.filter.religion ? "selected" : "")>@item.name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        @*<div class="col-md-12 mt-5">
+                                <h4>PICTURE OF MY PET OR MY HOBBIE</h4>
+                                <div class="row">
+                                    <div class="col-md-2 mb-5">
+                                        <img src="~/Admin/Upload/images/m9.png" />
+                                    </div>
+                                    <div class="col-md-2 mb-5">
+                                        <img src="~/Admin/Upload/images/m10.png" />
+                                    </div>
+                                    <div class="col-md-2 mb-5">
+                                        <img src="~/Admin/Upload/images/m11.png" />
+                                    </div>
+                                    <div class="col-md-2 mb-5">
+                                        <img src="~/Admin/Upload/images/m12.png" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 mb-5">
+                                        <img src="~/Admin/Upload/icone/add-img.png" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mt-5">
+                                <h4>PHOTOS: FAMILY, FRIENDS</h4>
+                                <div class="row">
+                                    <div class="col-md-2 mb-5">
+                                        <img src="~/Admin/Upload/images/m13.png" />
+                                    </div>
+                                    <div class="col-md-2 mb-5">
+                                        <img src="~/Admin/Upload/images/m14.png" />
+                                    </div>
+                                    <div class="col-md-2 mb-5">
+                                        <img src="~/Admin/Upload/images/m15.png" />
+                                    </div>
+                                    <div class="col-md-2 mb-5">
+                                        <img src="~/Admin/Upload/images/m16.png" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 mb-5">
+                                        <img src="~/Admin/Upload/icone/add-img.png" />
+                                    </div>
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-2" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Apply</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--Page header-->
+<div class="page-header">
+    <div class="row">
+        <div class="col-md-8">
+            <form class="form-inline search-sty">
+                <div class="search-element">
+                    <img class="cus" src="~/Admin/Upload/icone/search.png" />
+                    <input style=" width: 100%;" type="search" class="form-control header-search" placeholder="Find partner" aria-label="Search" tabindex="1">
+                    <button data-toggle="modal" data-target=".bd-example-modal-lg" class="btn btn-primary" type="button">
+                        <img src="~/Admin/Upload/icone/filter.png" />
+                    </button>
+                </div>
+            </form>
+
+            <div class="new-sec">
+                @*<h3>Add Story</h3>*@
+
+                <h1 id="storyheader" style="display:none">&nbsp;</h1>
+
+                <div id="stories" class="storiesWrapper"></div>
+
+                <div class="skin" style="display:none">
+                    Choose your theme:
+
+                    <select id="skin" onchange="changeSkin(this.options[this.selectedIndex].value);">
+                        <option value="Snapgram">Snapgram (without fullscreen)</option>
+                        <option value="FaceSnap">FaceSnap (with fullscreen)</option>
+                        <option value="VemDeZAP">VemDeZAP (timeline + arrows)</option>
+                        <option value="Snapssenger" selected>Snapssenger (with previews)</option>
+                    </select>
+                </div>
+                @*<ul class="stories list-inline scl">
+                        <li class="list-inline-item" style="position:relative;">
+                            <img src="~/Admin/Upload/images/s1.png" />
+                            <img class="add-img" src="~/Admin/Upload/icone/add.png" />
+                        </li>
+                        <li class="list-inline-item">
+                            <img src="~/Admin/Upload/images/s2.png" />
+                        </li>
+                        <li class="list-inline-item">
+                            <img src="~/Admin/Upload/images/s3.png" />
+                        </li>
+                        <li class="list-inline-item">
+                            <img src="~/Admin/Upload/images/s4.png" />
+                        </li>
+                        <li class="list-inline-item">
+                            <img src="~/Admin/Upload/images/s5.png" />
+                        </li>
+                        <li class="list-inline-item">
+                            <img src="~/Admin/Upload/images/s6.png" />
+                        </li>
+                        <li class="list-inline-item">
+                            <img src="~/Admin/Upload/images/s4.png" />
+                        </li>
+                        <li class="list-inline-item">
+                            <img src="~/Admin/Upload/images/s5.png" />
+                        </li>
+                        <li class="list-inline-item">
+                            <img src="~/Admin/Upload/images/s6.png" />
+                        </li>
+                    </ul>*@
+            </div>
+            @foreach (var item in Model.users)
+            {
+                <div data-id="@item.id" class="story-card extra-class" style='@(!string.IsNullOrEmpty(item.photo)? "background-image:url(/img/upload/"+item.photo+")":" background-color: #808080;")'>
+                    <img src="~/img/upload/overlay-z.png" />
+                    <div class="top-space">
+                        <span class="color-btn-sty btn"><img src="/Admin/icons/map-o.png" /> @item.distance KM</span>
+                        <span class="tag tag-yellow"><img src="/Admin/icons/star-new.png" /> @item.relation</span>
+                        <span class="tag tag-blue"><img src="/Admin/icons/like-new.png" /> @item.likes Likes</span>
+                    </div>
+                    <div class="card-detail">
+                        <div class="per-dts">
+                            <h3>@item.name, @item.age</h3>
+                            <ul class="list-inline">
+                                <li><img src="/Admin/upload/images/edu.png" /> @item.eduction  <span> Received likes @item.likes</span> </li>
+                                <li><img src="/Admin/upload/images/office.png" /> @item.profession  <span><img src="/Admin/upload/images/star.png" /> @(Math.Round(item.rating,1)) rating</span></li>
+                                <li><img src="/Admin/upload/images/vaccinated.png" /> @item.vaccine  <span class="btreport"> <img style="width:26px" src="/Admin/icons/report-sm.png" />  Report</span></li>
+                                
+                            </ul>
+                        </div>
+                        <div class="link-btn-icon">
+                            <ul class="list-inline list-inline-center">
+                                <li class="list-inline-item icon-svg icon-backk">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19">
+                                        <g id="Group_6543" data-name="Group 6543" transform="translate(-2938 -18310)">
+                                            <rect id="Rectangle_41" data-name="Rectangle 41" width="20" height="19" transform="translate(2938 18310)" fill="none" />
+                                            <path id="Icon_awesome-history" data-name="Icon awesome-history" d="M14.03,7.283A6.734,6.734,0,0,1,3.07,12.539a.651.651,0,0,1-.05-.967l.306-.306a.653.653,0,0,1,.866-.054,5,5,0,1,0-.319-7.556L5.251,5.034a.434.434,0,0,1-.307.742H1a.434.434,0,0,1-.434-.434V1.394A.434.434,0,0,1,1.3,1.087L2.645,2.427A6.734,6.734,0,0,1,14.03,7.283ZM9.118,9.423l.267-.343a.652.652,0,0,0-.114-.914l-1.105-.86V4.472a.652.652,0,0,0-.652-.652H7.079a.652.652,0,0,0-.652.652V8.156L8.2,9.537a.652.652,0,0,0,.914-.114Z" transform="translate(2940.816 18312.494)" fill="#8ce2e2" />
+                                        </g>
+                                    </svg>
+                                </li>
+                                <li class="list-inline-item btdislike icon-closee icon-svg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="22" viewBox="0 0 25 22">
+                                        <g id="Group_6542" data-name="Group 6542" transform="translate(-2985 -18309)">
+                                            <rect id="Rectangle_38" data-name="Rectangle 38" width="25" height="22" transform="translate(3010 18331) rotate(180)" fill="#8ce2e2" opacity="0" />
+                                            <path id="Path_55" data-name="Path 55" d="M13.4,11.994l4.3-4.286A1,1,0,1,0,16.28,6.29l-4.286,4.3L7.708,6.29A1,1,0,1,0,6.29,7.708l4.3,4.286L6.29,16.28A1,1,0,1,0,7.708,17.7l4.286-4.3,4.286,4.3A1,1,0,1,0,17.7,16.28Z" transform="translate(2985.068 18307.797)" fill="#8ce2e2" />
+                                        </g>
+                                    </svg>
+
+                                </li>
+                                <li class="list-inline-item btsuperlike icon-roket  icon-svg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="29.971" height="29.971" viewBox="0 0 29.971 29.971">
+                                        <g id="Group_6541" data-name="Group 6541" transform="translate(-3045.014 -18306.802)">
+                                            <path id="Path_58" data-name="Path 58" d="M73.242,284.484a.879.879,0,0,0,.164,1.015l.215.215c.62-.735,1.343-1.533,2.22-2.41.062-.062.126-.092.188-.149l-1.381-1.382C73.845,283.226,73.376,284.218,73.242,284.484Zm0,0" transform="translate(2976.146 18041.523)" fill="#8ce2e2" />
+                                            <path id="Path_59" data-name="Path 59" d="M165.3,389.75c-.879.879-1.675,1.6-2.406,2.224l.291.291a.878.878,0,0,0,1.022.16c.455-.234,1.17-.571,2.688-1.417l-1.446-1.447C165.388,389.625,165.358,389.688,165.3,389.75Zm0,0" transform="translate(2891.658 17940.045)" fill="#8ce2e2" />
+                                            <path id="Path_60" data-name="Path 60" d="M67.573,311.573c-.635-.635-2.419-.066-3.257.772a23.349,23.349,0,0,0-4.639,5.966.878.878,0,0,0,1.174,1.173,23.521,23.521,0,0,0,5.949-4.655c.922-.922,1.377-2.653.774-3.255Zm0,0" transform="translate(2988.914 18013.723)" fill="#8ce2e2" />
+                                            <path id="Path_61" data-name="Path 61" d="M2.741,165.887.258,168.37a.878.878,0,0,0,.848,1.469,7.216,7.216,0,0,1,3.318-.308,47.117,47.117,0,0,1,3.635-5.545c-.745-.477-3.206-.212-5.318,1.9Zm0,0" transform="translate(3045.013 18152.605)" fill="#8ce2e2" />
+                                            <path id="Path_62" data-name="Path 62" d="M246.124,384.33a.876.876,0,0,0,1.015-.163l2.484-2.483c1.923-1.923,2.261-4.4,1.825-5.191A50.136,50.136,0,0,1,245.9,380.1a10.759,10.759,0,0,1-.248,3.318.876.876,0,0,0,.474.913Zm0,0" transform="translate(2813.752 17952.348)" fill="#8ce2e2" />
+                                            <path id="Path_63" data-name="Path 63" d="M285.414,138.079a2.634,2.634,0,1,0,3.725,0A2.637,2.637,0,0,0,285.414,138.079Zm0,0" transform="translate(2777.032 18177.531)" fill="#8ce2e2" />
+                                            <path id="Path_64" data-name="Path 64" d="M394.993.858a.877.877,0,0,0-.81-.81,17.358,17.358,0,0,0-6.41.747,7.372,7.372,0,0,0,2.184,4.289,7.348,7.348,0,0,0,4.373,2.18,18.158,18.158,0,0,0,.663-6.406Zm0,0" transform="translate(2679.939 18306.801)" fill="#8ce2e2" />
+                                            <path id="Path_65" data-name="Path 65" d="M131.287,28.916a9.224,9.224,0,0,1-2.64-4.92c-5.273,2.162-10.32,6.885-14.308,13.518l1.982,1.982c1.354-.55,3-.695,4.04.347s.9,2.687.346,4.039l2.047,2.047c5.1-3.076,11.046-7.922,13.573-14.37a9.18,9.18,0,0,1-5.04-2.643Zm-1.242,7.45a4.39,4.39,0,1,1,0-6.209A4.4,4.4,0,0,1,130.045,36.366Zm0,0" transform="translate(2937.367 18284.211)" fill="#8ce2e2" />
+                                        </g>
+                                    </svg>
+                                </li>
+                                <li class="list-inline-item btlike icon-likee icon-svg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+                                        <g id="Group_6544" data-name="Group 6544" transform="translate(-3114 -18309)">
+                                            <rect id="Rectangle_39" data-name="Rectangle 39" width="22" height="22" transform="translate(3114 18309)" fill="#8ce2e2" opacity="0" />
+                                            <path id="Path_56" data-name="Path 56" d="M11.99,20.983a1,1,0,0,1-.709-.29L3.518,12.921a5.227,5.227,0,1,1,7.393-7.393L11.99,6.607l1.079-1.079a5.227,5.227,0,1,1,7.393,7.393L12.7,20.693a1,1,0,0,1-.709.29Z" transform="translate(3112.944 18307.799)" fill="#8ce2e2" />
+                                        </g>
+                                    </svg>
+                                </li>
+                                <li class="list-inline-item btview icon-eyee icon-svg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="19" viewBox="0 0 21 19">
+                                        <g id="Group_6545" data-name="Group 6545" transform="translate(-3164 -18310)">
+                                            <rect id="Rectangle_40" data-name="Rectangle 40" width="21" height="19" transform="translate(3164 18310)" fill="#8ce2e2" opacity="0" />
+                                            <circle id="Ellipse_14" data-name="Ellipse 14" cx="1.249" cy="1.249" r="1.249" transform="translate(3172.635 18318.543)" fill="#8ce2e2" />
+                                            <path id="Path_57" data-name="Path 57" d="M18.541,10.41C18.008,9.486,15.078,4.849,10.1,5c-4.6.117-7.268,4.162-7.992,5.411a.832.832,0,0,0,0,.832c.524.907,3.33,5.411,8.233,5.411h.208c4.6-.117,7.276-4.162,7.992-5.411A.832.832,0,0,0,18.541,10.41Zm-8.217,3.33a2.914,2.914,0,1,1,2.914-2.914,2.914,2.914,0,0,1-2.914,2.914Z" transform="translate(3163.56 18308.965)" fill="#8ce2e2" />
+                                        </g>
+                                    </svg>
+                                </li>
+                             
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+
+            @*<div class="story-card extra-class" style="background-image:url(/Admin/upload/images/story.png)">
+
+                    <div class="top-space">
+                        <span class="color-btn-sty btn"><img src="/Admin/upload/images/location.png" /> 22 KM</span>
+                    </div>
+                    <div class="card-detail">
+                        <div class="per-dts">
+                            <h3>Debora, 23</h3>
+                            <ul class="list-inline">
+                                <li><img src="/Admin/upload/images/edu.png" /> University of Oxford</li>
+                                <li><img src="/Admin/upload/images/office.png" /> Graphic Designer  <span> Received likes 450</span></li>
+                                <li><img src="/Admin/upload/images/vaccinated.png" /> Vaccinated <span><img src="/Admin/upload/images/star.png" /> 4.9 rating</span></i></li>
+                            </ul>
+                        </div>
+                        <div class="link-btn-icon">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><img src="/Admin/upload/images/history.png" /></li>
+                                <li class="list-inline-item"><img src="/Admin/upload/images/close.png" /></li>
+                                <li class="list-inline-item"><img src="/Admin/upload/images/start-up.png" /></li>
+                                <li class="list-inline-item"><img src="/Admin/upload/images/like.png" /></li>
+                                <li class="list-inline-item"><img src="/Admin/upload/images/view.png" /></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>*@
+
+
+        </div>
+        <div class="col-md-4">
+            <div class="side-right bg-thm-gy">
+                <div class="wgit">
+
+                    <h3>Find My Match</h3>
+                    <p>
+                        You have rated all
+                        members, soon we will
+                        show you the newest
+                        members here.
+                    </p>
+                </div>
+                <div class="wgit">
+                    <h3>SUBSCRIBE</h3>
+                    <p>
+                        Get full access to all
+                        features
+                    </p>
+                    <button class="btn btn-primary">Get Membership</button>
+                </div>
+
+                <div class="wgit">
+                    <h3>Invite a Friend</h3>
+                    <input class="form-control mb-3" type="text" placeholder="First Name" />
+                    <input class="form-control mb-3" type="text" placeholder="E-mail" />
+                    <button class="btn btn-primary">Send Invite</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--End Page header-->
+<!--// Wrapper -->
+<!-- Button trigger modal -->
+@*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Hello
+</button>*@
+
+
+
+<!-- Modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="reportusermodal" tabindex="-1" role="dialog" aria-labelledby="reportuser" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-contentsty2">
+
+            <div class="modal-body ">
+                <h5 class="text-center ">Report User</h5>
+                <ul class="report-user mt-3">
+                    @foreach (var item in Model.reportList)
+                    {
+                        <li onclick="ReportUser('@item.name')">@item.name</li>
+                    }                 
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="~/Admin/Script/Custom/UserListing.js"></script>
+
+
+<link rel="stylesheet" href="/js/story/zuck.min.css">
+
+<!-- lib skins -->
+<link rel="stylesheet" href="/js/story/skins/snapgram.css">
+<link rel="stylesheet" href="/js/story/skins/vemdezap.css">
+<link rel="stylesheet" href="/js/story/skins/facesnap.css">
+<link rel="stylesheet" href="/js/story/skins/snapssenger.css">
+
+<script src="/js/story/zuck.min.js"></script>
+<script src="~/js/story/script.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
+<script>
+
+    // Range Slider
+    var slider = new Slider("#range", {
+        min: 18,
+        max: 60,
+        value: [25, 42],
+        range: true,
+        tooltip: 'always'
+    });
+</script>
+
+<script>
+    var storiesData =@Html.Raw(Common.Serialize(Model.stories));
+    var currentSkin = getCurrentSkin();
+    var storiesFormattedList = [];
+    debugger
+    for (var i = 0; i < storiesData.length; i++) {
+        var story = storiesData[i];
+        var storyphotos = [];
+        for (var j = 0; j < story.photos.length; j++) {
+            var photo = story.photos[j];
+            storyphotos.push([story.name + "_" + (i + "_" + j), "photo", 3, "/img/upload/" + photo.photo, "/img/upload/" + photo.photo, '', photo.content, false, story.timestamp])
+        }
+        storiesFormattedList.push(
+            Zuck.buildTimelineItem(
+                story.name,
+                "/img/upload/" + (story.userPhoto || 'avatar.png'),
+                story.name,
+                "#",
+                story.timestamp,
+                storyphotos
+            )
+        );
+    }
+    var stories = new Zuck('stories', {
+        backNative: true,
+        previousTap: true,
+        skin: currentSkin['name'],
+        autoFullScreen: currentSkin['params']['autoFullScreen'],
+        avatars: currentSkin['params']['avatars'],
+        paginationArrows: currentSkin['params']['paginationArrows'],
+        list: currentSkin['params']['list'],
+        cubeEffect: currentSkin['params']['cubeEffect'],
+        localStorage: true,
+        stories: storiesFormattedList
+    });
+</script>

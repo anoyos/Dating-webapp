@@ -1,0 +1,390 @@
+﻿@model james.Models.ViewModel.LoginViewModel
+<!doctype html>
+<html class="no-js preview-html" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>SignIn</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon ->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/icon.png"> -->
+    <link rel="stylesheet" href="~/public/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/public/assets/css/revoulation.css">
+    <link rel="stylesheet" href="~/public/assets/css/plugins.min.css">
+    <link rel="stylesheet" href="~/public/assets/css/style.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="~/public/assets/css/jamesClub.css">
+    <style>
+        .contact-form input {
+            border: 1px solid #E3E3E3;
+            background-color: #E3E3E3;
+            border-color: #E3E3E3;
+        }
+        #getapp p {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        #getapp {
+            background: #59d6d6;
+            color: white;
+            padding: 100px 0px;
+        }
+
+            #getapp h3 {
+                font-size: 40px;
+                margin-bottom: 30px;
+                margin-top: 100px;
+            }
+
+            #getapp .a-brn-sty {
+                clear: both;
+                display: block;
+                margin-top: 40px;
+            }
+
+        .p-l {
+            padding-left: 10%
+        }
+        .signUp li  {
+            list-style: none;
+        }
+       .signUp li img {
+            width: 437px;
+            margin-bottom: 30px;
+        }
+       .signUp {
+           position:absolute;
+           top:40%;
+           left:5%
+       }
+        .btn-primary {
+            color: #fff;
+            background-color: #59d6d6;
+            border-color: #59d6d6;
+            padding: 10px 30px;
+           
+        }
+            .btn-primary:hover {
+                background-color: #38abab;
+                border-color: #38abab;
+            }
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+            background: transparent !important;
+            background-color: transparent !important;
+            position: absolute;
+            z-index: 11111;
+            width: 100%;
+            top: 20px;
+        }
+        footer.footer {
+            background: white;
+            color: black;
+            padding: 20px 0px 0px 0px;
+        }
+            footer.footer p {
+                color: #707070;
+            }
+    </style>
+</head>
+
+
+<body class="template-color-1 template-font-1 preview-html" style="">
+    <div id="page-preloader" class="page-loading clearfix">
+        <div class="page-load-inner">
+            <div class="preloader-wrap">
+                <div class="wrap-2">
+                    <!-- <div> <img src="~/public/assets/img/icons/brook-preloader.gif" alt="Brook Preloader"></div>-->
+                    <div>
+                        <img width="450" src="/Admin/icons/logo-xl.png" alt="loader">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="wrapper" class="wrapper">
+        <!-- Page Conttent -->
+        <main class="page-content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        <img width="210" src="/Admin/icons/logo-xl.png" alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarScroll">
+                        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                            @*<li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Link
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled">Link</a>
+                            </li>*@
+                        </ul>
+                        <div class="d-flex">
+                            <a style=" font-size: 24px; font-weight: 500; border-radius: 10px;" href="/home/login" class="btn btn-primary">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="~/Admin/Upload/images/main.png" />
+                    <ul class="signUp unstyle-list">
+                        <li>
+                            <a href="javascript:void()" onclick="checkLoginState()">
+                                <img src="~/img/upload/facebook.png" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void()" onclick="oauthGSignIn()">
+                                <img src="~/img/upload/google.png" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void()">
+                                <img src="~/img/upload/apple.png" />
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <div id="getapp" class="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <img width="91%" src="/Admin/upload/images/mobile.png" />
+                        </div>
+                        <div class="col-lg-6 col-md-12 p-l">
+                            <h3>
+                                Get the app and<br />
+                                Meet your match<br />
+                                With your Same<br />
+                                Purpose
+                            </h3>
+                            <p>
+                                Download the latest version of<br />
+                                our app for iOS and Android
+                            </p>
+                            <div>
+                                <img width="200" src="/Admin/upload/images/g-btn.png" />
+
+                                <img class="a-brn-sty" width="200" src="/Admin/Upload/images/a-btn.png" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--// Page Conttent -->
+        <!--#cookies start-->
+
+        @if(ViewBag.isCookieAccept==null){
+        <div id="cookies" class="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12  col-md-12">
+                        <p>
+                            This website uses cookies to improve user experience. By using our website you cosent to all cookies in accordance with our
+                            Cookie Policy. Read More<br />
+                            Customize
+                        </p>
+                    </div>
+                    <div class="col-md-12 styy">
+                        <button class="color-btn-sty btn " onclick="AcceptCookies(true)">Accept All</button>
+                        <button class="gray-btn-sty btn " onclick="AcceptCookies(true)">Decline All</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        }
+        <style>
+            .color-btn-sty {
+                color: white;
+                background: #59D6D6;
+                font-weight: 600;
+                width: 400px;
+                font-size: 20px;
+            }
+
+            .gray-btn-sty {
+                color: white;
+                background: #989898;
+                font-weight: 600;
+                width: 350px;
+                font-size: 20px;
+            }
+
+            #cookies {
+                background: rgb(0 0 0 / 75%);
+                color: white;
+                font-weight: 600;
+                font-size: 18px;
+                padding: 20px 0px;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                z-index: 9;
+            }
+
+            .styy {
+                display: flex;
+                justify-content: space-between;
+            }
+        </style>
+
+
+        <!--#cookies End-->
+
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-4">
+                    <p class="">About  </p>
+                </div>
+                <div class="col-4 " style="text-align:center;">
+                    <p class="">Terms and Conditions </p>
+                </div>
+                <div class="col-4 text-end">
+                    <p class="">Privacy </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/public/assets/js/vendor/vendor.min.js"></script>
+    <script src="~/public/assets/js/plugins.min.js"></script>
+    <!-- REVOLUTION JS FILES -->
+    <script src="~/public/assets/js/revolution.tools.min.js"></script>
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS -->
+    <script src="~/public/assets/js/revolution.extension.min.js"></script>
+    <script src="~/public/assets/js/main.js"></script>
+    <script src="~/public/assets/js/revoulation.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="/Admin/Script/Custom/helper.js"></script>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        $(function () {
+            renderFacebookbtn();
+        });
+
+
+        function renderFacebookbtn() {
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '1285799015584207',
+                    autoLogAppEvents: true,
+                    xfbml: true,
+                    version: 'v5.0'
+                });
+            };
+        }
+        function checkLoginState() {
+            debugger
+            var data = {};
+
+            FB.login(function (response) {
+                data.token = response.authResponse.accessToken;
+                if (response.authResponse) {
+                    FB.api('/me', function (res) {
+                        data.id = res.id;
+                        data.email = res.id + '@@facebook.com';
+                        data.name = res.name;
+                        data.source = 2;
+                        XHRPOSTRequest("/Home/FacebookGoogleLogin", { model: data }, function (resp) {
+                            if (resp.Status == 1) {
+                                window.location.href = "/User/Index";
+                            }
+                            else {
+                                showNotification(resp.Message, "error");
+                            }
+                        });
+                        return false;
+                    });
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+            });
+        }
+        function oauthGSignIn() {
+            // Google's OAuth 2.0 endpoint for requesting an access token
+            var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+
+            // Create <form> element to submit parameters to OAuth 2.0 endpoint.
+            var form = document.createElement('form');
+            form.setAttribute('method', 'GET'); // Send as a GET request.
+            form.setAttribute('action', oauth2Endpoint);
+
+            // Parameters to pass to OAuth 2.0 endpoint.
+            var params = {
+                ///'client_id': '150882494651-j610dc39i1s82371fo8vo0n6n9fuslcs.apps.googleusercontent.com',
+                'client_id': '449769173150-e9b3veat78lrhsued5h85j26ub93ildu.apps.googleusercontent.com',
+                'redirect_uri': window.location.origin + '/Home/GoogleLogin',
+                'response_type': 'token',
+                'scope': 'profile email',
+                'include_granted_scopes': 'true',
+                //    'state': 'pass-through value'
+            };
+
+            // Add form parameters as hidden input values.
+            for (var p in params) {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'hidden');
+                input.setAttribute('name', p);
+                input.setAttribute('value', params[p]);
+                form.appendChild(input);
+            }
+
+            // Add form to page and submit it to open the OAuth 2.0 endpoint.
+            document.body.appendChild(form);
+            form.submit();
+        }
+
+        function AcceptCookies(accept) {
+
+            XHRPOSTRequest("/Home/AcceptCookies", { accept: accept }, function (resp) {
+                $('#cookies').fadeOut();
+            });
+        }
+    </script>
+
+</body>
+
+
+</html>

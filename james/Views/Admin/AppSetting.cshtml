@@ -1,0 +1,142 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model james.Models.DB.AppSetting
+
+<link href="~/Admin/assets/css/james-nav-sty2.css" rel="stylesheet" />
+
+<div class="profile-page  mt-5">
+
+    <div class="row m-0 form-style--3 ">
+
+        <form action="/Admin/AppSetting" method="post" class="col-md-9">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>App Setting</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-5">
+                    <div class="input-box">
+                        <label>App Version Control</label>
+                        <input class="form-control no-icon" name="appVersion" value="@Model.appVersion" placeholder="Add Google Play / Apple Store App current version" />
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="input-box">
+                        <label>Android Package Name</label>
+                        <img class="form-icon" src="~/Admin/icons/android.png" />
+                        <input class="form-control" name="androidVersion" value="@Model.androidVersion" placeholder="com.example.package" />
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="input-box">
+                        <label>IOS App ID</label>
+                        <img class="form-icon" src="~/Admin/icons/mobile.png" />
+                        <input class="form-control" name="iosAppId" value="@Model.iosAppId" placeholder="0123456789" />
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="input-box">
+                        <label>App E-mail for Support</label>
+                        <img class="form-icon" src="~/Admin/icons/mail.png" />
+                        <input class="form-control" name="appSupportEmail" value="@Model.appSupportEmail" placeholder="info.dating.app@gmail.com" />
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="input-box">
+                        <label>Privacy Policy URL</label>
+                        <img class="form-icon" src="~/Admin/icons/link.png" />
+                        <input class="form-control" name="privacyPolicyUrl" value="@Model.privacyPolicyUrl" placeholder="https://codecanyon.net/with-admin" />
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="input-box">
+                        <label>Firebase Server Key for Notifications</label>
+                        <img class="form-icon" src="~/Admin/icons/key.png" />
+                        <input class="form-control" name="firebaseServerKey"  value="@Model.firebaseServerKey" placeholder="" />
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="input-box">
+                        <label>Firebase Sender Id for Notifications</label>
+                        <img class="form-icon" src="~/Admin/icons/key.png" />
+                        <input class="form-control" name="firebaseSenderId" dirname="" value="@Model.firebaseSenderId" placeholder="" />
+                    </div>
+                </div>`
+                <div class="col-lg-6 mb-5">
+                    <div class="input-box">
+                        <label>Free Account Max Distance Radius</label>
+                        <img class="form-icon" src="~/Admin/icons/location.png" />
+                        <input class="form-control" name="freeMaxRadius" value="@Model.freeMaxRadius" placeholder="20000" />
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="input-box">
+                        <label>VIP Account Max Distance Radius</label>
+                        <img class="form-icon" src="~/Admin/icons/location.png" />
+                        <input class="form-control" name="vipMaxRadius"  value="@Model.vipMaxRadius" placeholder="" />
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="input-box">
+                        <label style=" margin-bottom: 0.5rem;" class="custom-switch">
+                            <span class="custom-switch-description mr-5">Hidden Album Pasword: </span>
+                            <input type="checkbox" name="hiddenPassword" value="true" @(Model.hiddenPassword?"checked":"") class="custom-switch-input">
+                            <span class="custom-switch-indicator custom-switch-indicator-lg"></span>
+                        </label>
+                        <img class="form-icon" src="~/Admin/icons/location.png" />
+                        <input class="form-control" placeholder="Enter Password Count" value="@Model.hiddentPasswordCnt" name="hiddentPasswordCnt" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 mb-5 text-right">
+                    <a href="/Admin/Events" class="btn btn-primary btn-2 mr-3">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-3 side-nav-right-sty">
+            <div class="wgit">
+
+                <h3 class="mb-0">Notification</h3>
+                <p>Send push notifications to all users</p>
+                <textarea style="" class="form-control mb-3" rows="6" placeholder="Write a message"></textarea>
+                <button class="btn w-100 btn-primary">Send Message</button>
+            </div>
+            <div class="wgit">
+                <h3>VIP Subscription</h3>
+                <div class="form-group relative">
+                    <img class="form-icon-l" src="~/Admin/icons/cart.png" />
+                    <input class="form-control int-sty" placeholder="Add Subscription ID" />
+                    <img class="form-icon-r" src="~/Admin/icons/add.png" />
+                </div>
+
+                <div class="vip-list">
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                    <div class="vips">
+                        <img width="40" src="~/Admin/icons/pro-user.png" />
+                        <p>vip_1_week</p>
+                        <img width="18" src="~/Admin/icons/del.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

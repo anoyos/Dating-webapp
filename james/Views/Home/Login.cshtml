@@ -1,0 +1,235 @@
+﻿@model james.Models.ViewModel.LoginViewModel
+<!doctype html>
+<html class="no-js preview-html" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>SignIn</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon ->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/icon.png"> -->
+    <link rel="stylesheet" href="~/public/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/public/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/public/assets/css/revoulation.css">
+    <link rel="stylesheet" href="~/public/assets/css/plugins.min.css">
+    <link rel="stylesheet" href="~/public/assets/css/style.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="~/public/assets/css/jamesClub.css">
+    <style>
+        .contact-form input {
+            border: 1px solid #E3E3E3;
+            background-color: #E3E3E3;
+            border-color: #E3E3E3;
+        }
+    </style>
+</head>
+
+
+<body class="template-color-1 template-font-1 preview-html" style="background-image:url('../public/assets/images/img/bg.png');background-size:cover;">
+    <img style=" position: absolute; top: 30px; left: 60px;" src="~/public/assets/images/logo-s.png" />
+    <div id="page-preloader" class="page-loading clearfix">
+        <div class="page-load-inner">
+            <div class="preloader-wrap">
+                <div class="wrap-2">
+                    <!-- <div> <img src="~/public/assets/img/icons/brook-preloader.gif" alt="Brook Preloader"></div>-->
+                    <div>
+                        <img width="450" src="/Admin/icons/logo-xl.png" alt="loader">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="wrapper" class="wrapper">
+        <!-- Page Conttent -->
+        <main class="page-content">
+            <div class="container">
+                <div class="row mt--30 mt_sm--20 mt_md--30">
+                    <div class="col-lg-6 offset-lg-3 col-md-6 col-sm-12 col-12 wow move-up">
+                        <div class="service service--1 text-center mt--30">
+                            <div class="contact-form">
+                                <form class="for form-style wow move-up" action="/home/Login" method="post">
+                                    <div class="row">
+                                        <h1 class="text-center text-white fw-400 mb--30">Sign In</h1>
+
+                                        @if (Model.error && !string.IsNullOrEmpty(Model.message))
+                                        {
+                                            <div class="col-lg-12 mb--30">
+                                                <h4 class="text-danger">@Model.message</h4>
+                                            </div>
+                                        }
+                                        <div class="col-lg-12 mb--30">
+                                            <div class="input-box">
+                                                <input type="text" value="@Model.username" name="username" placeholder="Username">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 mb--30">
+                                            <div class="input-box">
+                                                <input type="password" value="@Model.password" name="password" placeholder="Password">
+                                            </div>
+                                        </div>
+
+                                        <div class="mt--10 move-up wow ">
+                                            <button type="submit" style="width:100%" class="brook-btn bk-btn-theme with-no-shadow btn-lg-size btn-rounded space-between" href="/Home/Login">Log In</button>
+                                        </div>
+
+                                        <div class="col-6 mt--10">
+                                            <div class="check-box">
+                                                <input type="checkbox" name="check" id="check">
+                                                <label for="check" class="text-white">Remember me</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mt--10">
+                                            <a  class="txt-color-1 font-14" href="/Home/ForgotPassword">Forgot Password?</a>
+                                        </div>
+                                        <div class="col-12 mt--30 text-center">
+                                            <img class="w-298" src="~/public/assets/images/img/or.png" />
+                                        </div>
+                                        <div class="col-12 mt--30 text-center">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item" onclick="checkLoginState()">
+                                                    <img width="40" src="~/public/assets/images/icons/soc-f.png" />
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <img width="40" src="~/public/assets/images/icons/soc-a.png" />
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <img width="40" src="~/public/assets/images/icons/soc-g.png" onclick="oauthGSignIn()" />
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-12 mt--0 text-center">
+                                            <p class="text-white">Don't have account? <a href="/Home/Register" class="txt-color-1">Sign up</a></p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--// Page Conttent -->
+
+
+    </div>
+    <footer class="fixedd">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-6">
+                    <p class="text-white">Term and conditions of service | Privacy | language </p>
+                </div>
+                <div class="col-6 text-end">
+                    <p class="text-white">James Club 248 all rights reserved </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--// Wrapper -->
+
+
+    <script src="~/public/assets/js/vendor/vendor.min.js"></script>
+    <script src="~/public/assets/js/plugins.min.js"></script>
+    <!-- REVOLUTION JS FILES -->
+    <script src="~/public/assets/js/revolution.tools.min.js"></script>
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS -->
+    <script src="~/public/assets/js/revolution.extension.min.js"></script>
+    <script src="~/public/assets/js/main.js"></script>
+    <script src="~/public/assets/js/revoulation.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="/Admin/Script/Custom/helper.js"></script>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        $(function () {
+            renderFacebookbtn();
+        });
+
+
+        function renderFacebookbtn() {
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '1285799015584207',
+                    autoLogAppEvents: true,
+                    xfbml: true,
+                    version: 'v5.0'
+                });
+            };
+        }
+        function checkLoginState() {
+            debugger
+            var data = {};
+
+            FB.login(function (response) {
+                data.token = response.authResponse.accessToken;
+                if (response.authResponse) {
+                    FB.api('/me', function (res) {
+                        data.id = res.id;
+                        data.email = res.id + '@@facebook.com';
+                        data.name = res.name;
+                        data.source = 2;
+                        XHRPOSTRequest("/Home/FacebookGoogleLogin", { model: data }, function (resp) {
+                            if (resp.Status==1) {
+                                window.location.href = "/User/Index";
+                            }
+                            else {
+                                showNotification(resp.Message, "error");
+                            }
+                        });
+                        return false;
+                    });
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+            });
+        }
+        function oauthGSignIn() {
+            // Google's OAuth 2.0 endpoint for requesting an access token
+            var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+
+            // Create <form> element to submit parameters to OAuth 2.0 endpoint.
+            var form = document.createElement('form');
+            form.setAttribute('method', 'GET'); // Send as a GET request.
+            form.setAttribute('action', oauth2Endpoint);
+
+            // Parameters to pass to OAuth 2.0 endpoint.
+            var params = {
+                ///'client_id': '150882494651-j610dc39i1s82371fo8vo0n6n9fuslcs.apps.googleusercontent.com',
+                'client_id': '449769173150-e9b3veat78lrhsued5h85j26ub93ildu.apps.googleusercontent.com',
+                'redirect_uri': window.location.origin + '/Home/GoogleLogin',
+                'response_type': 'token',
+                'scope': 'profile email',
+                'include_granted_scopes': 'true',
+                //    'state': 'pass-through value'
+            };
+
+            // Add form parameters as hidden input values.
+            for (var p in params) {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'hidden');
+                input.setAttribute('name', p);
+                input.setAttribute('value', params[p]);
+                form.appendChild(input);
+            }
+
+            // Add form to page and submit it to open the OAuth 2.0 endpoint.
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+</body>
+
+
+</html>

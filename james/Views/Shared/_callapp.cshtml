@@ -1,0 +1,171 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<style>
+    .mutebt, .startcallbt {
+        max-width: 90px !important;
+    }
+    .xl-size {
+        min-width: 100% !important;
+        margin: 0px !important;
+        min-height: 100vh;
+    }
+    .videoCall-from img {
+        height: 236px;
+        width: 315px;
+        object-fit: cover;
+        object-position: center top;
+    }
+    .videoCall-to img {
+        max-height: 100vh;
+    }
+    .videoCall-from video {
+        height: 236px !important;
+        width: 315px !important;
+        object-fit: cover;
+        object-position: center top;
+    }
+
+    .videoCall-to video {
+        max-height: 100vh;
+    }
+    .caller-detail {
+        background: #0000004a;
+        padding: 10px 30px;
+    }
+
+    .videoCall-from {
+        position: absolute;
+        left: 40px;
+        top: 30px;
+    }
+
+    .cam-chg {
+        position: absolute;
+        right: 30px;
+        top: 57px;
+    }
+
+    .caller-detail p {
+        font-size: 20px;
+        font-weight: 500;
+        color: white;
+        margin: 5px;
+    }
+
+    .caller-detail {
+        position: absolute;
+        text-align: center;
+        margin: auto;
+        display: block;
+        margin-left: auto;
+        float: none;
+        width: 100%;
+        color: white;
+        bottom: 175px;
+    }
+
+    .call-controls {
+        position: absolute;
+        bottom: 40px;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .end-call {
+        margin: 0px 50px !important;
+    }
+    .callphoto ,.videoCall-fromimg ,.videoCall-toimg {
+        border-radius: 10px;
+    }
+    
+</style>
+
+
+<div class="modal fade" style=" overflow: hidden;" id="callmodal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered xl-size" style="padding:0px;" role="document">
+        <div class="modal-content" style="padding: 0px; height: 100vh;">
+            <div class="modal-body text-center" style="padding:0px">
+
+
+                <div class="row" id="videoCall" style="display:none; background-image:url(../../Admin/Upload/img/call-bg.webp); ">
+                    <div class="col-md-12">
+                        <div class="videoCall-sec" style="background-color: #4dcedfcf;">
+                            <div id="videopanel">
+                                <div class="videoCall-to"><img style="border-radius:10px" class="bor-10" src="~/img/upload/video-to.png" /></div>
+                                <div style="border-radius:10px" class="videoCall-from"><img style="border-radius:10px" class="bor-10" src="~/img/upload/video-from.png" /></div>
+                            </div>
+                            <ul class="inline-list cam-chg">
+                                <li><img src="~/Admin/icons/change-camra.png" /> </li>
+                            </ul>
+                            <div class="caller-detail">
+                                <p class="calltoName">Angela</p>
+                                <small class="callstatus">Duration 05:15 min</small>
+                            </div>
+                            <ul class="call-controls list-inline">
+                                <li class="list-inline-item mutebt unmute" style="display:none"><img src="~/Admin/icons/mic-btn.png" /> </li>
+                                <li class="list-inline-item end-call endcallbt" style="display:none"><img src="~/Admin/icons/end-call-btn.png" /> </li>
+                                <li class="list-inline-item end-call rejectcallbt" style="display:none"><img src="~/Admin/icons/end-call-btn.png" /> </li>
+                                <li class="list-inline-item end-call startcallbt" style="display:none"><img src="~/Admin/icons/start-call-btn.jpg" /> </li>
+                                <li class="list-inline-item camerabt" style="display:none"><img src="~/Admin/icons/audio-call.png" /> </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="AudioCall"  class="row " style="display: none; background-image:url(../../Admin/Upload/img/call-bg.webp); ">
+                    <div class="col-md-12">
+                        <div class="videoCall-sec" style="background-color: #4dcedfcf;">
+                            <div class="audioCall-to"><img style=" border-radius:10px; height: 100vh; " class="bor-10 callphoto" src="~/img/upload/video-to.png" /></div>
+                            <div class="caller-detail">
+                                <p class="calltoName">Angela</p>
+                                <small class="callstatus">Duration 05:15 min</small>
+                            </div>
+                            <ul class="call-controls list-inline">
+                                <li class="list-inline-item mutebt unmute" style="display:none"><img src="~/Admin/icons/mic-btn.png" /> </li>
+                                <li class="list-inline-item end-call endcallbt" style="display:none"><img src="~/Admin/icons/end-call-btn.png" /> </li>
+                                <li class="list-inline-item end-call rejectcallbt" style="display:none"><img src="~/Admin/icons/end-call-btn.png" /> </li>
+                                <li class="list-inline-item end-call startcallbt" style="display:none"><img src="~/Admin/icons/start-call-btn.jpg" /> </li>
+                                <li class="list-inline-item camerabt" style="display:none"><img src="~/Admin/icons/audio-call.png" /> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+
+                @*<div class="row  mt-5">
+            <div class="col-md-12">
+                <div id="videopanel">
+                    <div id="" class="videoCall-to"><img class="bor-10" src="~/img/upload/video-to.png" /></div>
+                    <div class="videoCall-from"><img class="bor-10" src="~/img/upload/video-from.png" /></div>
+                </div>
+
+
+                <div class="videoCall-sec">
+                    <div class="videoCall-to"><img class="bor-10 callphoto" src="~/img/upload/video-to.png" /></div>
+                    <div class="caller-detail">
+                        <p class="calltoName">Angela</p>
+                        <small class="callstatus">Duration 05:15 min</small>
+                    </div>
+                    <ul class="call-controls list-inline">
+                        <li class="list-inline-item mutebt unmute" style="display:none"><img src="~/Admin/icons/mic-btn.png" /> </li>
+                        <li class="list-inline-item end-call endcallbt" style="display:none"><img src="~/Admin/icons/end-call-btn.png" /> </li>
+                        <li class="list-inline-item end-call rejectcallbt" style="display:none"><img src="~/Admin/icons/end-call-btn.png" /> </li>
+                        <li class="list-inline-item end-call startcallbt" style="display:none"><img src="~/Admin/icons/start-call-btn.jpg" /> </li>
+                        <li class="list-inline-item camerabt" style="display:none"><img src="~/Admin/icons/audio-call.png" /> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>*@
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="~/Admin/Script/Custom/AgoraRTC_N-4.13.0.js"></script>
+<script src="~/Admin/Script/Custom/callapp.js"></script>

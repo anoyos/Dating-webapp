@@ -1,0 +1,369 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@using james.Helpers.General;
+<style>
+    .color-btn-sty {
+        color: white;
+        background: #59D6D6;
+        font-weight: 700;
+        width: 400px;
+        font-size: 20px;
+    }
+
+    .gray-btn-sty {
+        color: white;
+        background: #989898;
+        font-weight: 700;
+        width: 350px;
+        font-size: 20px;
+    }
+
+    .message-list {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 8px 10px;
+        background: #A7E9E9;
+        border-radius: 5px;
+    }
+
+    .txt-sty {
+        padding-left: 15px;
+    }
+
+    .img-sty img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        object-position: top;
+    
+    }
+
+    .txt-sty h3 {
+        font-size: 17px;
+        margin: 0px;
+        font-weight: 400;
+    }
+
+    .txt-sty p {
+        font-size: 14px;
+        margin: 0px;
+        color: #A5A5A5;
+    }
+
+    .time-sty p {
+        margin: 0px;
+        text-align: right;
+    }
+
+    .time-sty {
+        width: 60px;
+        margin: 0px;
+        text-align: center;
+    }
+
+    .chat-head {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        border-radius: 10px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        padding: 10px 15px;
+    }
+
+    .pro-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .chat-head .pro-info img {
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        object-fit: cover;
+        object-position: top;
+    
+    }
+
+    .head-btn li img {
+        width: 26px;
+        margin-left: 20px;
+    }
+
+    .pro-info h4 {
+        margin: 0px;
+        font-size: 18px;
+    }
+
+    .pro-info p {
+        margin: 0px;
+        font-size: 12px;
+    }
+
+    .text-green {
+        color: #14B82F;
+    }
+
+    #chat-box {
+        background: url(/Admin/Upload/images/chat-bg.png);
+        background-size: cover;
+        height: 85vh;
+    }
+
+    .head-btn ul {
+        margin: 0px;
+    }
+
+    .chat-txt div {
+        background: #59D6D6;
+        color: white;
+        font-weight: 400;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .chat-rigth img {
+        width: 40px;
+        height: 40px;
+        margin: 0px 20px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: top;
+    }
+    
+
+    .chat-left img {
+        width: 40px;
+        height: 40px;
+        margin: 0px 20px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: top;
+    
+    }
+
+    .chat-txt span {
+        color: #CBCBCB;
+    }
+
+    .chat-rigth {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .chat-left {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .chat-body {
+        padding: 30px 0px;
+    }
+
+    .chat-body {
+        min-height: 530px;
+    }
+
+    .sd-sty a img {
+        width: 45px;
+        height: 50px;
+        object-fit: cover;
+        object-position: top;
+    
+    }
+
+    .sd-sty a {
+        background: rgb(181 181 181 / 55%);
+        padding: 14px 12px 21px 0px;
+        border-radius: 10px;
+    }
+
+    .in-sty {
+        width: 86%;
+    }
+
+        .in-sty input {
+            background: rgb(181 181 181 / 55%);
+            border: 0px;
+            height: 53px;
+            border-radius: 10px;
+            width: 100%;
+            padding: 0px 15px;
+            color: white;
+        }
+
+    .chat-footer {
+        display: flex;
+        padding: 20px;
+        justify-content: space-between;
+    }
+
+    .in-sty input:focus-visible {
+        border: 0px !important;
+        outline: none;
+    }
+
+    .in-sty input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: white;
+    }
+
+    .msg-list {
+        background: #f2f2f2;
+        padding: 25px 8px;
+        border-radius: 5px;
+    }
+</style>
+
+<style>
+    .color-btn-sty {
+        color: white;
+        background: #59D6D6;
+        font-weight: 700;
+        width: 400px;
+        font-size: 20px;
+    }
+
+    .gray-btn-sty {
+        color: white;
+        background: #989898;
+        font-weight: 700;
+        width: 350px;
+        font-size: 20px;
+    }
+
+    .message-list {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px 7px;
+        background: #A7E9E9;
+        border-radius: 5px;
+    }
+
+    .txt-sty {
+        padding-left: 15px;
+    }
+
+    
+
+    .txt-sty h3 {
+        font-size: 17px;
+        margin: 0px;
+        font-weight: 400;
+    }
+
+    .txt-sty p {
+        font-size: 14px;
+        margin: 0px;
+        color: #A5A5A5;
+    }
+
+    .time-sty p {
+        margin: 0px;
+        text-align: right;
+    }
+
+    .time-sty {
+        width: 90px;
+        margin: 0px;
+        text-align: center;
+    }
+    div#ChatBody{
+        margin-right:-5px
+    }
+    .chat-footer {
+        background: none;
+        top: -35px;
+    }
+    .img-sty img {
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        object-fit: cover;
+        object-position: top;
+    }
+
+   /* .stories.carousel {
+        width: 46vw ;
+    }*/
+</style>
+
+@*<div id="videoCall">
+    <div class="row  mt-5">
+        <div class="col-md-12">
+            <div class="videoCall-sec">
+                <div class="videoCall-to"><img class="bor-10" src="~/img/upload/video-to.png" /></div>
+                <div class="videoCall-from"><img class="bor-10" src="~/img/upload/video-from.png" /></div>
+                <ul class="inline-list cam-chg">
+                    <li><img src="~/Admin/icons/change-camra.png" /> </li>
+                </ul>
+                <div class="caller-detail">
+                    <p>Angela</p>
+                    <small>Duration 05:15 min</small>
+                </div>
+                <ul class="call-controls list-inline">
+                    <li class="list-inline-item"><img src="~/Admin/icons/mic-btn.png" /> </li>
+                    <li class="list-inline-item end-call"><img src="~/Admin/icons/end-call-btn.png" /> </li>
+                    <li class="list-inline-item"><img src="~/Admin/icons/video-btn.png" /> </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="AudioCall">
+    <div class="row  mt-5">
+        <div class="col-md-12">
+            <div class="videoCall-sec">
+                <div class="videoCall-to"><img class="bor-10" src="~/img/upload/video-to.png" /></div>
+                <div class="caller-detail">
+                    <p>Angela</p>
+                    <small>Duration 05:15 min</small>
+                </div>
+                <ul class="call-controls list-inline">
+                    <li class="list-inline-item"><img src="~/Admin/icons/mic-btn.png" /> </li>
+                    <li class="list-inline-item end-call"><img src="~/Admin/icons/end-call-btn.png" /> </li>
+                    <li class="list-inline-item"><img src="~/Admin/icons/audio-call.png" /> </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>*@
+
+<div class="row mt-5">
+    <div class="col-md-8">
+        <!---Chat Code start--->
+        <div id="chat-box" class="ms-body">
+         
+            <div class="nodata">
+                <img src="~/Admin/icons/760759.png" />
+                <h3 class="">No Record Found</h3>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+            </div>
+           
+        </div>
+        <!---Chat Code End--->
+    </div>
+
+    <div class="col-md-4 msg-list">
+        <h2 class="mb-5 fw-normal">Message List</h2>
+        <div id="ChatList">
+            @Html.Action("ChatThreads", "Messenger")
+        </div>
+
+    </div>
+</div>
+
+<script src="~/Admin/Script/Custom/messenger.js"></script>

@@ -1,0 +1,191 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .cardd {
+        height: 184px;
+        width: 365px;
+        border-radius: 5px;
+    }
+
+    .card2 {
+        height: 164px;
+        width: 118px;
+        border-radius: 5px;
+    }
+
+
+
+    /*   .slider-container {
+        width: 100%;
+        height: 415px;
+        position: absolute;
+        top: 212px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+    }*/
+    .slider-container {
+        height: 210px;
+        overflow: hidden;
+    }
+
+    .inner-slider {
+        display: flex;
+        gap: 10px;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .user-detail-stm {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .tag-primary {
+        background-color: #74ddc7;
+        color: #fff;
+        border-radius: 15px;
+        font-size: 20px;
+        padding: 0px 20px;
+        margin-right:20px;
+    line-height: 30px;
+    }
+    .other-users ul li {
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+    }
+</style>
+<div class="row mt-5">
+    <form class="form-inline search-sty col-md-7">
+        <div class="search-element">
+            <img class="cus" src="/Admin/Upload/icone/search.png">
+            <input style=" width: 100%;" type="search" class="form-control header-search" placeholder="Find partner" aria-label="Search" tabindex="1">
+            <button class="btn btn-primary" type="submit">
+
+                <img src="/Admin/Upload/icone/filter.png">
+            </button>
+        </div>
+    </form>
+
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-8">
+        <h4>Video Streaming</h4>
+        <img src="~/Admin/Upload/images/video3.png" />
+        <div class="user-detail-stm mt-3">
+            <img class="mr-3" src="~/Admin/icons/pro-img.png" />
+            <div>
+                <h3 class="text-primary m-0">M F</h3>
+                <h3 class="color-black  m-0">ID:836720807 </h3>
+            </div>
+            <div class="ml-auto">
+                <img class="mr-3" src="~/Admin/icons/coins.png" />250
+                <img class="mr-3" src="~/Admin/icons/dy.png" />250
+            </div>
+        </div>
+
+        <div class="other-users mt-5">
+            <ul>
+                <li>
+                    <span class="tag tag-primary">Lv.5</span>
+                    <h3 class="m-0 text-muted">BrS PENN7 RDB : </h3>
+                    <h3 class="m-0"> torce pra 69 e ans</h3>
+                </li>
+                <li>
+                    <span class="tag tag-primary">Lv.5</span>
+                    <h3 class="m-0 text-muted">BrS PENN7 RDB : </h3>
+                    <h3 class="m-0"> torce pra 69 e ans</h3>
+                </li>
+                <li>
+                    <span class="tag tag-primary">Lv.5</span>
+                    <h3 class="m-0 text-muted">BrS PENN7 RDB : </h3>
+                    <h3 class="m-0"> torce pra 69 e ans</h3>
+                </li>
+                <li>
+                    <span class="tag tag-primary">Lv.5</span>
+                    <h3 class="m-0 text-muted">BrS PENN7 RDB : </h3>
+                    <h3 class="m-0"> torce pra 69 e ans</h3>
+                </li>
+                <li>
+                    <span class="tag tag-primary">Lv.5</span>
+                    <h3 class="m-0 text-muted">BrS PENN7 RDB : </h3>
+                    <h3 class="m-0"> torce pra 69 e ans</h3>
+                </li>
+            </ul>
+        </div>
+
+
+        <form class="form-inline search-sty col-md-12 p-0">
+            <div class="search-element">
+                <input style="background-color: #f8f8f8 !important; width: 100%; padding-left: 20px !important; "   class="form-control header-search" placeholder="type comment" aria-label="Search" tabindex="1">
+                <button class="btn btn-primary" type="submit">
+                    Send    
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+<script>
+    let sliderContainer = document.querySelector(".slider-container");
+    let innerSlider = document.querySelector(".inner-slider");
+
+    let pressed = false;
+    let startX;
+    let x;
+
+    sliderContainer.addEventListener("mousedown", (e) => {
+        pressed = true;
+        startX = e.offsetX - innerSlider.offsetLeft;
+        sliderContainer.style.cursor = "grabbing";
+    });
+
+    sliderContainer.addEventListener("mouseenter", () => {
+        sliderContainer.style.cursor = "grab";
+    });
+
+    sliderContainer.addEventListener("mouseleave", () => {
+        sliderContainer.style.cursor = "default";
+    });
+
+    sliderContainer.addEventListener("mouseup", () => {
+        sliderContainer.style.cursor = "grab";
+        pressed = false;
+    });
+
+    window.addEventListener("mouseup", () => {
+        // pressed = false;
+    });
+
+    sliderContainer.addEventListener("mousemove", (e) => {
+        if (!pressed) return;
+        e.preventDefault();
+
+        x = e.offsetX;
+
+        innerSlider.style.left = `${x - startX}px`;
+
+        checkBoundary();
+    });
+
+    const checkBoundary = () => {
+        let outer = sliderContainer.getBoundingClientRect();
+        let inner = innerSlider.getBoundingClientRect();
+
+        if (parseInt(innerSlider.style.left) > 0) {
+            innerSlider.style.left = "0px";
+        }
+
+        if (inner.right < outer.right) {
+            innerSlider.style.left = `-${inner.width - outer.width}px`;
+        }
+    };
+</script>
